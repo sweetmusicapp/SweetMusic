@@ -1,5 +1,27 @@
 <resources>
     <string name="app_name">SweetMusic</string>
 
+<<<<<<< HEAD
     <string name="hello_blank_fragment">Hello blank fragment</string>
+=======
+    <string name="sobre_description_logo">Logo com a palavra Sweet Music em verde escuro entre headfones em verde claro</string>
+    <string name="sobre_descricao_app">Suas músicas favoritas, para todos os gostos</string>
+    <string name="sobre_relatar_bug">Relatar um problema</string>
+    <string name="sobre_versao">Versão do aplicativo 1.0.0</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+    <string name="title_activity_sobre">Sobre</string>
+>>>>>>> 659b25b... Tela sobre e menu drawer
 </resources>

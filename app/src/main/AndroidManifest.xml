@@ -9,21 +9,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".login.ForgotActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".login.RegisterActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".login.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".login.SplashActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".views.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/NoActionBar"></activity>
+        <activity android:name=".views.SobreActivity"
+            android:label="@string/title_activity_sobre"
+            />
+        <activity
+            android:name=".views.login.ForgotActivity"
+            android:label=""
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".views.login.RegisterActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".views.login.LoginActivity"
+            android:theme="@style/NoActionBar" />
+        <activity
+            android:name=".views.login.SplashActivity"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".views.MainActivity" />
     </application>
 
 </manifest>

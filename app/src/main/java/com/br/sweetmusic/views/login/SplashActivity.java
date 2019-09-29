@@ -1,4 +1,4 @@
-package com.br.sweetmusic.login;
+package com.br.sweetmusic.views.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
