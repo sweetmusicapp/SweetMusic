@@ -1,4 +1,4 @@
-package com.br.sweetmusic.login;
+package com.br.sweetmusic.views.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.br.sweetmusic.MainActivity;
+import com.br.sweetmusic.views.HomeActivity;
+import com.br.sweetmusic.views.MainActivity;
 import com.br.sweetmusic.R;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -103,7 +104,7 @@ public class LoginActivity extends AppCompatActivity {
             inputSenha.setErrorEnabled(false);
 
             //TODO: Mudar destino em sprints futuras
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
         }
     }
 
