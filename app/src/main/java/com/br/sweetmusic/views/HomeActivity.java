@@ -72,7 +72,7 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
                 } else if (id == R.id.nav_favoritos) {
 
                 } else if (id == R.id.nav_perfil) {
-
+                    startActivity(new Intent(HomeActivity.this, PerfilActivity.class));
                 } else if (id == R.id.nav_sobre) {
                     startActivity(new Intent(HomeActivity.this, SobreActivity.class));
                 } else if (id == R.id.nav_sair) {

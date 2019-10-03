@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.br.sweetmusic.views.HomeActivity;
-import com.br.sweetmusic.views.MainActivity;
 import com.br.sweetmusic.R;
 import com.google.android.material.textfield.TextInputLayout;
 
