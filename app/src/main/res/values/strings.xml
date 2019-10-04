@@ -60,5 +60,10 @@
     <string name="recuperar_senha">Recuperar Senha</string>
     <string name="emailDefault">email@exemplo.com.br</string>
     <string name="alt_fotoPerfil">Foto do seu perfil</string>
+    <string name="menu_inicio">Início</string>
+    <string name="menu_favoritos">Favoritos</string>
+    <string name="menu_perfil">Perfil</string>
+    <string name="menu_sobre">Sobre</string>
+    <string name="menu_sair">Sair</string>
 
 </resources>
