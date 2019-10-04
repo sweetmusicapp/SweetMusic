@@ -66,4 +66,9 @@
     <string name="menu_sobre">Sobre</string>
     <string name="menu_sair">Sair</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="alt_tocarvideo">Tocar vídeo</string>
+    <string name="alt_desfavoritar">Desfavoritar</string>
+
 </resources>

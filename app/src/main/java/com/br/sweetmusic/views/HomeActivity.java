@@ -63,7 +63,8 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
                 if (id == R.id.nav_inicio) {
 
                 } else if (id == R.id.nav_favoritos) {
-
+                    replaceFragment(new FavoritosFragment());
+                    drawer.closeDrawer(GravityCompat.START);
                 } else if (id == R.id.nav_perfil) {
                     startActivity(new Intent(HomeActivity.this, PerfilActivity.class));
                 } else if (id == R.id.nav_sobre) {
@@ -97,6 +98,7 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
         FragmentManager manager = getSupportFragmentManager();
         FragmentTransaction transaction = manager.beginTransaction();
         transaction.replace(R.id.container, fragment);
+        transaction.addToBackStack(null);
         transaction.commit();
     }
 }
