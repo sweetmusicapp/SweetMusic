@@ -44,7 +44,7 @@ public class ForgotEmailFragment extends Fragment {
                     //mudar para o fragment de confirmação
                     nextFragment();
                 } else {
-                    inputEmail.setError("E-mail não cadastrado");
+                    inputEmail.setError(getString(R.string.forgot_email_nao_cadastrado));
                 }
 
             }

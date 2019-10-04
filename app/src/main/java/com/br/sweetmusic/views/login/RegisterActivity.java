@@ -46,11 +46,11 @@ public class RegisterActivity extends AppCompatActivity {
                 senha = inputSenha.getEditText().getText().toString().trim();
 
                 if (!validateEmail(email)) {
-                    inputEmail.setError("Não é um e-mail válido");
+                    inputEmail.setError(getString(R.string.cadastro_email_invalido));
                 } else if (nome.isEmpty()) {
-                    inputNome.setError("Insira um nome de usuário");
+                    inputNome.setError(getString(R.string.cadastro_nome_vazio));
                 } else if (!validatePassword(senha)) {
-                    inputSenha.setError("Senha precisa ter no mínimo 6 caracteres");
+                    inputSenha.setError(getString(R.string.senha_numero_caracteres));
                 } else {
                     inputNome.setErrorEnabled(false);
                     inputEmail.setErrorEnabled(false);
@@ -61,6 +61,8 @@ public class RegisterActivity extends AppCompatActivity {
                 
             }
         });
+
+        //TODO: Adicionar lógica de botão de cadastro externos (Google e Facebook)
     }
 
     public void initViews() {

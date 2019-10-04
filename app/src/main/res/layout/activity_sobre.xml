@@ -45,7 +45,7 @@
         android:layout_marginTop="24dp"
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
-        android:background="#969FAA"
+        android:background="@color/cinza"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_sobre_descricaoApp" />
@@ -61,10 +61,11 @@
         android:drawableRight="@drawable/ic_open_in_new"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
-        android:text="Ajuda"
+        android:text="@string/ajuda"
         android:textSize="16sp"
         android:textColor="@color/textPrimary"
         android:clickable="true"
+        android:focusable="true"
         android:linksClickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view" />
@@ -84,6 +85,7 @@
         android:textSize="16sp"
         android:textColor="@color/textPrimary"
         android:clickable="true"
+        android:focusable="true"
         android:linksClickable="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView_sobre_ajuda" />

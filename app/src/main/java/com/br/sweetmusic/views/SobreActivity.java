@@ -30,7 +30,7 @@ public class SobreActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 //TODO: Mudar a url para a página de ajuda
-                String linkAjuda = "https://github.com/sweetmusicapp/SweetMusic/wiki";
+                String linkAjuda = getString(R.string.link_wiki);
                 Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(linkAjuda));
                 startActivity(intent);
             }
@@ -39,12 +39,11 @@ public class SobreActivity extends AppCompatActivity {
         txtReportar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //TODO: Mudar a url para a página de ajuda
-                String email = "sweetmusic.app@gmail.com";
+                String email = getString(R.string.nosso_email);
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:" + email));
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Relato de Problema");
+                intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.relato_problema));
                 intent.putExtra(Intent.EXTRA_TEXT, "");
-                startActivity(Intent.createChooser(intent, "Enviar e-mail via"));
+                startActivity(Intent.createChooser(intent, getString(R.string.enviar_email_via)));
             }
         });
 

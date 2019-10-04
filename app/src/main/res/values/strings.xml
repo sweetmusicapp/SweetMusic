@@ -1,9 +1,6 @@
 <resources>
     <string name="app_name">SweetMusic</string>
 
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="sobre_description_logo">Logo com a palavra Sweet Music em verde escuro entre headfones em verde claro</string>
     <string name="sobre_descricao_app">Suas músicas favoritas, para todos os gostos</string>
     <string name="sobre_relatar_bug">Relatar um problema</string>
@@ -25,7 +22,43 @@
     <string name="title_activity_sobre">Sobre</string>
     <string name="hintNomeTextInput">Nome</string>
     <string name="nomeUsuarioDefault">Nome do Usuário</string>
-    <string name="todo">TODO</string>
     <string name="btnsalvar">Salvar</string>
+
+    <string name="cadastro_email_invalido">Digite um e-mail válido</string>
+    <string name="login_email_vazio">Digite um e-mail</string>
+    <string name="perfil_nome_vazio">Digite um nome</string>
+    <string name="forgot_email_nao_cadastrado">E-mail não cadastrado</string>
+    <string name="cadastro_nome_vazio">Insira um nome de usuário</string>
+    <string name="senha_numero_caracteres">Sua senha deve ter mais de 6 caracteres!</string>
+    <string name="senha_nao_iguais">Sua senha deve ter mais de 6 caracteres!</string>
+
+    <string name="relato_problema">Relato de problema</string>
+    <string name="nosso_email">sweetmusic.app@gmail.com</string>
+    <string name="enviar_email_via">Enviar e-mail via</string>
+    <string name="link_wiki">https://github.com/sweetmusicapp/SweetMusic/wiki</string>
+    <string name="nova_senha">Nova senha</string>
+    <string name="confirmar_nova_senha">Confirmar nova senha</string>
+    <string name="perfil_novo_email">Novo Email</string>
+    <string name="perfil_novo_nome">Novo nome</string>
+    <string name="email">E-mail</string>
+    <string name="senha">Senha</string>
+    <string name="entrar">Entrar</string>
+    <string name="alt_loginGoogle">Botão com o logo do Google para fazer login</string>
+    <string name="alt_loginFacebook">Botão com o logo do Facebook para fazer login</string>
+    <string name="criar_conta">Não tem uma conta?  Crie uma agora gratuitamente!</string>
+    <string name="esqueci_minha_senha">Esqueci minha Senha</string>
+    <string name="editar_perfil">Editar Perfil</string>
+    <string name="alterar_senha">Alterar Senha</string>
+    <string name="nome">Nome</string>
+    <string name="registrar">Registrar</string>
+    <string name="alt_registrarGoogle">Botão com o logo do Google para registrar</string>
+    <string name="alt_registrarFacebook">Botão com o logo do Facebook para registrar</string>
+    <string name="faca_login">Já tem uma conta?  Faça o login</string>
+    <string name="ajuda">Ajuda</string>
+    <string name="texto_confirmacao_nova_senha">Uma nova senha foi gerada e enviada para seu e-mail!</string>
+    <string name="texto_confirmacao_inbox">Confira na sua caixa de entrada ou spam e faça o login novamente.</string>
+    <string name="recuperar_senha">Recuperar Senha</string>
+    <string name="emailDefault">email@exemplo.com.br</string>
+    <string name="alt_fotoPerfil">Foto do seu perfil</string>
 
 </resources>

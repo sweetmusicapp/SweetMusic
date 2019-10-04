@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".views.perfil.PerfilActivity">
 
-
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -20,10 +19,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="30dp"
-
             android:src="@mipmap/no_photo"
-
             />
+
     </LinearLayout>
 
     <TextView
@@ -35,10 +33,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
-
 
     <TextView
         android:id="@+id/txtNomePerfil"
@@ -47,7 +43,12 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="80dp"
-        android:text="Email"
+        android:text="@string/editar_perfil"
+        android:drawableRight="@drawable/ic_edit"
+        android:drawableEnd="@drawable/ic_edit"
+        android:focusable="true"
+        android:clickable="true"
+        android:drawablePadding="8dp"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNomeUsuario" />
@@ -59,44 +60,14 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="68dp"
-        android:inputType="textPassword"
-        android:text="******"
+        android:text="@string/alterar_senha"
         android:textSize="20sp"
+        android:drawableRight="@drawable/ic_edit"
+        android:drawableEnd="@drawable/ic_edit"
+        android:focusable="true"
+        android:clickable="true"
+        android:drawablePadding="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNomePerfil" />
-
-    <ImageView
-        android:id="@+id/img_editar_nome"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintStart_toEndOf="@+id/txtNomeUsuario"
-        app:layout_constraintTop_toTopOf="@+id/txtNomeUsuario"
-        app:srcCompat="@drawable/ic_lapis_edicao"
-        android:contentDescription="@string/todo" />
-
-
-    <ImageView
-        android:id="@+id/img_editar_email"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintStart_toEndOf="@+id/txtNomePerfil"
-        app:layout_constraintTop_toTopOf="@+id/txtNomePerfil"
-        app:srcCompat="@drawable/ic_lapis_edicao"
-        android:contentDescription="@string/todo" />
-
-    <ImageView
-        android:id="@+id/img_editar_senha"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintStart_toEndOf="@+id/txtSenhaPerfil"
-        app:layout_constraintTop_toTopOf="@+id/txtSenhaPerfil"
-        app:srcCompat="@drawable/ic_lapis_edicao"
-        android:contentDescription="@string/todo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

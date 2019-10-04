@@ -19,17 +19,13 @@ public class EditarPerfil extends AppCompatActivity {
     private TextInputLayout inputNome;
     private TextInputLayout inputNovoEmail;
 
-
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
     private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
     private Matcher matcher;
-
     private String email, nome;
-
 
     public static final String NOME_KEY = "nome";
     public static final String EMAIL_KEY = "emailNovo";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,13 +58,13 @@ public class EditarPerfil extends AppCompatActivity {
         nome = inputNome.getEditText().getText().toString().trim();
 
         if (!validarEmail(email) && !validateNome(nome)) {
-            inputNovoEmail.setError("Digite um e-mail ");
-            inputNome.setError("Digite um Nome ");
+            inputNovoEmail.setError(getString(R.string.login_email_vazio));
+            inputNome.setError(getString(R.string.cadastro_nome_vazio));
         } else if (!validateNome(nome)) {
-            inputNome.setError("Digite um Nome ");
+            inputNome.setError(getString(R.string.cadastro_nome_vazio));
             inputNovoEmail.setErrorEnabled(false);
         } else if (!validarEmail(email)) {
-            inputNovoEmail.setError("Digite um e-mail válido");
+            inputNovoEmail.setError(getString(R.string.cadastro_email_invalido));
             inputNome.setErrorEnabled(false);
         } else {
             inputNovoEmail.setErrorEnabled(false);
