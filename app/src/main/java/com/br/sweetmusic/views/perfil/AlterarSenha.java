@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 
 import com.br.sweetmusic.R;
 import com.google.android.material.textfield.TextInputLayout;
@@ -17,17 +16,12 @@ public class AlterarSenha extends AppCompatActivity {
     private TextInputLayout inputConfirmarSenha;
     private Button btnSalvarSenha;
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alterar_senha);
 
         initViews();
-
 
         btnSalvarSenha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,14 +30,11 @@ public class AlterarSenha extends AppCompatActivity {
             }
         });
 
-
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
         }
 
     }
-
 
     public void validarSenhas() {
         String senhaConfirmada, novaSenha;
@@ -51,24 +42,22 @@ public class AlterarSenha extends AppCompatActivity {
         novaSenha = inputNovaSenha.getEditText().getText().toString().trim();
 
         if (!validateConfirmarSenha(senhaConfirmada) && !validateNovaSenha(novaSenha)) {
-            inputNovaSenha.setError("Sua senha deve ter mais de 6 caracteres!");
-            inputConfirmarSenha.setError("Sua senha deve ter mais de 6 caracteres!");
+            inputNovaSenha.setError(getString(R.string.senha_numero_caracteres));
+            inputConfirmarSenha.setError(getString(R.string.senha_numero_caracteres));
         } else if (!validateNovaSenha(novaSenha)) {
-            inputNovaSenha.setError("Sua senha deve ter mais de 6 caracteres!");
+            inputNovaSenha.setError(getString(R.string.senha_numero_caracteres));
             inputConfirmarSenha.setErrorEnabled(false);
         } else if (!validateConfirmarSenha(senhaConfirmada)) {
             inputNovaSenha.setErrorEnabled(false);
-            inputConfirmarSenha.setError("Sua senha deve ter mais de 6 caracteres!");
+            inputConfirmarSenha.setError(getString(R.string.senha_numero_caracteres));
         } else if (!senhaConfirmada.equals(novaSenha)) {
             inputNovaSenha.setErrorEnabled(false);
-            inputConfirmarSenha.setError("Senhas divergem");
+            inputConfirmarSenha.setError(getString(R.string.senha_nao_iguais));
         } else {
             inputNovaSenha.setErrorEnabled(false);
-            inputConfirmarSenha.setError("Senhas divergem");
+            inputConfirmarSenha.setError(getString(R.string.senha_nao_iguais));
             startActivity(new Intent(AlterarSenha.this, PerfilActivity.class));
         }
-
-
     }
 
     @Override
@@ -87,11 +76,10 @@ public class AlterarSenha extends AppCompatActivity {
     }
 
     public void initViews() {
-        btnSalvarSenha=findViewById(R.id.button_salvar_senha);
+        btnSalvarSenha = findViewById(R.id.button_salvar_senha);
         inputNovaSenha = findViewById(R.id.textInputLayout_alterar_senha);
         inputConfirmarSenha = findViewById(R.id.textInputLayout_confirmar_senhaAlterada);
     }
-
 
 
 }

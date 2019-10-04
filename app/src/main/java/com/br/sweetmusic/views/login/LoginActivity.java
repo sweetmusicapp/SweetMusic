@@ -90,19 +90,18 @@ public class LoginActivity extends AppCompatActivity {
         senha = inputSenha.getEditText().getText().toString().trim();
 
         if (validarEmail(email) && !validateSenha(senha)) {
-            inputEmail.setError("Digite um e-mail ");
-            inputSenha.setError("Sua senha deve ter mais de 6 caracteres!");
+            inputEmail.setError(getString(R.string.login_email_vazio));
+            inputSenha.setError(getString(R.string.senha_numero_caracteres));
         } else if (!validateSenha(senha)) {
-            inputSenha.setError("Sua senha deve ter mais de 6 caracteres!");
+            inputSenha.setError(getString(R.string.senha_numero_caracteres));
             inputEmail.setErrorEnabled(false);
         } else if (validarEmail(email)) {
-            inputEmail.setError("Digite um e-mail válido");
+            inputEmail.setError(getString(R.string.cadastro_email_invalido));
             inputSenha.setErrorEnabled(false);
         } else {
             inputEmail.setErrorEnabled(false);
             inputSenha.setErrorEnabled(false);
 
-            //TODO: Mudar destino em sprints futuras
             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
         }
     }

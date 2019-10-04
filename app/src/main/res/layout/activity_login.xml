@@ -35,7 +35,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail"
+            android:hint="@string/email"
             android:imeOptions="actionNext"
             android:inputType="textEmailAddress"
             android:lines="1"
@@ -61,7 +61,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Senha"
+            android:hint="@string/senha"
             android:imeOptions="actionDone"
             android:inputType="textPassword"
             android:lines="1"
@@ -82,7 +82,7 @@
         android:paddingRight="32dp"
         android:background="@color/colorPrimary"
         android:shadowRadius="@android:integer/config_longAnimTime"
-        android:text="Entrar"
+        android:text="@string/entrar"
         android:textColor="@color/textPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -94,7 +94,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/google"
-        android:contentDescription="Botão com o logo do Google para fazer login"
+        android:contentDescription="@string/alt_loginGoogle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_login"
         app:layout_constraintEnd_toStartOf="@id/button_login_facebook"/>
@@ -106,7 +106,7 @@
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/facebook"
-        android:contentDescription="Botão com o logo do Facebook para fazer login"
+        android:contentDescription="@string/alt_loginFacebook"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_login_google"
         app:layout_constraintTop_toBottomOf="@+id/button_login" />
@@ -116,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Não tem uma conta? \nCrie uma agora gratuitamente!"
+        android:text="@string/criar_conta"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -127,7 +127,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:text="Esqueci minha Senha"
+        android:text="@string/esqueci_minha_senha"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_login_registrar" />

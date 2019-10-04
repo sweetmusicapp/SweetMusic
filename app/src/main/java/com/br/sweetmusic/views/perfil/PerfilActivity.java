@@ -16,10 +16,6 @@ public class PerfilActivity extends AppCompatActivity {
     private TextView txtNome;
     private TextView txtEmail;
     private TextView txtSenha;
-    private ImageView btnEditarEmail;
-    private ImageView btnAlterarSenha;
-    private ImageView btnEditarnome;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,26 +24,19 @@ public class PerfilActivity extends AppCompatActivity {
 
         initViews();
 
-
-        btnEditarEmail.setOnClickListener(new View.OnClickListener() {
+        txtEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(PerfilActivity.this, EditarPerfil.class));
-            }});
+            }
+        });
 
-        btnAlterarSenha.setOnClickListener(new View.OnClickListener() {
+        txtSenha.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(PerfilActivity.this, AlterarSenha.class));
-            }});
-
-        btnEditarnome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(PerfilActivity.this, EditarPerfil.class));
-            }});
-
-
+            }
+        });
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
@@ -65,8 +54,5 @@ public class PerfilActivity extends AppCompatActivity {
         txtNome = findViewById(R.id.txtNomeUsuario);
         txtEmail = findViewById(R.id.txtNomePerfil);
         txtSenha = findViewById(R.id.txtSenhaPerfil);
-        btnEditarEmail = findViewById(R.id.img_editar_email);
-        btnAlterarSenha = findViewById(R.id.img_editar_senha);
-        btnEditarnome = findViewById(R.id.img_editar_nome);
     }
 }

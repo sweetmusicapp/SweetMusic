@@ -20,7 +20,7 @@
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="E-mail"
+            android:hint="@string/email"
             android:inputType="textPassword"
             android:lines="1"
             android:maxLines="1"
@@ -36,7 +36,7 @@
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
         android:shadowRadius="@android:integer/config_longAnimTime"
-        android:text="Recuperar Senha"
+        android:text="@string/recuperar_senha"
         android:textColor="@color/textPrimary"
         android:layout_centerHorizontal="true"
         android:layout_below="@+id/textInputLayout_forgot_email" />
