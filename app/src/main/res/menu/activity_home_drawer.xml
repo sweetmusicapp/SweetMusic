@@ -6,23 +6,21 @@
     <group>
         <item
             android:id="@+id/nav_inicio"
-            android:title="Início" />
+            android:title="@string/menu_inicio" />
         <item
             android:id="@+id/nav_favoritos"
-            android:title="Favoritos" />
+            android:title="@string/menu_favoritos" />
         <item
             android:id="@+id/nav_perfil"
-            android:title="Perfil" />
+            android:title="@string/menu_perfil" />
 
         <item
             android:id="@+id/nav_sobre"
-            android:title="Sobre" />
+            android:title="@string/menu_sobre" />
 
         <item
             android:id="@+id/nav_sair"
-            android:title="Sair" />
+            android:title="@string/menu_sair" />
     </group>
-
-
 
 </menu>
