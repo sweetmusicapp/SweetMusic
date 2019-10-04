@@ -25,5 +25,7 @@
     <string name="title_activity_sobre">Sobre</string>
     <string name="hintNomeTextInput">Nome</string>
     <string name="nomeUsuarioDefault">Nome do Usuário</string>
+    <string name="todo">TODO</string>
+    <string name="btnsalvar">Salvar</string>
 
 </resources>

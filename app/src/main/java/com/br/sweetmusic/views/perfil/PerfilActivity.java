@@ -1,26 +1,24 @@
-package com.br.sweetmusic.views;
+package com.br.sweetmusic.views.perfil;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.br.sweetmusic.R;
-import com.google.android.material.snackbar.Snackbar;
 
-import static com.br.sweetmusic.views.EditarPerfil.EMAIL_KEY;
-import static com.br.sweetmusic.views.EditarPerfil.NOME_KEY;
 
 public class PerfilActivity extends AppCompatActivity {
     private TextView txtNome;
     private TextView txtEmail;
     private TextView txtSenha;
-    private Button btnEditarPerdil;
-    private Button btnAlterarSenha;
+    private ImageView btnEditarEmail;
+    private ImageView btnAlterarSenha;
+    private ImageView btnEditarnome;
 
 
     @Override
@@ -28,28 +26,10 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        txtNome = findViewById(R.id.txtNomeUsuario);
-        txtEmail = findViewById(R.id.txtNomePerfil);
-        txtSenha = findViewById(R.id.txtSenhaPerfil);
-
-        Intent intent = getIntent();
+        initViews();
 
 
-        if (getIntent() != null && intent.getExtras() != null) {
-
-
-            Bundle bundle = intent.getExtras();
-
-            String nome = bundle.getString(NOME_KEY);
-            String telefone = bundle.getString(EMAIL_KEY);
-            txtNome.setText(nome);
-            txtEmail.setText(telefone);
-        } else {
-            Snackbar.make(txtEmail, "Não a dados!", Snackbar.LENGTH_LONG).show();
-        }
-
-
-        btnEditarPerdil.setOnClickListener(new View.OnClickListener() {
+        btnEditarEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(PerfilActivity.this, EditarPerfil.class));
@@ -61,11 +41,17 @@ public class PerfilActivity extends AppCompatActivity {
                 startActivity(new Intent(PerfilActivity.this, AlterarSenha.class));
             }});
 
+        btnEditarnome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(PerfilActivity.this, EditarPerfil.class));
+            }});
+
+
 
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);   //show back button
         }
-
 
     }
 
@@ -75,4 +61,12 @@ public class PerfilActivity extends AppCompatActivity {
         return true;
     }
 
+    private void initViews() {
+        txtNome = findViewById(R.id.txtNomeUsuario);
+        txtEmail = findViewById(R.id.txtNomePerfil);
+        txtSenha = findViewById(R.id.txtSenhaPerfil);
+        btnEditarEmail = findViewById(R.id.img_editar_email);
+        btnAlterarSenha = findViewById(R.id.img_editar_senha);
+        btnEditarnome = findViewById(R.id.img_editar_nome);
+    }
 }

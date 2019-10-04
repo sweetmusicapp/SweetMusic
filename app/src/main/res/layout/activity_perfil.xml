@@ -4,7 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.PerfilActivity">
+    tools:context=".views.perfil.PerfilActivity">
+
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -30,44 +32,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
         android:text="@string/nomeUsuarioDefault"
-        android:textSize="25sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <Button
-        android:id="@+id/button_editarPerfil"
-
-
-        style="@style/Base.TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Editar Perfil"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@color/colorSecondary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/txtNomePerfil"
-        app:layout_constraintTop_toTopOf="@+id/txtNomePerfil" />
-
-    <Button
-        android:id="@+id/button_alterarSenha"
-        style="@style/Base.TextAppearance.AppCompat.Widget.Button.Borderless.Colored"
-        android:layout_width="143dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginBottom="100dp"
-        android:backgroundTint="@color/colorPrimary"
-        android:text="Alterar senha"
-        android:textColor="@color/colorSecondary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/txtSenhaPerfil"
-        app:layout_constraintTop_toTopOf="@+id/txtSenhaPerfil" />
 
     <TextView
         android:id="@+id/txtNomePerfil"
@@ -77,7 +48,7 @@
         android:layout_marginLeft="24dp"
         android:layout_marginTop="80dp"
         android:text="Email"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtNomeUsuario" />
 
@@ -88,15 +59,44 @@
         android:layout_marginStart="24dp"
         android:layout_marginLeft="24dp"
         android:layout_marginTop="68dp"
+        android:inputType="textPassword"
         android:text="******"
-        android:inputType = "textPassword"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNomePerfil"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNomePerfil" />
 
-    />
+    <ImageView
+        android:id="@+id/img_editar_nome"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toEndOf="@+id/txtNomeUsuario"
+        app:layout_constraintTop_toTopOf="@+id/txtNomeUsuario"
+        app:srcCompat="@drawable/ic_lapis_edicao"
+        android:contentDescription="@string/todo" />
 
+
+    <ImageView
+        android:id="@+id/img_editar_email"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toEndOf="@+id/txtNomePerfil"
+        app:layout_constraintTop_toTopOf="@+id/txtNomePerfil"
+        app:srcCompat="@drawable/ic_lapis_edicao"
+        android:contentDescription="@string/todo" />
+
+    <ImageView
+        android:id="@+id/img_editar_senha"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        app:layout_constraintStart_toEndOf="@+id/txtSenhaPerfil"
+        app:layout_constraintTop_toTopOf="@+id/txtSenhaPerfil"
+        app:srcCompat="@drawable/ic_lapis_edicao"
+        android:contentDescription="@string/todo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

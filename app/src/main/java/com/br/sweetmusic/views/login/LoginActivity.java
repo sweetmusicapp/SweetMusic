@@ -89,13 +89,13 @@ public class LoginActivity extends AppCompatActivity {
         email = inputEmail.getEditText().getText().toString().trim();
         senha = inputSenha.getEditText().getText().toString().trim();
 
-        if (!validarEmail(email) && !validateSenha(senha)) {
+        if (validarEmail(email) && !validateSenha(senha)) {
             inputEmail.setError("Digite um e-mail ");
             inputSenha.setError("Sua senha deve ter mais de 6 caracteres!");
         } else if (!validateSenha(senha)) {
             inputSenha.setError("Sua senha deve ter mais de 6 caracteres!");
             inputEmail.setErrorEnabled(false);
-        } else if (!validarEmail(email)) {
+        } else if (validarEmail(email)) {
             inputEmail.setError("Digite um e-mail válido");
             inputSenha.setErrorEnabled(false);
         } else {
@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public boolean validarEmail(String email) {
         matcher = pattern.matcher(email);
-        return matcher.matches();
+        return !matcher.matches();
     }
 
     public boolean validateSenha(String senha) {
