@@ -1,5 +1,7 @@
 package com.br.sweetmusic.views;
 
+import android.app.SearchManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -8,7 +10,10 @@ import com.br.sweetmusic.interfaces.Comunicador;
 import com.br.sweetmusic.views.perfil.PerfilActivity;
 import com.br.sweetmusic.views.login.LoginActivity;
 
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -25,7 +30,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class HomeActivity extends AppCompatActivity implements Comunicador {
+public class HomeActivity extends AppCompatActivity implements Comunicador, SearchView.OnQueryTextListener {
     private DrawerLayout drawer;
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -36,6 +41,9 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        //Começa com a guia de Inicio
+        replaceFragment(new InicioFragment());
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -61,7 +69,8 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
                 int id = menuItem.getItemId();
 
                 if (id == R.id.nav_inicio) {
-
+                    replaceFragment(new InicioFragment());
+                    drawer.closeDrawer(GravityCompat.START);
                 } else if (id == R.id.nav_favoritos) {
                     replaceFragment(new FavoritosFragment());
                     drawer.closeDrawer(GravityCompat.START);
@@ -83,6 +92,20 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
 
     }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.home, menu);
+
+        SearchManager searchManager =
+                (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView =
+                (SearchView) menu.findItem(R.id.search).getActionView();
+        searchView.setSearchableInfo(
+                searchManager.getSearchableInfo(getComponentName()));
+
+        return true;
+    }
 
     @Override
     public void onBackPressed() {
@@ -100,5 +123,15 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
         transaction.replace(R.id.container, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String s) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String s) {
+        return false;
     }
 }
