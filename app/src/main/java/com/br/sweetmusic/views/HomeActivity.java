@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
         setContentView(R.layout.activity_home);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        //replaceFragment(colocar aqui o fragment que eu criar para a home, com o RecyclerView);
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -69,6 +69,8 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
 
                 if (id == R.id.nav_inicio) {
 
+                    startActivity(new Intent(HomeActivity.this, MainActivity.class));
+
                 } else if (id == R.id.nav_favoritos) {
 
                 } else if (id == R.id.nav_perfil) {
@@ -82,6 +84,9 @@ public class HomeActivity extends AppCompatActivity implements Comunicador {
                 return true;
             }
         });
+    }
+
+    private void replaceFragment(int container) {
     }
 
     @Override
