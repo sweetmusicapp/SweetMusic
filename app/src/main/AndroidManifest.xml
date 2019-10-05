@@ -9,16 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.perfil.AlterarSenha"></activity>
+        <activity android:name=".views.perfil.AlterarSenha"/>
         <activity android:name=".views.perfil.EditarPerfil" />
         <activity android:name=".views.perfil.PerfilActivity" />
+        <activity android:name=".views.DetalheMusicaActivity"/>
         <activity
             android:name=".views.HomeActivity"
             android:label="@string/title_activity_home"
-            android:theme="@style/NoActionBar" />
-        <activity
-            android:name=".views.SobreActivity"
-            android:label="@string/title_activity_sobre" />
+            android:theme="@style/NoActionBar"></activity>
+        <activity android:name=".views.SobreActivity"
+            android:label="@string/title_activity_sobre"
+            />
         <activity
             android:name=".views.login.ForgotActivity"
             android:label=""
