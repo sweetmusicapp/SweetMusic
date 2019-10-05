@@ -1,10 +1,10 @@
 package com.br.sweetmusic.views;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,7 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.br.sweetmusic.R;
-import com.br.sweetmusic.adapters.MusicaAdapter;
+import com.br.sweetmusic.adapters.FavoritosAdapter;
+import com.br.sweetmusic.interfaces.RecyclerViewOnClick;
 import com.br.sweetmusic.models.Musica;
 
 import java.util.ArrayList;
@@ -22,10 +23,11 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavoritosFragment extends Fragment {
+public class FavoritosFragment extends Fragment implements RecyclerViewOnClick {
     private RecyclerView favoritosRecycler;
-    private MusicaAdapter adapter;
+    private FavoritosAdapter adapter;
     private List<Musica> listaMusicas = new ArrayList<>();
+    public static final String MUSICA_KEY = "musica";
 
     public FavoritosFragment() {
         // Required empty public constructor
@@ -39,7 +41,7 @@ public class FavoritosFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_favoritos, container, false);
 
         favoritosRecycler = view.findViewById(R.id.favoritos_recycler);
-        adapter = new MusicaAdapter(retornarLista());
+        adapter = new FavoritosAdapter(retornarLista(), this);
         favoritosRecycler.setAdapter(adapter);
         favoritosRecycler.setLayoutManager(new LinearLayoutManager(this.getContext()));
 
@@ -63,4 +65,12 @@ public class FavoritosFragment extends Fragment {
     }
 
 
+    @Override
+    public void onClick(Musica musica) {
+        Intent intent = new Intent(this.getContext(), DetalheMusicaActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(MUSICA_KEY, musica);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }

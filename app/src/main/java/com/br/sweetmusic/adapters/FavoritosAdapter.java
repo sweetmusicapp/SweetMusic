@@ -13,34 +13,53 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
+import com.br.sweetmusic.interfaces.RecyclerViewOnClick;
 import com.br.sweetmusic.models.Musica;
 
 import java.util.List;
 
-public class MusicaAdapter extends RecyclerView.Adapter<MusicaAdapter.ViewHolder> {
+public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosAdapter.ViewHolder> {
     private List<Musica> listaMusicasFavoritas;
+    private RecyclerViewOnClick listener;
 
-    public MusicaAdapter(List<Musica> listaMusicasFavoritas) {
+    public FavoritosAdapter(List<Musica> listaMusicasFavoritas, RecyclerViewOnClick listener) {
         this.listaMusicasFavoritas = listaMusicasFavoritas;
+        this.listener = listener;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FavoritosAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_musica_favoritos, parent, false);
-        return new ViewHolder(view);
+        return new FavoritosAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Musica musica = listaMusicasFavoritas.get(position);
-        holder.onBind(musica);
+    public void onBindViewHolder(@NonNull ViewHolder holder, final int position) {
+        final Musica musica = listaMusicasFavoritas.get(position);
+        if (musica.isFavorita()) {
+            holder.onBind(musica);
 
+            //Remove favoritas da lista
+            holder.imgFavorito.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    removerItem(position);
+                    musica.setFavorita(false);
+                }
+            });
+        }
     }
 
     @Override
     public int getItemCount() {
         return listaMusicasFavoritas.size();
+    }
+
+    private void removerItem(int position) {
+        listaMusicasFavoritas.remove(position);
+        notifyItemRemoved(position);
+        notifyItemRangeChanged(position, listaMusicasFavoritas.size());
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -58,7 +77,6 @@ public class MusicaAdapter extends RecyclerView.Adapter<MusicaAdapter.ViewHolder
             imgFavorito = view.findViewById(R.id.favorito);
         }
 
-
         public void onBind(final Musica musica) {
 
             imgPlay.setOnClickListener(new View.OnClickListener() {
@@ -69,24 +87,22 @@ public class MusicaAdapter extends RecyclerView.Adapter<MusicaAdapter.ViewHolder
             });
 
             final Drawable filled = itemView.getResources().getDrawable(R.drawable.ic_favorite);
-            final Drawable outline = itemView.getResources().getDrawable(R.drawable.ic_favorite_border);
 
-            imgFavorito.setChecked(true);
-            imgFavorito.setBackgroundDrawable(filled);
-            imgFavorito.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            if (musica.isFavorita()) {
+                imgFavorito.setBackgroundDrawable(filled);
+                imgFavorito.setChecked(true);
+            }
+
+            nomeMusica.setText(musica.getNomeMusica());
+            nomeBanda.setText(musica.getNomeArtista());
+
+
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
-                    if (isChecked) {
-                        //TODO: permitir que remova da lista (musica.isFavorita())
-                        imgFavorito.setBackgroundDrawable(filled);
-                    } else {
-                        imgFavorito.setBackgroundDrawable(outline);
-                    }
+                public void onClick(View view) {
+                    listener.onClick(musica);
                 }
             });
-
-            nomeMusica.setText(musica.getNome());
-            nomeBanda.setText(musica.getArtista());
         }
     }
 }

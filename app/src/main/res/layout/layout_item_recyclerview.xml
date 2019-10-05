@@ -12,9 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="170dp">
 
-
         <TextView
-            android:id="@+id/textViewArtista"
+            android:id="@+id/textView_gridItem_artista"
             android:layout_width="222dp"
             android:layout_height="29dp"
             android:layout_marginStart="86dp"
@@ -33,7 +32,7 @@
             android:autoSizeMaxTextSize="10sp"/>
 
         <TextView
-            android:id="@+id/textViewMusica"
+            android:id="@+id/textView_gridItem_musica"
             android:layout_width="222dp"
             android:layout_height="29dp"
             android:layout_marginStart="86dp"
@@ -53,7 +52,7 @@
             android:autoSizeMaxTextSize="10sp"/>
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/imageView_gridItem_artista"
             android:layout_width="129dp"
             android:layout_height="99dp"
             android:layout_marginStart="133dp"

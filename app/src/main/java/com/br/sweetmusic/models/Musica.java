@@ -3,53 +3,47 @@ package com.br.sweetmusic.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Musica implements Parcelable{
+public class Musica implements Parcelable {
     private boolean favorita;
-    private String nome;
-    private String album;
-    private String artista;
-    private int imgArtista;
-
-    //Implementação do Filipe
     private String nomeMusica;
+    private String nomeAlbum;
     private String nomeArtista;
     private int imagemArtista;
-    private String nomeAlbum;
     private String detalheMusica;
 
-
-    public Musica(boolean favorita, String nome, String album, String artista, int imgArtista) {
+    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, int imagemArtista, String detalheMusica) {
         this.favorita = favorita;
-        this.nome = nome;
-        this.album = album;
-        this.artista = artista;
-        this.imgArtista = imgArtista;
-    }
-
-    public Musica(boolean favorita, String nome, String album, String artista) {
-        this.favorita = favorita;
-        this.nome = nome;
-        this.album = album;
-        this.artista = artista;
-    }
-
-    //Metodo do Filipe
-    public Musica(String nomeMusica, String nomeArtista, int imagemArtista, String nomeAlbum, String detalheMusica) {
         this.nomeMusica = nomeMusica;
+        this.nomeAlbum = nomeAlbum;
         this.nomeArtista = nomeArtista;
         this.imagemArtista = imagemArtista;
-        this.nomeAlbum = nomeAlbum;
         this.detalheMusica = detalheMusica;
+    }
+
+    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista) {
+        this.favorita = favorita;
+        this.nomeMusica = nomeMusica;
+        this.nomeAlbum = nomeAlbum;
+        this.nomeArtista = nomeArtista;
+    }
+
+    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, int imagemArtista) {
+        this.favorita = favorita;
+        this.nomeMusica = nomeMusica;
+        this.nomeAlbum = nomeAlbum;
+        this.nomeArtista = nomeArtista;
+        this.imagemArtista = imagemArtista;
     }
 
     public Musica() {
     }
 
     protected Musica(Parcel in) {
+        favorita = in.readByte() != 0;
         nomeMusica = in.readString();
+        nomeAlbum = in.readString();
         nomeArtista = in.readString();
         imagemArtista = in.readInt();
-        nomeAlbum = in.readString();
         detalheMusica = in.readString();
     }
 
@@ -73,38 +67,45 @@ public class Musica implements Parcelable{
         this.favorita = favorita;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomeMusica() {
+        return nomeMusica;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomeMusica(String nomeMusica) {
+        this.nomeMusica = nomeMusica;
     }
 
-    public String getAlbum() {
-        return album;
+    public String getNomeAlbum() {
+        return nomeAlbum;
     }
 
-    public void setAlbum(String album) {
-        this.album = album;
+    public void setNomeAlbum(String nomeAlbum) {
+        this.nomeAlbum = nomeAlbum;
     }
 
-    public String getArtista() {
-        return artista;
+    public String getNomeArtista() {
+        return nomeArtista;
     }
 
-    public void setArtista(String artista) {
-        this.artista = artista;
+    public void setNomeArtista(String nomeArtista) {
+        this.nomeArtista = nomeArtista;
     }
 
-    public int getImgArtista() {
-        return imgArtista;
+    public int getImagemArtista() {
+        return imagemArtista;
     }
 
-    public void setImgArtista(int imgArtista) {
-        this.imgArtista = imgArtista;
+    public void setImagemArtista(int imagemArtista) {
+        this.imagemArtista = imagemArtista;
     }
 
+    public String getDetalheMusica() {
+        return detalheMusica;
+    }
+
+    public void setDetalheMusica(String detalheMusica) {
+        this.detalheMusica = detalheMusica;
+    }
 
     @Override
     public int describeContents() {
@@ -113,52 +114,11 @@ public class Musica implements Parcelable{
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeByte((byte) (favorita ? 1 : 0));
         parcel.writeString(nomeMusica);
+        parcel.writeString(nomeAlbum);
         parcel.writeString(nomeArtista);
         parcel.writeInt(imagemArtista);
-        parcel.writeString(nomeAlbum);
         parcel.writeString(detalheMusica);
-    }
-
-    //Getters e Setters do Filipe
-
-    public String getNomeMusica() {
-        return nomeMusica;
-    }
-
-    public String getNomeArtista() {
-        return nomeArtista;
-    }
-
-    public int getImagemArtista() {
-        return imagemArtista;
-    }
-
-    public String getNomeAlbum() {
-        return nomeAlbum;
-    }
-
-    public String getDetalheMusica() {
-        return detalheMusica;
-    }
-
-    public void setNomeMusica(String nomeMusica) {
-        this.nomeMusica = nomeMusica;
-    }
-
-    public void setNomeArtista(String nomeArtista) {
-        this.nomeArtista = nomeArtista;
-    }
-
-    public void setImagemArtista(int imagemArtista) {
-        this.imagemArtista = imagemArtista;
-    }
-
-    public void setNomeAlbum(String nomeAlbum) {
-        this.nomeAlbum = nomeAlbum;
-    }
-
-    public void setDetalheMusica(String detalheMusica) {
-        this.detalheMusica = detalheMusica;
     }
 }
