@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.br.sweetmusic.R;
-import com.br.sweetmusic.model.Musica;
+import com.br.sweetmusic.models.Musica;
 
 public class DetalheMusicaActivity extends AppCompatActivity {
 
