@@ -8,8 +8,19 @@ public class Musica implements Parcelable {
     private String nomeMusica;
     private String nomeAlbum;
     private String nomeArtista;
+    private long idArtista;
     private int imagemArtista;
     private String detalheMusica;
+
+    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, long idArtista, int imagemArtista, String detalheMusica) {
+        this.favorita = favorita;
+        this.nomeMusica = nomeMusica;
+        this.nomeAlbum = nomeAlbum;
+        this.nomeArtista = nomeArtista;
+        this.idArtista = idArtista;
+        this.imagemArtista = imagemArtista;
+        this.detalheMusica = detalheMusica;
+    }
 
     public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, int imagemArtista, String detalheMusica) {
         this.favorita = favorita;
@@ -105,6 +116,14 @@ public class Musica implements Parcelable {
 
     public void setDetalheMusica(String detalheMusica) {
         this.detalheMusica = detalheMusica;
+    }
+
+    public long getIdArtista() {
+        return idArtista;
+    }
+
+    public void setIdArtista(long idArtista) {
+        this.idArtista = idArtista;
     }
 
     @Override

@@ -69,6 +69,12 @@ public class MusicasAdapter extends RecyclerView.Adapter<MusicasAdapter.ViewHold
             final Drawable filled = itemView.getResources().getDrawable(R.drawable.ic_favorite);
             final Drawable outline = itemView.getResources().getDrawable(R.drawable.ic_favorite_border);
 
+            if(musica.isFavorita()){
+                imgFavorito.setBackgroundDrawable(filled);
+            } else{
+                imgFavorito.setBackgroundDrawable(outline);
+            }
+
             imgFavorito.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {

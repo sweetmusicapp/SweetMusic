@@ -2,6 +2,7 @@
 <resources>
     <color name="colorPrimary">#40c4ff</color>
     <color name="textPrimary">#000000</color>
+    <color name="imageOverlay">#73000000</color>
 <!--    <color name="colorPrimaryDark">#00574B</color>-->
 <!--    <color name="colorAccent">#D81B60</color>-->
     <color name="colorSecondary">#546e7a</color>
