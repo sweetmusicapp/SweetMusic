@@ -7,7 +7,7 @@
     <string name="sobre_descricao_app">Suas músicas favoritas, para todos os gostos</string>
     <string name="sobre_relatar_bug">Relatar um problema</string>
     <string name="sobre_versao">Versão do aplicativo 1.0.0</string>
-    <string name="title_activity_home">HomeActivity</string>
+    <string name="title_activity_home">SweetMusic</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>

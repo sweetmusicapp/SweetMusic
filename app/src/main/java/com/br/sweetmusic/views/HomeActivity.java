@@ -134,4 +134,8 @@ public class HomeActivity extends AppCompatActivity implements Comunicador, Sear
     public boolean onQueryTextChange(String s) {
         return false;
     }
+
+    public void setActionBarTitle(String title) {
+        getSupportActionBar().setTitle(title);
+    }
 }

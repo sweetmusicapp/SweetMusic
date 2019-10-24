@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
+import com.br.sweetmusic.interfaces.RecyclerOnPlay;
 import com.br.sweetmusic.interfaces.RecyclerViewOnClick;
 import com.br.sweetmusic.models.Musica;
 
@@ -21,10 +22,12 @@ import java.util.List;
 public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosAdapter.ViewHolder> {
     private List<Musica> listaMusicasFavoritas;
     private RecyclerViewOnClick listener;
+    private RecyclerOnPlay listenerPlay;
 
-    public FavoritosAdapter(List<Musica> listaMusicasFavoritas, RecyclerViewOnClick listener) {
+    public FavoritosAdapter(List<Musica> listaMusicasFavoritas, RecyclerViewOnClick listener, RecyclerOnPlay listenerPlay) {
         this.listaMusicasFavoritas = listaMusicasFavoritas;
         this.listener = listener;
+        this.listenerPlay = listenerPlay;
     }
 
     @NonNull
@@ -48,6 +51,7 @@ public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosAdapter.View
                     musica.setFavorita(false);
                 }
             });
+
         }
     }
 
@@ -79,14 +83,18 @@ public class FavoritosAdapter extends RecyclerView.Adapter<FavoritosAdapter.View
 
         public void onBind(final Musica musica) {
 
-            imgPlay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //TODO: levar para o video flutuante
-                }
-            });
-
             final Drawable filled = itemView.getResources().getDrawable(R.drawable.ic_favorite);
+
+            if (!musica.getVideoId().isEmpty()) {
+                imgPlay.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        listenerPlay.onPlay(musica);
+                    }
+                });
+            } else {
+                imgPlay.setVisibility(View.GONE);
+            }
 
             if (musica.isFavorita()) {
                 imgFavorito.setBackgroundDrawable(filled);

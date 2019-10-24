@@ -11,7 +11,21 @@ public class Musica implements Parcelable {
     private long idArtista;
     private int imagemArtista;
     private String detalheMusica;
+    private String videoId;
 
+    //Construtor completo
+    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, long idArtista, int imagemArtista, String detalheMusica, String videoId) {
+        this.favorita = favorita;
+        this.nomeMusica = nomeMusica;
+        this.nomeAlbum = nomeAlbum;
+        this.nomeArtista = nomeArtista;
+        this.idArtista = idArtista;
+        this.imagemArtista = imagemArtista;
+        this.detalheMusica = detalheMusica;
+        this.videoId = videoId;
+    }
+
+    //Construtor sem vídeo
     public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, long idArtista, int imagemArtista, String detalheMusica) {
         this.favorita = favorita;
         this.nomeMusica = nomeMusica;
@@ -49,7 +63,6 @@ public class Musica implements Parcelable {
     public Musica() {
     }
 
-
     protected Musica(Parcel in) {
         favorita = in.readByte() != 0;
         nomeMusica = in.readString();
@@ -58,6 +71,7 @@ public class Musica implements Parcelable {
         idArtista = in.readLong();
         imagemArtista = in.readInt();
         detalheMusica = in.readString();
+        videoId = in.readString();
     }
 
     public static final Creator<Musica> CREATOR = new Creator<Musica>() {
@@ -128,6 +142,14 @@ public class Musica implements Parcelable {
         this.idArtista = idArtista;
     }
 
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
+
 
     @Override
     public int describeContents() {
@@ -143,5 +165,6 @@ public class Musica implements Parcelable {
         parcel.writeLong(idArtista);
         parcel.writeInt(imagemArtista);
         parcel.writeString(detalheMusica);
+        parcel.writeString(videoId);
     }
 }

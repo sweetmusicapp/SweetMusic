@@ -1,5 +1,6 @@
 package com.br.sweetmusic.views;
 
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
@@ -17,18 +18,20 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
 import com.br.sweetmusic.adapters.MusicasAdapter;
+import com.br.sweetmusic.interfaces.RecyclerOnPlay;
 import com.br.sweetmusic.models.Artista;
 import com.br.sweetmusic.models.Musica;
 import com.br.sweetmusic.utils.ExpandCollapse;
+import com.br.sweetmusic.views.video.VideoActivity;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.br.sweetmusic.views.FavoritosFragment.MUSICA_KEY;
 import static com.br.sweetmusic.views.InicioFragment.LISTA_MUSICAS;
+import static com.br.sweetmusic.views.InicioFragment.MUSICA_KEY;
 
-public class DetalheActivity extends AppCompatActivity {
+public class DetalheActivity extends AppCompatActivity implements RecyclerOnPlay {
     private CollapsingToolbarLayout toolbarLayout;
     private ImageView imagemBanda;
     private RecyclerView recyclerMusicas;
@@ -78,7 +81,7 @@ public class DetalheActivity extends AppCompatActivity {
         toolbarLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(arrowsToggle.isChecked()){
+                if (arrowsToggle.isChecked()) {
                     ExpandCollapse.expand(detalheContainer);
                     arrowsToggle.setBackgroundDrawable(arrowUp);
                     arrowsToggle.setChecked(false);
@@ -103,7 +106,7 @@ public class DetalheActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new MusicasAdapter(listaMusicas);
+        adapter = new MusicasAdapter(listaMusicas, this);
         recyclerMusicas.setAdapter(adapter);
         ViewCompat.setNestedScrollingEnabled(recyclerMusicas, false);
         recyclerMusicas.setLayoutManager(new LinearLayoutManager(this));
@@ -137,4 +140,12 @@ public class DetalheActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onPlay(Musica musica) {
+        Intent intent = new Intent(DetalheActivity.this, VideoActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putParcelable(MUSICA_KEY, musica);
+        intent.putExtras(bundle);
+        startActivity(intent);
+    }
 }
