@@ -24,24 +24,55 @@
             app:expandedTitleTextAppearance="@style/ExpandedAppBar"
             app:toolbarId="@+id/toolbar">
 
-            <com.br.sweetmusic.utils.TopAlignedImageView
-                android:id="@+id/imageView_detalhe_banda"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/rhcp"
-                android:tint="@color/imageOverlay"
-                android:tintMode="src_over"
-                android:scaleType="matrix"
-                />
+                android:layout_height="match_parent"
+                app:layout_collapseMode="parallax">
+
+                <com.br.sweetmusic.utils.TopAlignedImageView
+                    android:id="@+id/imageView_detalhe_banda"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/rhcp"
+                    android:tint="@color/imageOverlay"
+                    android:tintMode="src_over"
+                    android:scaleType="matrix"
+                    />
+
+
+
+            </RelativeLayout>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
-                app:popupTheme="@style/AppTheme.PopupOverlay" />
+                app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+
+
+            </androidx.appcompat.widget.Toolbar>
+
+            <ToggleButton
+                android:id="@+id/arrows"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/ic_arrow_down"
+                android:padding="8dp"
+                android:textOff=""
+                android:textOn=""
+                android:layout_gravity="bottom|end"
+                />
+
+
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
+
     </com.google.android.material.appbar.AppBarLayout>
 
     <include layout="@layout/content_detalhe" />

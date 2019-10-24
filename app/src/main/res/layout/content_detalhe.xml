@@ -8,11 +8,40 @@
     tools:context=".views.DetalheActivity"
     tools:showIn="@layout/activity_detalhe">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_detalhe_musicas"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_musica_favoritos"
-        />
+
+        >
+
+        <LinearLayout
+            android:id="@+id/detalhes_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fitsSystemWindows="true"
+            android:orientation="vertical"
+            android:background="@color/textSecondary"
+            >
+
+        <TextView
+            android:id="@+id/texto_detalhes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="Detalhe da banda" />
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_detalhe_musicas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_musica_favoritos"
+            android:layout_below="@id/detalhes_container"
+            />
+
+    </RelativeLayout>
+
+
 
 </androidx.core.widget.NestedScrollView>

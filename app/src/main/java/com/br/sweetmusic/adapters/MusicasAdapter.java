@@ -45,7 +45,7 @@ public class MusicasAdapter extends RecyclerView.Adapter<MusicasAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgPlay;
         private TextView nomeMusica;
-        private TextView nomeBanda;
+        private TextView nomeArtista;
         private ToggleButton imgFavorito;
 
         public ViewHolder(@NonNull View itemView) {
@@ -53,14 +53,14 @@ public class MusicasAdapter extends RecyclerView.Adapter<MusicasAdapter.ViewHold
 
             imgPlay = itemView.findViewById(R.id.playMusic);
             nomeMusica = itemView.findViewById(R.id.nomeDaMusica);
-            nomeBanda = itemView.findViewById(R.id.nomeDaBanda);
+            nomeArtista = itemView.findViewById(R.id.nomeDaBanda);
             imgFavorito = itemView.findViewById(R.id.favorito);
         }
 
         public void onBind(final Musica musica) {
 
             nomeMusica.setText(musica.getNomeMusica());
-            nomeBanda.setText(musica.getNomeArtista());
+            nomeArtista.setText(musica.getNomeArtista());
 
             imgPlay.setOnClickListener(new View.OnClickListener() {
                 @Override
