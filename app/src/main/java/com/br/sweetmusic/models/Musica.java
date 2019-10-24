@@ -49,11 +49,13 @@ public class Musica implements Parcelable {
     public Musica() {
     }
 
+
     protected Musica(Parcel in) {
         favorita = in.readByte() != 0;
         nomeMusica = in.readString();
         nomeAlbum = in.readString();
         nomeArtista = in.readString();
+        idArtista = in.readLong();
         imagemArtista = in.readInt();
         detalheMusica = in.readString();
     }
@@ -126,6 +128,7 @@ public class Musica implements Parcelable {
         this.idArtista = idArtista;
     }
 
+
     @Override
     public int describeContents() {
         return 0;
@@ -137,6 +140,7 @@ public class Musica implements Parcelable {
         parcel.writeString(nomeMusica);
         parcel.writeString(nomeAlbum);
         parcel.writeString(nomeArtista);
+        parcel.writeLong(idArtista);
         parcel.writeInt(imagemArtista);
         parcel.writeString(detalheMusica);
     }

@@ -20,13 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import static com.br.sweetmusic.views.FavoritosFragment.MUSICA_KEY;
+import static com.br.sweetmusic.views.InicioFragment.LISTA_MUSICAS;
 
 public class DetalheActivity extends AppCompatActivity {
     private CollapsingToolbarLayout toolbarLayout;
     private ImageView imagemBanda;
     private RecyclerView recyclerMusicas;
     private MusicasAdapter adapter;
-    private Artista artista;
     private List<Musica> listaMusicas = new ArrayList<>();
 
     @Override
@@ -44,6 +44,7 @@ public class DetalheActivity extends AppCompatActivity {
 
         if (getIntent() != null && getIntent().getExtras() != null) {
             Musica musica = getIntent().getExtras().getParcelable(MUSICA_KEY);
+            List<Musica> musicas = getIntent().getExtras().getParcelableArrayList(LISTA_MUSICAS);
 
             if (musica != null) {
                 Drawable drawable = getResources().getDrawable(musica.getImagemArtista());
@@ -51,7 +52,7 @@ public class DetalheActivity extends AppCompatActivity {
                 toolbarLayout.setTitle(musica.getNomeArtista());
                 imagemBanda.setImageDrawable(drawable);
 
-                listaMusicas = musicasArtista(musicasDaBanda(), musica.getIdArtista()).getListaMusica();
+                listaMusicas = musicasArtista(musicas, musica.getIdArtista()).getListaMusica();
 
             }
         }
@@ -65,7 +66,7 @@ public class DetalheActivity extends AppCompatActivity {
     private static Artista musicasArtista(List<Musica> musicas, long idArtista) {
         List<Musica> musicasArtista = new ArrayList<>();
         for (Musica musica : musicas) {
-            if (!musicas.isEmpty() && musicas.get(0).getIdArtista() == idArtista) {
+            if (!musicas.isEmpty() && musica.getIdArtista() == idArtista) {
                 musicasArtista.add(musica);
             }
         }
@@ -88,20 +89,6 @@ public class DetalheActivity extends AppCompatActivity {
         return true;
     }
 
-    public List<Musica> musicasDaBanda() {
-        listaMusicas.add(new Musica(true, "Scar Tissue", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(false, "Californication", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(true, "Otherside", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(false, "Parallel Universe", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(true, "Easily", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(false, "Savior", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(true, "Purple Stain", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(false, "Road Trippin'", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(true, "Scar Tissue", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(false, "Californication", "Californication", "Red Hot Chili Peppers"));
-        listaMusicas.add(new Musica(true, "Otherside", "Californication", "Red Hot Chili Peppers"));
 
-        return listaMusicas;
-    }
 
 }

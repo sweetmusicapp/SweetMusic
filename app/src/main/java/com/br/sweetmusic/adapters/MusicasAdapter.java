@@ -59,6 +59,9 @@ public class MusicasAdapter extends RecyclerView.Adapter<MusicasAdapter.ViewHold
 
         public void onBind(final Musica musica) {
 
+            nomeMusica.setText(musica.getNomeMusica());
+            nomeBanda.setText(musica.getNomeArtista());
+
             imgPlay.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
