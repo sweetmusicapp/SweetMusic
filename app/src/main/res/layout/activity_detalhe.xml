@@ -39,8 +39,6 @@
                     android:scaleType="matrix"
                     />
 
-
-
             </RelativeLayout>
 
             <androidx.appcompat.widget.Toolbar

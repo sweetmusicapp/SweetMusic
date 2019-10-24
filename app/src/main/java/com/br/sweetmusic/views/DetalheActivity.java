@@ -12,9 +12,6 @@ import android.widget.ToggleButton;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.ViewCompat;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -74,13 +71,9 @@ public class DetalheActivity extends AppCompatActivity {
         final Drawable arrowDown = getResources().getDrawable(R.drawable.ic_arrow_down);
         final Drawable arrowUp = getResources().getDrawable(R.drawable.ic_arrow_up);
 
-        //comecar com falso
         arrowsToggle.setChecked(false);
         arrowsToggle.setBackgroundDrawable(arrowDown);
-        //container.setVisibility(View.GONE);
         ExpandCollapse.collapse(detalheContainer);
-
-//        replaceFragment(R.id.detalhes_container, detalheFragment );
 
         toolbarLayout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -143,13 +136,5 @@ public class DetalheActivity extends AppCompatActivity {
         finish();
         return true;
     }
-
-    public void replaceFragment(int container, Fragment fragment) {
-        FragmentManager manager = getSupportFragmentManager();
-        FragmentTransaction transaction = manager.beginTransaction();
-        transaction.replace(container, fragment);
-        transaction.commit();
-    }
-
 
 }

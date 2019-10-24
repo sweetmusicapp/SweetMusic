@@ -12,7 +12,6 @@ import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.br.sweetmusic.R;
 import com.br.sweetmusic.adapters.MusicasGridAdapter;
@@ -31,8 +30,6 @@ public class InicioFragment extends Fragment implements RecyclerViewOnClick {
     public static final String LISTA_MUSICAS = "musicas";
     private RecyclerView recyclerHome;
     private MusicasGridAdapter adapter;
-
-    private List<Artista> artistas = new ArrayList<>();
 
     public InicioFragment() {
         // Required empty public constructor
