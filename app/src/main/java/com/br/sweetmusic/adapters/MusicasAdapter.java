@@ -13,15 +13,19 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
+import com.br.sweetmusic.interfaces.RecyclerOnPlay;
 import com.br.sweetmusic.models.Musica;
 
 import java.util.List;
 
 public class MusicasAdapter extends RecyclerView.Adapter<MusicasAdapter.ViewHolder> {
     private List<Musica> listaMusicas;
+    private RecyclerOnPlay listenerPlay;
 
-    public MusicasAdapter(List<Musica> listaMusicas) {
+
+    public MusicasAdapter(List<Musica> listaMusicas, RecyclerOnPlay listenerPlay) {
         this.listaMusicas = listaMusicas;
+        this.listenerPlay = listenerPlay;
     }
 
     @NonNull
@@ -45,7 +49,7 @@ public class MusicasAdapter extends RecyclerView.Adapter<MusicasAdapter.ViewHold
     public class ViewHolder extends RecyclerView.ViewHolder {
         private ImageView imgPlay;
         private TextView nomeMusica;
-        private TextView nomeBanda;
+        private TextView nomeArtista;
         private ToggleButton imgFavorito;
 
         public ViewHolder(@NonNull View itemView) {
@@ -53,21 +57,34 @@ public class MusicasAdapter extends RecyclerView.Adapter<MusicasAdapter.ViewHold
 
             imgPlay = itemView.findViewById(R.id.playMusic);
             nomeMusica = itemView.findViewById(R.id.nomeDaMusica);
-            nomeBanda = itemView.findViewById(R.id.nomeDaBanda);
+            nomeArtista = itemView.findViewById(R.id.nomeDaBanda);
             imgFavorito = itemView.findViewById(R.id.favorito);
         }
 
         public void onBind(final Musica musica) {
 
-            imgPlay.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //TODO: levar para o video flutuante
-                }
-            });
+            nomeMusica.setText(musica.getNomeMusica());
+            nomeArtista.setText(musica.getNomeArtista());
+
+            if (!musica.getVideoId().isEmpty()) {
+                imgPlay.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        listenerPlay.onPlay(musica);
+                    }
+                });
+            } else {
+                imgPlay.setVisibility(View.GONE);
+            }
 
             final Drawable filled = itemView.getResources().getDrawable(R.drawable.ic_favorite);
             final Drawable outline = itemView.getResources().getDrawable(R.drawable.ic_favorite_border);
+
+            if (musica.isFavorita()) {
+                imgFavorito.setBackgroundDrawable(filled);
+            } else {
+                imgFavorito.setBackgroundDrawable(outline);
+            }
 
             imgFavorito.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override

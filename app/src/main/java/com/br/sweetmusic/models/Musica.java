@@ -8,8 +8,33 @@ public class Musica implements Parcelable {
     private String nomeMusica;
     private String nomeAlbum;
     private String nomeArtista;
+    private long idArtista;
     private int imagemArtista;
     private String detalheMusica;
+    private String videoId;
+
+    //Construtor completo
+    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, long idArtista, int imagemArtista, String detalheMusica, String videoId) {
+        this.favorita = favorita;
+        this.nomeMusica = nomeMusica;
+        this.nomeAlbum = nomeAlbum;
+        this.nomeArtista = nomeArtista;
+        this.idArtista = idArtista;
+        this.imagemArtista = imagemArtista;
+        this.detalheMusica = detalheMusica;
+        this.videoId = videoId;
+    }
+
+    //Construtor sem vídeo
+    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, long idArtista, int imagemArtista, String detalheMusica) {
+        this.favorita = favorita;
+        this.nomeMusica = nomeMusica;
+        this.nomeAlbum = nomeAlbum;
+        this.nomeArtista = nomeArtista;
+        this.idArtista = idArtista;
+        this.imagemArtista = imagemArtista;
+        this.detalheMusica = detalheMusica;
+    }
 
     public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, int imagemArtista, String detalheMusica) {
         this.favorita = favorita;
@@ -43,8 +68,10 @@ public class Musica implements Parcelable {
         nomeMusica = in.readString();
         nomeAlbum = in.readString();
         nomeArtista = in.readString();
+        idArtista = in.readLong();
         imagemArtista = in.readInt();
         detalheMusica = in.readString();
+        videoId = in.readString();
     }
 
     public static final Creator<Musica> CREATOR = new Creator<Musica>() {
@@ -107,6 +134,23 @@ public class Musica implements Parcelable {
         this.detalheMusica = detalheMusica;
     }
 
+    public long getIdArtista() {
+        return idArtista;
+    }
+
+    public void setIdArtista(long idArtista) {
+        this.idArtista = idArtista;
+    }
+
+    public String getVideoId() {
+        return videoId;
+    }
+
+    public void setVideoId(String videoId) {
+        this.videoId = videoId;
+    }
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -118,7 +162,9 @@ public class Musica implements Parcelable {
         parcel.writeString(nomeMusica);
         parcel.writeString(nomeAlbum);
         parcel.writeString(nomeArtista);
+        parcel.writeLong(idArtista);
         parcel.writeInt(imagemArtista);
         parcel.writeString(detalheMusica);
+        parcel.writeString(videoId);
     }
 }

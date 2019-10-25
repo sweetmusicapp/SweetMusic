@@ -9,6 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".views.video.VideoActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
+            android:excludeFromRecents="true"
+            android:hardwareAccelerated="true"
+            android:resizeableActivity="true"
+            android:supportsPictureInPicture="true"
+            android:theme="@style/Theme.MaterialComponents.BottomSheetDialog" />
+        <activity
+            android:name=".views.DetalheActivity"
+            android:label="@string/title_activity_detalhe"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".views.ResultadoPesquisaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
