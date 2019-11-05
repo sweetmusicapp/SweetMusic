@@ -3,14 +3,34 @@ package com.br.sweetmusic.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity (tableName = "musicas")
 public class Musica implements Parcelable {
-    private boolean favorita;
-    private String nomeMusica;
-    private String nomeAlbum;
-    private String nomeArtista;
+
+    @PrimaryKey(autoGenerate = true)
     private long idArtista;
+
+    @ColumnInfo(name = "favorita")
+    private boolean favorita;
+
+    @ColumnInfo(name = "nome")
+    private String nomeMusica;
+
+    @ColumnInfo(name = "album")
+    private String nomeAlbum;
+
+    @ColumnInfo(name = "artista")
+    private String nomeArtista;
+
+    @ColumnInfo(name = "imagem")
     private int imagemArtista;
+
+    @ColumnInfo(name = "detalhe")
     private String detalheMusica;
+
     private String videoId;
 
     //Construtor completo
