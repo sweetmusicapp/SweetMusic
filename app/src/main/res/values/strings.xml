@@ -4,9 +4,7 @@
     <string name="search_hint">Pesquisar músicas ou artistas</string>
 
     <string name="sobre_description_logo">Logo com a palavra Sweet Music em verde escuro entre headfones em verde claro</string>
-    <string name="sobre_descricao_app">Suas músicas favoritas, para todos os gostos</string>
-    <string name="sobre_relatar_bug">Relatar um problema</string>
-    <string name="sobre_versao">Versão do aplicativo 1.0.0</string>
+
     <string name="title_activity_home">SweetMusic</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -55,7 +53,7 @@
     <string name="menu_inicio">Início</string>
     <string name="menu_favoritos">Favoritos</string>
     <string name="menu_perfil">Perfil</string>
-    <string name="menu_sobre">Sobre</string>
+    <string name="menu_sobre"></string>
     <string name="menu_sair">Sair</string>
 
     <!-- TODO: Remove or change this placeholder text -->

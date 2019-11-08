@@ -17,8 +17,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
-import com.br.sweetmusic.adapters.MusicasAdapter;
-import com.br.sweetmusic.interfaces.RecyclerOnPlay;
+import com.br.sweetmusic.views.adapters.MusicasAdapter;
+import com.br.sweetmusic.views.interfaces.RecyclerOnPlay;
 import com.br.sweetmusic.models.Artista;
 import com.br.sweetmusic.models.Musica;
 import com.br.sweetmusic.utils.ExpandCollapse;
@@ -28,8 +28,8 @@ import com.google.android.material.appbar.CollapsingToolbarLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.br.sweetmusic.views.InicioFragment.LISTA_MUSICAS;
-import static com.br.sweetmusic.views.InicioFragment.MUSICA_KEY;
+import static com.br.sweetmusic.views.Fragments.InicioFragment.LISTA_MUSICAS;
+import static com.br.sweetmusic.views.Fragments.InicioFragment.MUSICA_KEY;
 
 public class DetalheActivity extends AppCompatActivity implements RecyclerOnPlay {
     private CollapsingToolbarLayout toolbarLayout;
