@@ -19,7 +19,7 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
-import static com.br.sweetmusic.views.InicioFragment.MUSICA_KEY;
+import static com.br.sweetmusic.views.Fragments.InicioFragment.MUSICA_KEY;
 
 public class VideoActivity extends AppCompatActivity {
     private YouTubePlayerView youTubePlayerView;

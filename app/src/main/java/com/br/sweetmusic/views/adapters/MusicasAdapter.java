@@ -1,4 +1,4 @@
-package com.br.sweetmusic.adapters;
+package com.br.sweetmusic.views.adapters;
 
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
-import com.br.sweetmusic.interfaces.RecyclerOnPlay;
+import com.br.sweetmusic.views.interfaces.RecyclerOnPlay;
 import com.br.sweetmusic.models.Musica;
 
 import java.util.List;

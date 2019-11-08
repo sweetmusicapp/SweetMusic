@@ -1,4 +1,4 @@
-package com.br.sweetmusic.interfaces;
+package com.br.sweetmusic.views.interfaces;
 
 public interface Comunicador {
     void recebeMensagem();

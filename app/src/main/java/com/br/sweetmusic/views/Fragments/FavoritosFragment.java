@@ -1,4 +1,4 @@
-package com.br.sweetmusic.views;
+package com.br.sweetmusic.views.Fragments;
 
 
 import android.content.Intent;
@@ -13,17 +13,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.br.sweetmusic.R;
-import com.br.sweetmusic.adapters.FavoritosAdapter;
-import com.br.sweetmusic.interfaces.RecyclerOnPlay;
-import com.br.sweetmusic.interfaces.RecyclerViewOnClick;
-import com.br.sweetmusic.models.Artista;
+import com.br.sweetmusic.views.adapters.FavoritosAdapter;
+import com.br.sweetmusic.views.interfaces.RecyclerOnPlay;
+import com.br.sweetmusic.views.interfaces.RecyclerViewOnClick;
 import com.br.sweetmusic.models.Musica;
+import com.br.sweetmusic.views.DetalheActivity;
 import com.br.sweetmusic.views.video.VideoActivity;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.br.sweetmusic.views.InicioFragment.MUSICA_KEY;
+import static com.br.sweetmusic.views.Fragments.InicioFragment.MUSICA_KEY;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +45,7 @@ public class FavoritosFragment extends Fragment implements RecyclerViewOnClick, 
         View view = inflater.inflate(R.layout.fragment_favoritos, container, false);
 
         //Muda título da ActionBar
-        ((HomeActivity) getActivity()).setActionBarTitle("Favoritos");
+      //  ((HomeActivity) getActivity()).setActionBarTitle("Favoritos");
 
         favoritosRecycler = view.findViewById(R.id.favoritos_recycler);
         adapter = new FavoritosAdapter(musicasFavoritas(retornarLista()), this, this);

@@ -9,6 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".views.activity.ContatoActivity"></activity>
+        <activity android:name=".views.activity.PrincipalActivity" />
         <activity
             android:name=".views.video.VideoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
@@ -38,9 +40,6 @@
                 android:name="android.app.searchable"
                 android:resource="@xml/searchable" />
         </activity>
-        <activity
-            android:name=".views.SobreActivity"
-            android:label="@string/menu_sobre" />
         <activity
             android:name=".views.login.ForgotActivity"
             android:theme="@style/NoActionBar" />

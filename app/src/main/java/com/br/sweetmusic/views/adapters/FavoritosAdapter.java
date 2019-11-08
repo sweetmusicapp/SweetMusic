@@ -1,10 +1,9 @@
-package com.br.sweetmusic.adapters;
+package com.br.sweetmusic.views.adapters;
 
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -13,8 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
-import com.br.sweetmusic.interfaces.RecyclerOnPlay;
-import com.br.sweetmusic.interfaces.RecyclerViewOnClick;
+import com.br.sweetmusic.views.interfaces.RecyclerOnPlay;
+import com.br.sweetmusic.views.interfaces.RecyclerViewOnClick;
 import com.br.sweetmusic.models.Musica;
 
 import java.util.List;
