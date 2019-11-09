@@ -28,13 +28,13 @@ public class Album {
     @Expose
     private String strAlbum;
     @Expose
-    private Object strAlbum3DCase;
+    private String strAlbum3DCase;
     @Expose
-    private Object strAlbum3DFace;
+    private String strAlbum3DFace;
     @Expose
-    private Object strAlbum3DFlat;
+    private String strAlbum3DFlat;
     @Expose
-    private Object strAlbum3DThumb;
+    private String strAlbum3DThumb;
     @Expose
     private String strAlbumCDart;
     @Expose
@@ -46,11 +46,11 @@ public class Album {
     @Expose
     private String strAlbumThumbBack;
     @Expose
-    private Object strAlbumThumbHQ;
+    private String strAlbumThumbHQ;
     @Expose
     private String strAllMusicID;
     @Expose
-    private Object strAmazonID;
+    private String strAmazonID;
     @Expose
     private String strArtist;
     @Expose
@@ -94,15 +94,15 @@ public class Album {
     @Expose
     private String strGenre;
     @Expose
-    private Object strItunesID;
+    private String strItunesID;
     @Expose
     private String strLabel;
     @Expose
-    private Object strLocation;
+    private String strLocation;
     @Expose
     private String strLocked;
     @Expose
-    private Object strLyricWikiID;
+    private String strLyricWikiID;
     @Expose
     private String strMood;
     @Expose
@@ -122,11 +122,11 @@ public class Album {
     @Expose
     private String strStyle;
     @Expose
-    private Object strTheme;
+    private String strTheme;
     @Expose
     private String strWikidataID;
     @Expose
-    private Object strWikipediaID;
+    private String strWikipediaID;
 
     public String getIdAlbum() {
         return idAlbum;
@@ -200,35 +200,35 @@ public class Album {
         this.strAlbum = strAlbum;
     }
 
-    public Object getStrAlbum3DCase() {
+    public String getStrAlbum3DCase() {
         return strAlbum3DCase;
     }
 
-    public void setStrAlbum3DCase(Object strAlbum3DCase) {
+    public void setStrAlbum3DCase(String strAlbum3DCase) {
         this.strAlbum3DCase = strAlbum3DCase;
     }
 
-    public Object getStrAlbum3DFace() {
+    public String getStrAlbum3DFace() {
         return strAlbum3DFace;
     }
 
-    public void setStrAlbum3DFace(Object strAlbum3DFace) {
+    public void setStrAlbum3DFace(String strAlbum3DFace) {
         this.strAlbum3DFace = strAlbum3DFace;
     }
 
-    public Object getStrAlbum3DFlat() {
+    public String getStrAlbum3DFlat() {
         return strAlbum3DFlat;
     }
 
-    public void setStrAlbum3DFlat(Object strAlbum3DFlat) {
+    public void setStrAlbum3DFlat(String strAlbum3DFlat) {
         this.strAlbum3DFlat = strAlbum3DFlat;
     }
 
-    public Object getStrAlbum3DThumb() {
+    public String getStrAlbum3DThumb() {
         return strAlbum3DThumb;
     }
 
-    public void setStrAlbum3DThumb(Object strAlbum3DThumb) {
+    public void setStrAlbum3DThumb(String strAlbum3DThumb) {
         this.strAlbum3DThumb = strAlbum3DThumb;
     }
 
@@ -272,11 +272,11 @@ public class Album {
         this.strAlbumThumbBack = strAlbumThumbBack;
     }
 
-    public Object getStrAlbumThumbHQ() {
+    public String getStrAlbumThumbHQ() {
         return strAlbumThumbHQ;
     }
 
-    public void setStrAlbumThumbHQ(Object strAlbumThumbHQ) {
+    public void setStrAlbumThumbHQ(String strAlbumThumbHQ) {
         this.strAlbumThumbHQ = strAlbumThumbHQ;
     }
 
@@ -288,11 +288,11 @@ public class Album {
         this.strAllMusicID = strAllMusicID;
     }
 
-    public Object getStrAmazonID() {
+    public String getStrAmazonID() {
         return strAmazonID;
     }
 
-    public void setStrAmazonID(Object strAmazonID) {
+    public void setStrAmazonID(String strAmazonID) {
         this.strAmazonID = strAmazonID;
     }
 
@@ -464,11 +464,11 @@ public class Album {
         this.strGenre = strGenre;
     }
 
-    public Object getStrItunesID() {
+    public String getStrItunesID() {
         return strItunesID;
     }
 
-    public void setStrItunesID(Object strItunesID) {
+    public void setStrItunesID(String strItunesID) {
         this.strItunesID = strItunesID;
     }
 
@@ -480,11 +480,11 @@ public class Album {
         this.strLabel = strLabel;
     }
 
-    public Object getStrLocation() {
+    public String getStrLocation() {
         return strLocation;
     }
 
-    public void setStrLocation(Object strLocation) {
+    public void setStrLocation(String strLocation) {
         this.strLocation = strLocation;
     }
 
@@ -496,11 +496,11 @@ public class Album {
         this.strLocked = strLocked;
     }
 
-    public Object getStrLyricWikiID() {
+    public String getStrLyricWikiID() {
         return strLyricWikiID;
     }
 
-    public void setStrLyricWikiID(Object strLyricWikiID) {
+    public void setStrLyricWikiID(String strLyricWikiID) {
         this.strLyricWikiID = strLyricWikiID;
     }
 
@@ -576,11 +576,11 @@ public class Album {
         this.strStyle = strStyle;
     }
 
-    public Object getStrTheme() {
+    public String getStrTheme() {
         return strTheme;
     }
 
-    public void setStrTheme(Object strTheme) {
+    public void setStrTheme(String strTheme) {
         this.strTheme = strTheme;
     }
 
@@ -592,12 +592,11 @@ public class Album {
         this.strWikidataID = strWikidataID;
     }
 
-    public Object getStrWikipediaID() {
+    public String getStrWikipediaID() {
         return strWikipediaID;
     }
 
-    public void setStrWikipediaID(Object strWikipediaID) {
+    public void setStrWikipediaID(String strWikipediaID) {
         this.strWikipediaID = strWikipediaID;
     }
-
 }
