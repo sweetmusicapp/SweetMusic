@@ -20,11 +20,7 @@
             app:popupTheme="@style/PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/frame_container"
-        android:layout_marginTop="?attr/actionBarSize"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <include layout="@layout/content_main" />
 
-    </FrameLayout>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
