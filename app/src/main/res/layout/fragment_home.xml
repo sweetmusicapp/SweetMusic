@@ -5,30 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
-        android:id="@+id/text_top_musicas_inicio"
-        android:layout_width="290dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="61dp"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="61dp"
+        android:id="@+id/text_top_musicas"
+        android:layout_width="354dp"
+        android:layout_height="91dp"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="30dp"
+        android:gravity="center"
         android:text="Top Músicas"
-        android:textSize="48sp"
+        android:textSize="30sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/id_top_musica"
-        android:layout_width="409dp"
-        android:layout_height="620dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="1dp"
+        android:id="@+id/recycler_top_musicas"
+        android:layout_width="385dp"
+        android:layout_height="586dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_top_musicas_inicio" />
-
+        app:layout_constraintTop_toBottomOf="@+id/text_top_musicas" />
 </androidx.constraintlayout.widget.ConstraintLayout>
