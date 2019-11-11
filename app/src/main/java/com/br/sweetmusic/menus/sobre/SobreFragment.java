@@ -1,21 +1,20 @@
-package com.br.sweetmusic.views.Fragments;
-
+package com.br.sweetmusic.menus.sobre;
 
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 
 import com.br.sweetmusic.R;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class SobreFragment extends Fragment {
-
 
     public SobreFragment() {
         // Required empty public constructor
@@ -28,5 +27,4 @@ public class SobreFragment extends Fragment {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_sobre, container, false);
     }
-
 }

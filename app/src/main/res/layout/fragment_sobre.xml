@@ -1,83 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-<ImageView
-    android:id="@+id/imageView_sobre_logo"
-    android:layout_width="150dp"
-    android:layout_height="0dp"
-    android:layout_marginStart="131dp"
-    android:layout_marginTop="32dp"
-    android:layout_marginEnd="130dp"
-    android:adjustViewBounds="true"
-    android:contentDescription="@string/sobre_description_logo"
-    android:scaleType="centerInside"
-    android:src="@drawable/logosweet"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
 
-<TextView
-    android:id="@+id/text_titulo_sobre"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="12dp"
-    android:layout_marginTop="47dp"
-    android:layout_marginEnd="16dp"
-    android:text="Informações sobre Sweet Músic"
-    android:textSize="18sp"
-    android:textStyle="bold"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/imageView_sobre_logo" />
-
-<TextView
-    android:id="@+id/text_sub_titulo_sobre"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="12dp"
-    android:layout_marginTop="17dp"
-    android:text="Principais características:"
-    android:textSize="16dp"
-    android:textStyle="bold"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/text_titulo_sobre" />
-
-<TextView
-    android:id="@+id/text_descricao_um_sobre"
-    android:layout_width="388dp"
-    android:layout_height="126dp"
-    android:layout_marginStart="12dp"
-    android:layout_marginTop="16dp"
-    android:text="Serviço de música por assinatura. Você paga mensalmente para acessar nosso catálogo com milhares de músicas, recomendações personalizadas sem anúncios, possibilidade de pular faixas ilimitadamente, além de músicas, álbuns e playlists à sua escolha."
-    android:textSize="16dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/text_sub_titulo_sobre" />
-
-<TextView
-    android:id="@+id/text_subi_titulo_dois_sobre"
-    android:layout_width="377dp"
-    android:layout_height="26dp"
-    android:layout_marginStart="12dp"
-    android:layout_marginTop="16dp"
-    android:text="Tipo de acesso: "
-    android:textSize="16dp"
-    android:textStyle="bold"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/text_descricao_um_sobre" />
-
-<TextView
-    android:id="@+id/text_descrica_dois_sobre"
-    android:layout_width="380dp"
-    android:layout_height="56dp"
-    android:layout_marginStart="12dp"
-    android:layout_marginTop="16dp"
-    android:text="Streaming em dispositivos e na Web, bem como download temporário no seu dispositivo."
-    android:textSize="16dp"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/text_subi_titulo_dois_sobre" />
-
+    <TextView
+        android:id="@+id/text_sobre_atual"
+        android:layout_width="366dp"
+        android:layout_height="283dp"
+        android:layout_marginTop="62dp"
+        android:text="tela Sobre  Diego vai fazer a descrição dos desnvolvedores"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

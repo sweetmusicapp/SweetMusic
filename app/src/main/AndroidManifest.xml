@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".views.activity.ContatoActivity"></activity>
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/title_activity_main"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity android:name=".views.activity.InicioActivity" />
+        <activity android:name=".views.activity.ContatoActivity" />
         <activity android:name=".views.activity.PrincipalActivity" />
         <activity
             android:name=".views.video.VideoActivity"
@@ -50,8 +55,7 @@
             android:name=".views.login.LoginActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".views.login.SplashActivity"
-            android:theme="@style/NoActionBar">
+            android:name=".views.login.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

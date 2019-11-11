@@ -1,7 +1,6 @@
 package com.br.sweetmusic.models;
 
-import android.os.Parcel;
-import android.os.Parcelable;
+public class Musica{// implements Parcelable {
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
@@ -187,4 +186,5 @@ public class Musica implements Parcelable {
         parcel.writeString(detalheMusica);
         parcel.writeString(videoId);
     }
+
 }
