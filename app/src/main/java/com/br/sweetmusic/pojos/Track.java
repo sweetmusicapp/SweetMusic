@@ -1,6 +1,7 @@
 
 package com.br.sweetmusic.pojos;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -10,87 +11,97 @@ import com.google.gson.annotations.Expose;
 public class Track {
 
     @PrimaryKey(autoGenerate = true)
+    private int internalId;
+    @ColumnInfo
     private String idAlbum;
-    @Expose
+    @ColumnInfo
     private Boolean favorito;
-    @Expose
+    @ColumnInfo
     private String idArtist;
-    @Expose
+    @ColumnInfo
     private String idIMVDB;
-    @Expose
+    @ColumnInfo
     private String idLyric;
-    @Expose
+    @ColumnInfo
     private String idTrack;
-    @Expose
+    @ColumnInfo
     private String intCD;
-    @Expose
+    @ColumnInfo
     private String intDuration;
-    @Expose
+    @ColumnInfo
     private String intLoved;
-    @Expose
+    @ColumnInfo
     private String intMusicVidComments;
-    @Expose
+    @ColumnInfo
     private String intMusicVidDislikes;
-    @Expose
+    @ColumnInfo
     private String intMusicVidFavorites;
-    @Expose
+    @ColumnInfo
     private String intMusicVidLikes;
-    @Expose
+    @ColumnInfo
     private String intMusicVidViews;
-    @Expose
+    @ColumnInfo
     private String intScore;
-    @Expose
+    @ColumnInfo
     private String intScoreVotes;
-    @Expose
+    @ColumnInfo
     private String intTotalListeners;
-    @Expose
+    @ColumnInfo
     private String intTotalPlays;
-    @Expose
+    @ColumnInfo
     private String intTrackNumber;
-    @Expose
+    @ColumnInfo
     private String strAlbum;
-    @Expose
+    @ColumnInfo
     private String strArtist;
-    @Expose
+    @ColumnInfo
     private String strArtistAlternate;
-    @Expose
+    @ColumnInfo
     private String strDescriptionEN;
-    @Expose
+    @ColumnInfo
     private String strGenre;
     @Expose
     private String strLocked;
     @Expose
     private String strMood;
-    @Expose
+    @ColumnInfo
     private String strMusicBrainzAlbumID;
-    @Expose
+    @ColumnInfo
     private String strMusicBrainzArtistID;
-    @Expose
+    @ColumnInfo
     private String strMusicBrainzID;
-    @Expose
+    @ColumnInfo
     private String strMusicVid;
-    @Expose
+    @ColumnInfo
     private String strMusicVidCompany;
-    @Expose
+    @ColumnInfo
     private String strMusicVidDirector;
-    @Expose
+    @ColumnInfo
     private String strMusicVidScreen1;
     @Expose
     private String strMusicVidScreen2;
     @Expose
     private String strMusicVidScreen3;
-    @Expose
+    @ColumnInfo
     private String strStyle;
-    @Expose
+    @ColumnInfo
     private String strTheme;
-    @Expose
+    @ColumnInfo
     private String strTrack;
-    @Expose
+    @ColumnInfo
     private String strTrack3DCase;
-    @Expose
+    @ColumnInfo
     private String strTrackLyrics;
-    @Expose
+    @ColumnInfo
     private String strTrackThumb;
+
+    public int getInternalId() {
+        return internalId;
+    }
+
+    public void setInternalId(int internalId) {
+        this.internalId = internalId;
+    }
 
     public String getIdAlbum() {
         return idAlbum;

@@ -1,6 +1,7 @@
 
 package com.br.sweetmusic.pojos;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -10,30 +11,32 @@ import com.google.gson.annotations.Expose;
 public class Album {
 
     @PrimaryKey(autoGenerate = true)
+    private int internalId;
+    @ColumnInfo
     private String idAlbum;
-    @Expose
+    @ColumnInfo
     private String idArtist;
-    @Expose
+    @ColumnInfo
     private String idLabel;
-    @Expose
+    @ColumnInfo
     private String intLoved;
-    @Expose
+    @ColumnInfo
     private String intSales;
-    @Expose
+    @ColumnInfo
     private String intScore;
-    @Expose
+    @ColumnInfo
     private String intScoreVotes;
-    @Expose
+    @ColumnInfo
     private String intYearReleased;
-    @Expose
+    @ColumnInfo
     private String strAlbum;
-    @Expose
+    @ColumnInfo
     private String strAlbum3DCase;
-    @Expose
+    @ColumnInfo
     private String strAlbum3DFace;
-    @Expose
+    @ColumnInfo
     private String strAlbum3DFlat;
-    @Expose
+    @ColumnInfo
     private String strAlbum3DThumb;
     @Expose
     private String strAlbumCDart;
@@ -41,17 +44,17 @@ public class Album {
     private String strAlbumSpine;
     @Expose
     private String strAlbumStripped;
-    @Expose
+    @ColumnInfo
     private String strAlbumThumb;
     @Expose
     private String strAlbumThumbBack;
     @Expose
     private String strAlbumThumbHQ;
-    @Expose
+    @ColumnInfo
     private String strAllMusicID;
-    @Expose
+    @ColumnInfo
     private String strAmazonID;
-    @Expose
+    @ColumnInfo
     private String strArtist;
     @Expose
     private String strArtistStripped;
@@ -61,7 +64,7 @@ public class Album {
     private String strDescriptionCN;
     @Expose
     private String strDescriptionDE;
-    @Expose
+    @ColumnInfo
     private String strDescriptionEN;
     @Expose
     private String strDescriptionES;
@@ -81,33 +84,33 @@ public class Album {
     private String strDescriptionNO;
     @Expose
     private String strDescriptionPL;
-    @Expose
+    @ColumnInfo
     private String strDescriptionPT;
     @Expose
     private String strDescriptionRU;
     @Expose
     private String strDescriptionSE;
-    @Expose
+    @ColumnInfo
     private String strDiscogsID;
-    @Expose
+    @ColumnInfo
     private String strGeniusID;
-    @Expose
+    @ColumnInfo
     private String strGenre;
-    @Expose
+    @ColumnInfo
     private String strItunesID;
-    @Expose
+    @ColumnInfo
     private String strLabel;
-    @Expose
+    @ColumnInfo
     private String strLocation;
     @Expose
     private String strLocked;
-    @Expose
+    @ColumnInfo
     private String strLyricWikiID;
     @Expose
     private String strMood;
-    @Expose
+    @ColumnInfo
     private String strMusicBrainzArtistID;
-    @Expose
+    @ColumnInfo
     private String strMusicBrainzID;
     @Expose
     private String strMusicMozID;
@@ -115,18 +118,26 @@ public class Album {
     private String strRateYourMusicID;
     @Expose
     private String strReleaseFormat;
-    @Expose
+    @ColumnInfo
     private String strReview;
     @Expose
     private String strSpeed;
-    @Expose
+    @ColumnInfo
     private String strStyle;
-    @Expose
+    @ColumnInfo
     private String strTheme;
     @Expose
     private String strWikidataID;
     @Expose
     private String strWikipediaID;
+
+    public int getInternalId() {
+        return internalId;
+    }
+
+    public void setInternalId(int internalId) {
+        this.internalId = internalId;
+    }
 
     public String getIdAlbum() {
         return idAlbum;

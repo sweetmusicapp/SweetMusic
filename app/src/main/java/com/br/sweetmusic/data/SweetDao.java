@@ -26,8 +26,6 @@ public interface SweetDao {
     @Update
     void updateMusica(Track track);
 
-    @Query("SELECT * FROM track")
-    Observable<List<Musica>> getAllMusicas();
 
     @Query("SELECT * FROM artist WHERE idArtist = :idArtista")
     Artist getArtistById(long idArtista);
