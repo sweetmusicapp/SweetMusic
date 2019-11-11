@@ -16,35 +16,35 @@ public class Track {
     @Expose
     private String idArtist;
     @Expose
-    private Object idIMVDB;
+    private String idIMVDB;
     @Expose
     private String idLyric;
     @Expose
     private String idTrack;
     @Expose
-    private Object intCD;
+    private String intCD;
     @Expose
     private String intDuration;
     @Expose
     private String intLoved;
     @Expose
-    private Object intMusicVidComments;
+    private String intMusicVidComments;
     @Expose
-    private Object intMusicVidDislikes;
+    private String intMusicVidDislikes;
     @Expose
-    private Object intMusicVidFavorites;
+    private String intMusicVidFavorites;
     @Expose
-    private Object intMusicVidLikes;
+    private String intMusicVidLikes;
     @Expose
-    private Object intMusicVidViews;
+    private String intMusicVidViews;
     @Expose
     private String intScore;
     @Expose
     private String intScoreVotes;
     @Expose
-    private Object intTotalListeners;
+    private String intTotalListeners;
     @Expose
-    private Object intTotalPlays;
+    private String intTotalPlays;
     @Expose
     private String intTrackNumber;
     @Expose
@@ -52,15 +52,15 @@ public class Track {
     @Expose
     private String strArtist;
     @Expose
-    private Object strArtistAlternate;
+    private String strArtistAlternate;
     @Expose
-    private Object strDescriptionEN;
+    private String strDescriptionEN;
     @Expose
     private String strGenre;
     @Expose
     private String strLocked;
     @Expose
-    private Object strMood;
+    private String strMood;
     @Expose
     private String strMusicBrainzAlbumID;
     @Expose
@@ -68,37 +68,29 @@ public class Track {
     @Expose
     private String strMusicBrainzID;
     @Expose
-    private Object strMusicVid;
+    private String strMusicVid;
     @Expose
-    private Object strMusicVidCompany;
+    private String strMusicVidCompany;
     @Expose
-    private Object strMusicVidDirector;
+    private String strMusicVidDirector;
     @Expose
-    private Object strMusicVidScreen1;
+    private String strMusicVidScreen1;
     @Expose
-    private Object strMusicVidScreen2;
+    private String strMusicVidScreen2;
     @Expose
-    private Object strMusicVidScreen3;
+    private String strMusicVidScreen3;
     @Expose
-    private Object strStyle;
+    private String strStyle;
     @Expose
-    private Object strTheme;
+    private String strTheme;
     @Expose
     private String strTrack;
     @Expose
-    private Object strTrack3DCase;
+    private String strTrack3DCase;
     @Expose
-    private Object strTrackLyrics;
+    private String strTrackLyrics;
     @Expose
-    private Object strTrackThumb;
-
-    public Boolean getFavorito() {
-        return favorito;
-    }
-
-    public void setFavorito(Boolean favorito) {
-        this.favorito = favorito;
-    }
+    private String strTrackThumb;
 
     public String getIdAlbum() {
         return idAlbum;
@@ -106,6 +98,14 @@ public class Track {
 
     public void setIdAlbum(String idAlbum) {
         this.idAlbum = idAlbum;
+    }
+
+    public Boolean getFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(Boolean favorito) {
+        this.favorito = favorito;
     }
 
     public String getIdArtist() {
@@ -116,11 +116,11 @@ public class Track {
         this.idArtist = idArtist;
     }
 
-    public Object getIdIMVDB() {
+    public String getIdIMVDB() {
         return idIMVDB;
     }
 
-    public void setIdIMVDB(Object idIMVDB) {
+    public void setIdIMVDB(String idIMVDB) {
         this.idIMVDB = idIMVDB;
     }
 
@@ -140,11 +140,11 @@ public class Track {
         this.idTrack = idTrack;
     }
 
-    public Object getIntCD() {
+    public String getIntCD() {
         return intCD;
     }
 
-    public void setIntCD(Object intCD) {
+    public void setIntCD(String intCD) {
         this.intCD = intCD;
     }
 
@@ -164,43 +164,43 @@ public class Track {
         this.intLoved = intLoved;
     }
 
-    public Object getIntMusicVidComments() {
+    public String getIntMusicVidComments() {
         return intMusicVidComments;
     }
 
-    public void setIntMusicVidComments(Object intMusicVidComments) {
+    public void setIntMusicVidComments(String intMusicVidComments) {
         this.intMusicVidComments = intMusicVidComments;
     }
 
-    public Object getIntMusicVidDislikes() {
+    public String getIntMusicVidDislikes() {
         return intMusicVidDislikes;
     }
 
-    public void setIntMusicVidDislikes(Object intMusicVidDislikes) {
+    public void setIntMusicVidDislikes(String intMusicVidDislikes) {
         this.intMusicVidDislikes = intMusicVidDislikes;
     }
 
-    public Object getIntMusicVidFavorites() {
+    public String getIntMusicVidFavorites() {
         return intMusicVidFavorites;
     }
 
-    public void setIntMusicVidFavorites(Object intMusicVidFavorites) {
+    public void setIntMusicVidFavorites(String intMusicVidFavorites) {
         this.intMusicVidFavorites = intMusicVidFavorites;
     }
 
-    public Object getIntMusicVidLikes() {
+    public String getIntMusicVidLikes() {
         return intMusicVidLikes;
     }
 
-    public void setIntMusicVidLikes(Object intMusicVidLikes) {
+    public void setIntMusicVidLikes(String intMusicVidLikes) {
         this.intMusicVidLikes = intMusicVidLikes;
     }
 
-    public Object getIntMusicVidViews() {
+    public String getIntMusicVidViews() {
         return intMusicVidViews;
     }
 
-    public void setIntMusicVidViews(Object intMusicVidViews) {
+    public void setIntMusicVidViews(String intMusicVidViews) {
         this.intMusicVidViews = intMusicVidViews;
     }
 
@@ -220,19 +220,19 @@ public class Track {
         this.intScoreVotes = intScoreVotes;
     }
 
-    public Object getIntTotalListeners() {
+    public String getIntTotalListeners() {
         return intTotalListeners;
     }
 
-    public void setIntTotalListeners(Object intTotalListeners) {
+    public void setIntTotalListeners(String intTotalListeners) {
         this.intTotalListeners = intTotalListeners;
     }
 
-    public Object getIntTotalPlays() {
+    public String getIntTotalPlays() {
         return intTotalPlays;
     }
 
-    public void setIntTotalPlays(Object intTotalPlays) {
+    public void setIntTotalPlays(String intTotalPlays) {
         this.intTotalPlays = intTotalPlays;
     }
 
@@ -260,19 +260,19 @@ public class Track {
         this.strArtist = strArtist;
     }
 
-    public Object getStrArtistAlternate() {
+    public String getStrArtistAlternate() {
         return strArtistAlternate;
     }
 
-    public void setStrArtistAlternate(Object strArtistAlternate) {
+    public void setStrArtistAlternate(String strArtistAlternate) {
         this.strArtistAlternate = strArtistAlternate;
     }
 
-    public Object getStrDescriptionEN() {
+    public String getStrDescriptionEN() {
         return strDescriptionEN;
     }
 
-    public void setStrDescriptionEN(Object strDescriptionEN) {
+    public void setStrDescriptionEN(String strDescriptionEN) {
         this.strDescriptionEN = strDescriptionEN;
     }
 
@@ -292,11 +292,11 @@ public class Track {
         this.strLocked = strLocked;
     }
 
-    public Object getStrMood() {
+    public String getStrMood() {
         return strMood;
     }
 
-    public void setStrMood(Object strMood) {
+    public void setStrMood(String strMood) {
         this.strMood = strMood;
     }
 
@@ -324,67 +324,67 @@ public class Track {
         this.strMusicBrainzID = strMusicBrainzID;
     }
 
-    public Object getStrMusicVid() {
+    public String getStrMusicVid() {
         return strMusicVid;
     }
 
-    public void setStrMusicVid(Object strMusicVid) {
+    public void setStrMusicVid(String strMusicVid) {
         this.strMusicVid = strMusicVid;
     }
 
-    public Object getStrMusicVidCompany() {
+    public String getStrMusicVidCompany() {
         return strMusicVidCompany;
     }
 
-    public void setStrMusicVidCompany(Object strMusicVidCompany) {
+    public void setStrMusicVidCompany(String strMusicVidCompany) {
         this.strMusicVidCompany = strMusicVidCompany;
     }
 
-    public Object getStrMusicVidDirector() {
+    public String getStrMusicVidDirector() {
         return strMusicVidDirector;
     }
 
-    public void setStrMusicVidDirector(Object strMusicVidDirector) {
+    public void setStrMusicVidDirector(String strMusicVidDirector) {
         this.strMusicVidDirector = strMusicVidDirector;
     }
 
-    public Object getStrMusicVidScreen1() {
+    public String getStrMusicVidScreen1() {
         return strMusicVidScreen1;
     }
 
-    public void setStrMusicVidScreen1(Object strMusicVidScreen1) {
+    public void setStrMusicVidScreen1(String strMusicVidScreen1) {
         this.strMusicVidScreen1 = strMusicVidScreen1;
     }
 
-    public Object getStrMusicVidScreen2() {
+    public String getStrMusicVidScreen2() {
         return strMusicVidScreen2;
     }
 
-    public void setStrMusicVidScreen2(Object strMusicVidScreen2) {
+    public void setStrMusicVidScreen2(String strMusicVidScreen2) {
         this.strMusicVidScreen2 = strMusicVidScreen2;
     }
 
-    public Object getStrMusicVidScreen3() {
+    public String getStrMusicVidScreen3() {
         return strMusicVidScreen3;
     }
 
-    public void setStrMusicVidScreen3(Object strMusicVidScreen3) {
+    public void setStrMusicVidScreen3(String strMusicVidScreen3) {
         this.strMusicVidScreen3 = strMusicVidScreen3;
     }
 
-    public Object getStrStyle() {
+    public String getStrStyle() {
         return strStyle;
     }
 
-    public void setStrStyle(Object strStyle) {
+    public void setStrStyle(String strStyle) {
         this.strStyle = strStyle;
     }
 
-    public Object getStrTheme() {
+    public String getStrTheme() {
         return strTheme;
     }
 
-    public void setStrTheme(Object strTheme) {
+    public void setStrTheme(String strTheme) {
         this.strTheme = strTheme;
     }
 
@@ -396,28 +396,27 @@ public class Track {
         this.strTrack = strTrack;
     }
 
-    public Object getStrTrack3DCase() {
+    public String getStrTrack3DCase() {
         return strTrack3DCase;
     }
 
-    public void setStrTrack3DCase(Object strTrack3DCase) {
+    public void setStrTrack3DCase(String strTrack3DCase) {
         this.strTrack3DCase = strTrack3DCase;
     }
 
-    public Object getStrTrackLyrics() {
+    public String getStrTrackLyrics() {
         return strTrackLyrics;
     }
 
-    public void setStrTrackLyrics(Object strTrackLyrics) {
+    public void setStrTrackLyrics(String strTrackLyrics) {
         this.strTrackLyrics = strTrackLyrics;
     }
 
-    public Object getStrTrackThumb() {
+    public String getStrTrackThumb() {
         return strTrackThumb;
     }
 
-    public void setStrTrackThumb(Object strTrackThumb) {
+    public void setStrTrackThumb(String strTrackThumb) {
         this.strTrackThumb = strTrackThumb;
     }
-
 }
