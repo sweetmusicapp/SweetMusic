@@ -15,7 +15,6 @@ import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
 import com.br.sweetmusic.menus.contato.ContatoFragment;
-import com.br.sweetmusic.menus.favoritos.FavoritosFragment;
 import com.br.sweetmusic.menus.home.HomeFragment;
 import com.br.sweetmusic.menus.perfil.PerfilFragment;
 import com.br.sweetmusic.menus.sobre.SobreFragment;
@@ -96,14 +95,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             transaction.replace(R.id.frame_container,homeFragment);
             transaction.commit();
 
-        }else if (id == R.id.nav_favoritos){
-
-            FavoritosFragment favoritosFragment = new FavoritosFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.frame_container,favoritosFragment);
-            transaction.commit();
-
-        } else if (id == R.id.nav_perfil){
+        }-else if (id == R.id.nav_perfil){
 
             PerfilFragment perfilFragment = new PerfilFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
