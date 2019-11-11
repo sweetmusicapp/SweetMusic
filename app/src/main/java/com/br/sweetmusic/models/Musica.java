@@ -33,7 +33,7 @@ public class Musica implements Parcelable {
 
     private String videoId;
 
-    //Construtor completo
+//    Construtor completo
     public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, long idArtista, int imagemArtista, String detalheMusica, String videoId) {
         this.favorita = favorita;
         this.nomeMusica = nomeMusica;
@@ -44,41 +44,41 @@ public class Musica implements Parcelable {
         this.detalheMusica = detalheMusica;
         this.videoId = videoId;
     }
-
-    //Construtor sem vídeo
-    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, long idArtista, int imagemArtista, String detalheMusica) {
-        this.favorita = favorita;
-        this.nomeMusica = nomeMusica;
-        this.nomeAlbum = nomeAlbum;
-        this.nomeArtista = nomeArtista;
-        this.idArtista = idArtista;
-        this.imagemArtista = imagemArtista;
-        this.detalheMusica = detalheMusica;
-    }
-
-    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, int imagemArtista, String detalheMusica) {
-        this.favorita = favorita;
-        this.nomeMusica = nomeMusica;
-        this.nomeAlbum = nomeAlbum;
-        this.nomeArtista = nomeArtista;
-        this.imagemArtista = imagemArtista;
-        this.detalheMusica = detalheMusica;
-    }
-
-    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista) {
-        this.favorita = favorita;
-        this.nomeMusica = nomeMusica;
-        this.nomeAlbum = nomeAlbum;
-        this.nomeArtista = nomeArtista;
-    }
-
-    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, int imagemArtista) {
-        this.favorita = favorita;
-        this.nomeMusica = nomeMusica;
-        this.nomeAlbum = nomeAlbum;
-        this.nomeArtista = nomeArtista;
-        this.imagemArtista = imagemArtista;
-    }
+//
+//    //Construtor sem vídeo
+//    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, long idArtista, int imagemArtista, String detalheMusica) {
+//        this.favorita = favorita;
+//        this.nomeMusica = nomeMusica;
+//        this.nomeAlbum = nomeAlbum;
+//        this.nomeArtista = nomeArtista;
+//        this.idArtista = idArtista;
+//        this.imagemArtista = imagemArtista;
+//        this.detalheMusica = detalheMusica;
+//    }
+//
+//    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, int imagemArtista, String detalheMusica) {
+//        this.favorita = favorita;
+//        this.nomeMusica = nomeMusica;
+//        this.nomeAlbum = nomeAlbum;
+//        this.nomeArtista = nomeArtista;
+//        this.imagemArtista = imagemArtista;
+//        this.detalheMusica = detalheMusica;
+//    }
+//
+//    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista) {
+//        this.favorita = favorita;
+//        this.nomeMusica = nomeMusica;
+//        this.nomeAlbum = nomeAlbum;
+//        this.nomeArtista = nomeArtista;
+//    }
+//
+//    public Musica(boolean favorita, String nomeMusica, String nomeAlbum, String nomeArtista, int imagemArtista) {
+//        this.favorita = favorita;
+//        this.nomeMusica = nomeMusica;
+//        this.nomeAlbum = nomeAlbum;
+//        this.nomeArtista = nomeArtista;
+//        this.imagemArtista = imagemArtista;
+//    }
 
     public Musica() {
     }
