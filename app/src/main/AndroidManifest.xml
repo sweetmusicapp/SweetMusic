@@ -13,11 +13,11 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".views.activity.InicioActivity" />
-        <activity android:name=".views.activity.ContatoActivity" />
-        <activity android:name=".views.activity.PrincipalActivity" />
+        <activity android:name=".view.activity.InicioActivity" />
+        <activity android:name=".view.activity.ContatoActivity" />
+        <activity android:name=".view.activity.PrincipalActivity" />
         <activity
-            android:name=".views.video.VideoActivity"
+            android:name=".view.video.VideoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
             android:excludeFromRecents="true"
             android:hardwareAccelerated="true"
@@ -25,20 +25,20 @@
             android:supportsPictureInPicture="true"
             android:theme="@style/Theme.MaterialComponents.BottomSheetDialog" />
         <activity
-            android:name=".views.DetalheActivity"
+            android:name=".view.DetalheActivity"
             android:label="@string/title_activity_detalhe"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".views.ResultadoPesquisaActivity">
+        <activity android:name=".view.ResultadoPesquisaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".views.perfil.AlterarSenha" />
-        <activity android:name=".views.perfil.EditarPerfil" />
-        <activity android:name=".views.perfil.PerfilActivity" />
-        <activity android:name=".views.DetalheMusicaActivity" />
+        <activity android:name=".view.perfil.AlterarSenha" />
+        <activity android:name=".view.perfil.EditarPerfil" />
+        <activity android:name=".view.perfil.PerfilActivity" />
+        <activity android:name=".view.DetalheMusicaActivity" />
         <activity
-            android:name=".views.HomeActivity"
+            android:name=".view.HomeActivity"
             android:label="@string/title_activity_home"
             android:theme="@style/NoActionBar">
             <meta-data
@@ -46,16 +46,16 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".views.login.ForgotActivity"
+            android:name=".view.login.ForgotActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".views.login.RegisterActivity"
+            android:name=".view.login.RegisterActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".views.login.LoginActivity"
+            android:name=".view.login.LoginActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".views.login.SplashActivity">
+            android:name=".view.login.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -6,7 +6,7 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.br.sweetmusic.models.Musica;
+
 import com.br.sweetmusic.pojos.Artist;
 import com.br.sweetmusic.pojos.Track;
 
