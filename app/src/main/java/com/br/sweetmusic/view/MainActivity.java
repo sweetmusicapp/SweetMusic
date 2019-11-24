@@ -1,4 +1,4 @@
-package com.br.sweetmusic;
+package com.br.sweetmusic.view;
 
 
 import android.content.Intent;
@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.br.sweetmusic.R;
 import com.br.sweetmusic.adapter.RecyclerViewAdapater;
 import com.br.sweetmusic.model.Album;
 import com.br.sweetmusic.viewmodel.AlbumViewModel;
@@ -76,31 +77,13 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, error, Toast.LENGTH_LONG);
         });
 
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String text) {
-                bandName = text;
-                adapter.clear();
-                viewModel.getAlbuns(bandName);
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String text) {
-                if (text.length() > 3) {
-                    bandName = text;
-                    adapter.clear();
-                    viewModel.getAlbuns(bandName);
-                }
-                return false;
-            }
-        });
     }
 
     private void initViews() {
         recyclerView = findViewById(R.id.recyclerView);
         progressBar = findViewById(R.id.progress_bar);
-        searchView = findViewById(R.id.searchView);
+
         adapter = new RecyclerViewAdapater(albuns);
         viewModel = ViewModelProviders.of(this).get(AlbumViewModel.class);
         recyclerView.setAdapter(adapter);
