@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".view.activity.InicioActivity" />
@@ -24,10 +24,6 @@
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true"
             android:theme="@style/Theme.MaterialComponents.BottomSheetDialog" />
-        <activity
-            android:name=".view.DetalheActivity"
-            android:label="@string/title_activity_detalhe"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".view.ResultadoPesquisaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -36,15 +32,6 @@
         <activity android:name=".view.perfil.AlterarSenha" />
         <activity android:name=".view.perfil.EditarPerfil" />
         <activity android:name=".view.perfil.PerfilActivity" />
-        <activity android:name=".view.DetalheMusicaActivity" />
-        <activity
-            android:name=".view.HomeActivity"
-            android:label="@string/title_activity_home"
-            android:theme="@style/NoActionBar">
-            <meta-data
-                android:name="android.app.searchable"
-                android:resource="@xml/searchable" />
-        </activity>
         <activity
             android:name=".view.login.ForgotActivity"
             android:theme="@style/NoActionBar" />
@@ -56,6 +43,7 @@
             android:theme="@style/NoActionBar" />
         <activity
             android:name=".view.login.SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
