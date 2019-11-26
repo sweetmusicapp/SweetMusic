@@ -10,40 +10,49 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.MainActivity"
-            android:label="@string/title_activity_main"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".view.activity.InicioActivity" />
-        <activity android:name=".view.activity.ContatoActivity" />
-        <activity android:name=".view.activity.PrincipalActivity" />
-        <activity
-            android:name=".view.video.VideoActivity"
+            android:name=".views.video.VideoActivity"
             android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout"
             android:excludeFromRecents="true"
             android:hardwareAccelerated="true"
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true"
             android:theme="@style/Theme.MaterialComponents.BottomSheetDialog" />
-        <activity android:name=".view.ResultadoPesquisaActivity">
+        <activity
+            android:name=".views.DetalheActivity"
+            android:label="@string/title_activity_detalhe"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".views.ResultadoPesquisaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
             </intent-filter>
         </activity>
-        <activity android:name=".view.perfil.AlterarSenha" />
-        <activity android:name=".view.perfil.EditarPerfil" />
-        <activity android:name=".view.perfil.PerfilActivity" />
+        <activity android:name=".views.perfil.AlterarSenha" />
+        <activity android:name=".views.perfil.EditarPerfil" />
+        <activity android:name=".views.perfil.PerfilActivity" />
+        <activity android:name=".views.DetalheMusicaActivity" />
         <activity
-            android:name=".view.login.ForgotActivity"
+            android:name=".views.HomeActivity"
+            android:label="@string/title_activity_home"
+            android:theme="@style/NoActionBar">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+        </activity>
+        <activity
+            android:name=".views.SobreActivity"
+            android:label="@string/menu_sobre" />
+        <activity
+            android:name=".views.login.ForgotActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".view.login.RegisterActivity"
+            android:name=".views.login.RegisterActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".view.login.LoginActivity"
+            android:name=".views.login.LoginActivity"
             android:theme="@style/NoActionBar" />
         <activity
-            android:name=".view.login.SplashActivity">
-
+            android:name=".views.login.SplashActivity"
+            android:theme="@style/NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

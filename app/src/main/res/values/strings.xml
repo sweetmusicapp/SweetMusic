@@ -4,7 +4,9 @@
     <string name="search_hint">Pesquisar músicas ou artistas</string>
 
     <string name="sobre_description_logo">Logo com a palavra Sweet Music em verde escuro entre headfones em verde claro</string>
-
+    <string name="sobre_descricao_app">Suas músicas favoritas, para todos os gostos</string>
+    <string name="sobre_relatar_bug">Relatar um problema</string>
+    <string name="sobre_versao">Versão do aplicativo 1.0.0</string>
     <string name="title_activity_home">SweetMusic</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -53,7 +55,7 @@
     <string name="menu_inicio">Início</string>
     <string name="menu_favoritos">Favoritos</string>
     <string name="menu_perfil">Perfil</string>
-    <string name="menu_sobre"></string>
+    <string name="menu_sobre">Sobre</string>
     <string name="menu_sair">Sair</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -154,13 +156,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="detalhe_rhcp">Red Hot Chili Peppers é uma banda de rock dos Estados Unidos formada em Los Angeles, Califórnia, em 13 de fevereiro de 1983, considerada uma das maiores bandas da história do rock.</string>
-    <string name="title_activity_main">MainActivity</string>
-
-    <string name="menu_home">Home</string>
-    <string name="menu_gallery">Gallery</string>
-    <string name="menu_slideshow">Slideshow</string>
-    <string name="menu_tools">Tools</string>
-    <string name="menu_share">Share</string>
-    <string name="menu_send">Send</string>
 
 </resources>

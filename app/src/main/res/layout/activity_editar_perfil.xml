@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.perfil.EditarPerfil">
+    tools:context=".views.perfil.EditarPerfil">
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/textInputLayout_editar_nome"
@@ -65,11 +65,12 @@
         android:layout_marginTop="80dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
+        android:background="@color/colorPrimary"
         android:paddingLeft="32dp"
         android:paddingRight="32dp"
         android:shadowRadius="@android:integer/config_longAnimTime"
         android:text="@string/btnsalvar"
-        android:textColor="@color/cardview_dark_background"
+        android:textColor="@color/textPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout_editar_email" />
