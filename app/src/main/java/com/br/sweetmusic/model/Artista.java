@@ -1,18 +1,19 @@
-
 package com.br.sweetmusic.model;
 
 import java.util.List;
 
 public class Artista {
+    private List<Musica> listaMusica;
 
-    private List<Album> album;
-
-    public List<Album> getAlbum() {
-        return album;
+    public Artista(List<Musica> listaMusica) {
+        this.listaMusica = listaMusica;
     }
 
-    public void setAlbum(List<Album> album) {
-        this.album = album;
+    public List<Musica> getListaMusica() {
+        return listaMusica;
     }
 
+    public void setListaMusica(List<Musica> listaMusica) {
+        this.listaMusica = listaMusica;
+    }
 }
