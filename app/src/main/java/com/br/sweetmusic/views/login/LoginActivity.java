@@ -2,6 +2,7 @@ package com.br.sweetmusic.views.login;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.br.sweetmusic.views.HomeActivity;
 import com.br.sweetmusic.R;
+import com.google.android.gms.common.SignInButton;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.regex.Matcher;
@@ -18,19 +20,20 @@ import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final int RC_SIGN_IN = 1001;
     private TextInputLayout inputEmail;
     private TextInputLayout inputSenha;
     private TextView textEsqueciSenha;
     private Button btnLogin;
-    private ImageView btnFacebook;
+    private SignInButton btnFacebook;
     private ImageView btnGoogle;
     private TextView txtRegistrese;
 
-    private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
-    private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
-    private Matcher matcher;
+    //private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
+    //private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
+    //private Matcher matcher;
 
-    private String email, senha;
+    //private String email, senha;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,14 +78,15 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
+    @SuppressLint("WrongViewCast")
     public void initViews() {
         inputEmail = findViewById(R.id.textInputLayout_login_email);
         inputSenha = findViewById(R.id.textInputLayout_login_senha);
         textEsqueciSenha = findViewById(R.id.esqueci_a_senha);
         btnLogin = findViewById(R.id.button_login);
-        btnFacebook = findViewById(R.id.button_login_facebook);
-        btnGoogle = findViewById(R.id.button_login_google);
-        txtRegistrese = findViewById(R.id.text_login_registrar);
+        btnFacebook = findViewById(R.id.btn_login_facebook);
+        btnGoogle = findViewById(R.id.btn_login_google);
+        txtRegistrese = findViewById(R.id.button_registrar);
     }
 
     public void validarCampos() {
