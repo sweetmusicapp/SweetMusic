@@ -64,7 +64,7 @@
             android:inputType="textEmailAddress"
             android:lines="1"
             android:maxLines="1"
-            android:nextFocusDown="@id/textInputLayout_login_senha" />
+             />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
