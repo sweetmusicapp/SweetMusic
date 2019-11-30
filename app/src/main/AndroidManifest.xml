@@ -17,10 +17,6 @@
             android:resizeableActivity="true"
             android:supportsPictureInPicture="true"
             android:theme="@style/Theme.MaterialComponents.BottomSheetDialog" />
-        <activity
-            android:name=".views.DetalheActivity"
-            android:label="@string/title_activity_detalhe"
-            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".views.ResultadoPesquisaActivity">
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -29,7 +25,6 @@
         <activity android:name=".views.perfil.AlterarSenha" />
         <activity android:name=".views.perfil.EditarPerfil" />
         <activity android:name=".views.perfil.PerfilActivity" />
-        <activity android:name=".views.DetalheMusicaActivity" />
         <activity
             android:name=".views.HomeActivity"
             android:label="@string/title_activity_home"
