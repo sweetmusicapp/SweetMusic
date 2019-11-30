@@ -43,7 +43,7 @@ public class HomeActivity extends AppCompatActivity implements Comunicador, Sear
         setSupportActionBar(toolbar);
 
         //Começa com a guia de Inicio
-        replaceFragment(new InicioFragment());
+        replaceFragment(new MainFragment());
 
         drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
@@ -69,10 +69,7 @@ public class HomeActivity extends AppCompatActivity implements Comunicador, Sear
                 int id = menuItem.getItemId();
 
                 if (id == R.id.nav_inicio) {
-                    replaceFragment(new InicioFragment());
-                    drawer.closeDrawer(GravityCompat.START);
-                } else if (id == R.id.nav_favoritos) {
-                    replaceFragment(new FavoritosFragment());
+                    replaceFragment(new MainFragment());
                     drawer.closeDrawer(GravityCompat.START);
                 } else if (id == R.id.nav_perfil) {
                     startActivity(new Intent(HomeActivity.this, PerfilActivity.class));
