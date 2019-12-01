@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -18,9 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.br.sweetmusic.R;
 import com.br.sweetmusic.adapter.RecyclerViewAdapater;
 import com.br.sweetmusic.pojos.Album;
-import com.br.sweetmusic.pojos.Artistas;
-import com.br.sweetmusic.pojos.Track;
-import com.br.sweetmusic.viewmodel.AlbumViewModel;
+import com.br.sweetmusic.viewmodel.MainViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -29,14 +26,14 @@ import java.util.List;
 
 public class MainFragment extends Fragment {
 
-    private AlbumViewModel viewModel;
+    private MainViewModel viewModel;
     private RecyclerViewAdapater adapater;
-    private List<Track> albumList = new ArrayList<>();
+    private List<Album> albumList = new ArrayList<>();
     private RecyclerView recyclerView;
     private ImageView imgProfile;
     private TextView nameProfile;
     private Button btnLogout;
-    private String artista = "track";
+    private String artista = "metallica";
 
     public MainFragment() {
         // Required empty public constructor
@@ -56,11 +53,11 @@ public class MainFragment extends Fragment {
 
         viewModel.getAlbuns(artista);
 
-        viewModel.getAlbumLiveData().observe(this , tracks -> {
-            if(tracks != null && !tracks.isEmpty()){
-                adapater.setUpdate(tracks);
-            }else{
-                Snackbar.make(imgProfile, "Album não encontrado", Snackbar.LENGTH_LONG);
+        viewModel.getAlbunsLiveData().observe(this, albums -> {
+            if (albums != null && !albums.isEmpty()) {
+                adapater.setUpdate(albums);
+            } else {
+                Snackbar.make(imgProfile, "Artista ou albuns não encontrados", Snackbar.LENGTH_LONG);
                 adapater.setUpdate(this.albumList);
             }
         });
@@ -72,7 +69,7 @@ public class MainFragment extends Fragment {
     private void initViews(View view) {
         recyclerView = view.findViewById(R.id.recyclerViewMusicas);
         adapater = new RecyclerViewAdapater(albumList);
-        viewModel = ViewModelProviders.of(this).get(AlbumViewModel.class);
+        viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         recyclerView.setAdapter(adapater);
         imgProfile = view.findViewById(R.id.imageView_gridItem_artista);
         nameProfile = view.findViewById(R.id.textView_gridItem_artista);

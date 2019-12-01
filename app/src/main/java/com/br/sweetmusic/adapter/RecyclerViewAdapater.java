@@ -18,9 +18,9 @@ import java.util.List;
 
 public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapater.ViewHolder> {
 
-    private List<Track> albums;
+    private List<Album> albums;
 
-    public RecyclerViewAdapater(List<Track> albums) {
+    public RecyclerViewAdapater(List<Album> albums) {
         this.albums = albums;
     }
 
@@ -33,7 +33,7 @@ public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapa
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Track album = this.albums.get(position);
+        Album album = this.albums.get(position);
         holder.bind(album);
     }
 
@@ -42,7 +42,7 @@ public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapa
         return albums.size();
     }
 
-    public void setUpdate(List<Track> albums) {
+    public void setUpdate(List<Album> albums) {
         if (this.albums.isEmpty()) {
             this.albums = albums;
         } else {
@@ -68,10 +68,10 @@ public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapa
             titulo = itemView.findViewById(R.id.textView_gridItem_artista);
         }
 
-        public void bind(Track album) {
+        public void bind(Album album) {
             titulo.setText(album.getStrAlbum());
 
-            Picasso.get().load(album.getStrTrackThumb()).into(img);
+            Picasso.get().load(album.getStrAlbumThumb()).into(img);
 
         }
     }

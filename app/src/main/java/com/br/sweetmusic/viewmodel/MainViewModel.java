@@ -4,10 +4,9 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.br.sweetmusic.pojos.Track;
+import com.br.sweetmusic.pojos.Album;
 
 import java.util.List;
 
@@ -19,32 +18,28 @@ import io.reactivex.schedulers.Schedulers;
 import static com.br.sweetmusic.network.RetrofitService.getApiService;
 
 
-public class AlbumViewModel extends AndroidViewModel {
-    private MutableLiveData<List<Track>> albunsLiveData = new MutableLiveData<>();
+public class MainViewModel extends AndroidViewModel {
+    private MutableLiveData<List<Album>> albunsLiveData = new MutableLiveData<>();
     private MutableLiveData<String> albunsLiveDataError = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();
 
-    public AlbumViewModel(@NonNull Application application) {
+    public MainViewModel(@NonNull Application application) {
         super(application);
     }
 
-    public LiveData<List<Track>> getAlbumLiveData() {
+    public MutableLiveData<List<Album>> getAlbunsLiveData() {
         return albunsLiveData;
     }
 
-    public LiveData<String> getErrorAlbum() {
-        return this.albunsLiveDataError;
-    }
-
-    public LiveData<Boolean> getLoading() {
-        return this.isLoading;
+    public MutableLiveData<String> getAlbunsLiveDataError() {
+        return albunsLiveDataError;
     }
 
     public void getAlbuns(String artista) {
 
         disposable.add(
-                getApiService().getTracks(artista)
+                getApiService().getAlbunsByArtist(artista)
                         .subscribeOn(Schedulers.newThread())
                         .observeOn(AndroidSchedulers.mainThread())
                         .doOnSubscribe((Disposable disposable) -> {
@@ -53,9 +48,9 @@ public class AlbumViewModel extends AndroidViewModel {
                         .doOnTerminate(() -> {
                             isLoading.setValue(false);
                         })
-                        .subscribe(tracks ->
+                        .subscribe(albuns ->
                                 {
-                                    albunsLiveData.setValue(tracks.getTrack());
+                                    albunsLiveData.setValue(albuns.getAlbum());
                                 }
                                 , throwable -> {
                                     albunsLiveDataError.setValue(throwable.getMessage());

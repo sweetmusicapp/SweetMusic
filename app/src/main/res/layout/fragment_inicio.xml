@@ -18,11 +18,10 @@
         android:id="@+id/textViewTitulo"
         android:layout_width="337dp"
         android:layout_height="101dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:text="Top Músicas"
-        android:textSize="48sp"
+        android:gravity="center"
+        android:text="Pesquise um artista para iniciar"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
