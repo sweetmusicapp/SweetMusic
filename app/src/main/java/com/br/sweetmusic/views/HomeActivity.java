@@ -71,6 +71,9 @@ public class HomeActivity extends AppCompatActivity implements Comunicador, Sear
                 if (id == R.id.nav_inicio) {
                     replaceFragment(new MainFragment());
                     drawer.closeDrawer(GravityCompat.START);
+                }else if (id == R.id.nav_favoritos) {
+                    replaceFragment(new FavoritosFragment());
+                    drawer.closeDrawer(GravityCompat.START);
                 } else if (id == R.id.nav_perfil) {
                     startActivity(new Intent(HomeActivity.this, PerfilActivity.class));
                 } else if (id == R.id.nav_sobre) {
