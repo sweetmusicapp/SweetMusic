@@ -3,8 +3,10 @@ package com.br.sweetmusic.views.login;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,8 +22,14 @@ import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
@@ -40,9 +48,12 @@ public class LoginActivity extends AppCompatActivity {
     private TextView textEsqueciSenha;
     private Button btnLogin;
     private ImageView btnFacebook;
-    private ImageView btnGoogle;
     private TextView txtRegistrese;
     private CallbackManager callbackManager;
+
+    private SignInButton googleSignInButton;
+    private GoogleSignInClient googleSignInClient;
+    public static final String GOOGLE_ACCOUNT = "google_account";
 
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
     private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
@@ -57,19 +68,23 @@ public class LoginActivity extends AppCompatActivity {
 
         initViews();
 
-        //CallBack do Facebook
         callbackManager = CallbackManager.Factory.create();
-
         btnLogin.setOnClickListener(v -> loginEmail());
-
         btnFacebook.setOnClickListener(v -> loginFacebook());
 
         //TODO: Mudar lógica para integrar com o Google
-        btnGoogle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validarCampos();
-            }
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        googleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        googleSignInButton.setOnClickListener(v -> {
+
+            Intent signInIntent = googleSignInClient.getSignInIntent();
+
+            startActivityForResult(signInIntent, 101);
+
         });
 
         textEsqueciSenha.setOnClickListener(new View.OnClickListener() {
@@ -118,21 +133,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void irParaHome(String uiid) {
-
-        AppUtil.salvarIdUsuario(getApplication().getApplicationContext(), uiid);
-        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-        finish();
-
-    }
-
     public void initViews() {
         inputEmail = findViewById(R.id.textInputLayout_login_email);
         inputSenha = findViewById(R.id.textInputLayout_login_senha);
         textEsqueciSenha = findViewById(R.id.esqueci_a_senha);
         btnLogin = findViewById(R.id.button_login);
         btnFacebook = findViewById(R.id.button_login_facebook);
-        btnGoogle = findViewById(R.id.button_login_google);
+        googleSignInButton = findViewById(R.id.button_login_google);
         txtRegistrese = findViewById(R.id.text_login_registrar);
     }
 
@@ -146,7 +153,6 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        // tentamos fazer o login com o email e senha no firebase
         FirebaseAuth.getInstance()
                 .signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(task -> {
@@ -159,39 +165,6 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    public void validarCampos() {
-        email = inputEmail.getEditText().getText().toString().trim();
-        senha = inputSenha.getEditText().getText().toString().trim();
-
-        if (validarEmail(email) && !validateSenha(senha)) {
-            inputEmail.setError(getString(R.string.login_email_vazio));
-            inputSenha.setError(getString(R.string.senha_numero_caracteres));
-        } else if (!validateSenha(senha)) {
-            inputSenha.setError(getString(R.string.senha_numero_caracteres));
-            inputEmail.setErrorEnabled(false);
-        } else if (validarEmail(email)) {
-            inputEmail.setError(getString(R.string.cadastro_email_invalido));
-            inputSenha.setErrorEnabled(false);
-        } else {
-            inputEmail.setErrorEnabled(false);
-            inputSenha.setErrorEnabled(false);
-
-            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-        }
-    }
-
-    public boolean validarEmail(String email) {
-        matcher = pattern.matcher(email);
-        return !matcher.matches();
-    }
-
-    public boolean validateSenha(String senha) {
-        return senha.length() > 5;
-    }
-
-    public void esqueciSenha() {
-        startActivity(new Intent(LoginActivity.this, ForgotActivity.class));
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -202,15 +175,66 @@ public class LoginActivity extends AppCompatActivity {
 
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            if (result.isSuccess()){
+            if (result.isSuccess()) {
                 GoogleSignInAccount account = result.getSignInAccount();
                 autenticacaoGoogle(account);
+            }
+        }
+
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case 101:
+                    try {
+                        Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+                        GoogleSignInAccount conta = task.getResult(ApiException.class);
+                        autenticacaoGoogle(conta);
+
+                    } catch (ApiException e) {
+                        Log.i("LOG", "Error: " + e.getMessage());
+                        Toast.makeText(getApplicationContext(), "Erro", Toast.LENGTH_LONG).show();
+                    }
+                    break;
             }
         }
 
     }
 
     private void autenticacaoGoogle(GoogleSignInAccount account) {
-        // TODO :: autenticar com o Google e ir para home
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra(GOOGLE_ACCOUNT, account);
+        startActivity(intent);
+        finish();
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        GoogleSignInAccount alreadyLoggedAccount = GoogleSignIn.getLastSignedInAccount(this);
+
+        if (alreadyLoggedAccount != null) {
+
+            Toast.makeText(this, "Você está logado.", Toast.LENGTH_LONG).show();
+            autenticacaoGoogle(alreadyLoggedAccount);
+
+        } else {
+
+            Toast.makeText(this, "Entre com uma conta valida.", Toast.LENGTH_LONG).show();
+
+        }
+
+    }
+
+    private void irParaHome(String uiid) {
+
+        AppUtil.salvarIdUsuario(getApplication().getApplicationContext(), uiid);
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        finish();
+
+    }
+
+    public void esqueciSenha() {
+        startActivity(new Intent(LoginActivity.this, ForgotActivity.class));
+    }
+
 }
