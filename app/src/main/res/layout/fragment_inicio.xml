@@ -16,13 +16,26 @@
 
     <TextView
         android:id="@+id/textViewTitulo"
-        android:layout_width="337dp"
+        android:layout_width="wrap_content"
         android:layout_height="101dp"
         android:gravity="center"
-        android:text="Pesquise um artista para iniciar"
+        android:text="@string/pesquisa_artista"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/buttonFavorito"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="25dp"
+        android:src="@drawable/ic_favorite"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewTitulo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textViewTitulo"
+        app:layout_constraintTop_toTopOf="@+id/textViewTitulo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

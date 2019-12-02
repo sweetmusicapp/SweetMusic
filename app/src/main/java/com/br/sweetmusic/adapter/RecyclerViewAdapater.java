@@ -10,8 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
+import com.br.sweetmusic.interfaces.AlbumOnClick;
 import com.br.sweetmusic.pojos.Album;
-import com.br.sweetmusic.pojos.Track;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -19,9 +19,11 @@ import java.util.List;
 public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapater.ViewHolder> {
 
     private List<Album> albums;
+    private AlbumOnClick listener;
 
-    public RecyclerViewAdapater(List<Album> albums) {
+    public RecyclerViewAdapater(List<Album> albums, AlbumOnClick listener) {
         this.albums = albums;
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,6 +37,10 @@ public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapa
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Album album = this.albums.get(position);
         holder.bind(album);
+
+        holder.itemView.setOnClickListener(v -> {
+            listener.albumOnClick(album);
+        });
     }
 
     @Override
@@ -70,7 +76,6 @@ public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapa
 
         public void bind(Album album) {
             titulo.setText(album.getStrAlbum());
-
             Picasso.get().load(album.getStrAlbumThumb()).into(img);
 
         }

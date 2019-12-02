@@ -6,8 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -16,7 +18,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
 import com.br.sweetmusic.adapter.RecyclerViewAdapater;
+import com.br.sweetmusic.data.SweetDao;
+import com.br.sweetmusic.interfaces.AlbumOnClick;
 import com.br.sweetmusic.pojos.Album;
+import com.br.sweetmusic.pojos.Artist;
 import com.br.sweetmusic.viewmodel.MainViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -32,8 +37,10 @@ public class MainFragment extends Fragment {
     private RecyclerView recyclerView;
     private ImageView imgProfile;
     private TextView nameProfile;
-    private Button btnLogout;
     private String artista = "metallica";
+    private AlbumOnClick listener;
+    private ImageButton buttonFavorito;
+    private SweetDao dao;
 
     public MainFragment() {
         // Required empty public constructor
@@ -62,17 +69,48 @@ public class MainFragment extends Fragment {
             }
         });
 
+        buttonFavorito.setOnClickListener(v -> {
+            if (albumList == null || albumList.isEmpty()) {
+                Snackbar.make(buttonFavorito,
+                        "Por favor, selecione primeiro um artista", Snackbar.LENGTH_SHORT);
+            } else {
+                if (dao.getArtistByName(artista) != null) {
+                    dao.getArtistByName(artista).setFavorito(0);
+                    Toast.makeText(getContext(), "Você retirou "
+                            + dao.getArtistByName(artista).getStrArtist()
+                            + " dos seus favoritos!", Toast.LENGTH_SHORT).show();
+                } else {
+                    String artistId = albumList.get(0).getIdArtist();
+
+                    viewModel.getArtists(artistId);
+
+                    viewModel.getArtistLiveData().observe(this, artist -> {
+                        if (artist != null) {
+                            dao.insertArtista(artist);
+                            dao.getArtistByName(artista).setFavorito(1);
+                            Toast.makeText(getContext(), "Você adicionou "
+                                    + dao.getArtistByName(artista).getStrArtist()
+                                    + " aos seus favoritos!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Snackbar.make(buttonFavorito,
+                                    "Houve um erro ao adicionar o favorito", Snackbar.LENGTH_SHORT);
+                        }
+                    });
+                }
+            }
+        });
+
         return view;
     }
 
 
     private void initViews(View view) {
         recyclerView = view.findViewById(R.id.recyclerViewMusicas);
-        adapater = new RecyclerViewAdapater(albumList);
+        adapater = new RecyclerViewAdapater(albumList, listener);
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         recyclerView.setAdapter(adapater);
         imgProfile = view.findViewById(R.id.imageView_gridItem_artista);
         nameProfile = view.findViewById(R.id.textView_gridItem_artista);
+        buttonFavorito = view.findViewById(R.id.buttonFavorito);
     }
-
 }
