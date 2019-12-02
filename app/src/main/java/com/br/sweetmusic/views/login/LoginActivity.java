@@ -8,16 +8,28 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.br.sweetmusic.utils.AppUtil;
 import com.br.sweetmusic.views.HomeActivity;
 import com.br.sweetmusic.R;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FacebookAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private static final int RC_SIGN_IN = 1001;
     private TextInputLayout inputEmail;
     private TextInputLayout inputSenha;
     private TextView textEsqueciSenha;
@@ -25,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private ImageView btnFacebook;
     private ImageView btnGoogle;
     private TextView txtRegistrese;
+    private CallbackManager callbackManager;
 
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
     private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
@@ -39,6 +52,9 @@ public class LoginActivity extends AppCompatActivity {
 
         initViews();
 
+        //CallBack do Facebook
+        callbackManager = CallbackManager.Factory.create();
+
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,13 +62,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Mudar lógica para integrar com o Facebook e Google
-        btnFacebook.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validarCampos();
-            }
-        });
+        //TODO: Mudar lógica para integrar com o Facebook
+        btnFacebook.setOnClickListener(v -> loginFacebook());
+
+
+        //TODO: Mudar lógica para integrar com o Google
         btnGoogle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,6 +87,43 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
+    }
+
+    private void loginFacebook() {
+
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+                AuthCredential credential = FacebookAuthProvider
+                        .getCredential(loginResult.getAccessToken().getToken());
+
+                FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener(task -> {
+                            irParaHome(loginResult.getAccessToken().getUserId());
+                        });
+            }
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(LoginActivity.this, "Cancelado", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
+
+    private void irParaHome(String uiid) {
+
+        AppUtil.salvarIdUsuario(getApplication().getApplicationContext(), uiid);
+        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
+        finish();
+
     }
 
     public void initViews() {
