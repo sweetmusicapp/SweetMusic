@@ -73,7 +73,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void registrarUsuario(String email, String password) {
-        progressBar.setVisibility(View.VISIBLE);
+//        progressBar.setVisibility(View.VISIBLE);
 
         // TODO: cadastro co firebase via email e senha
         //Comando para salvar novo usuário e senha no firebase

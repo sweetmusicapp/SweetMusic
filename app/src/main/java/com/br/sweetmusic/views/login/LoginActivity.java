@@ -18,6 +18,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
@@ -62,7 +63,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //btnFacebook.setOnClickListener(v -> loginFacebook());
+        btnFacebook.setOnClickListener(v -> loginFacebook());
 
         //TODO: Mudar lógica para integrar com o Google
         btnGoogle.setOnClickListener(new View.OnClickListener() {
@@ -87,34 +88,34 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-//    private void loginFacebook() {
-//
-//        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
-//        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-//            @Override
-//            public void onSuccess(LoginResult loginResult) {
-//
-//                AuthCredential credential = FacebookAuthProvider
-//                        .getCredential(loginResult.getAccessToken().getToken());
-//
-//                FirebaseAuth.getInstance().signInWithCredential(credential)
-//                        .addOnCompleteListener(task -> {
-//                            irParaHome(loginResult.getAccessToken().getUserId());
-//                        });
-//            }
-//
-//            @Override
-//            public void onCancel() {
-//                Toast.makeText(LoginActivity.this, "Cancelado", Toast.LENGTH_LONG).show();
-//            }
-//
-//            @Override
-//            public void onError(FacebookException error) {
-//                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
-//            }
-//        });
-//
-//    }
+    private void loginFacebook() {
+
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+
+                AuthCredential credential = FacebookAuthProvider
+                        .getCredential(loginResult.getAccessToken().getToken());
+
+                FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener(task -> {
+                            irParaHome(loginResult.getAccessToken().getUserId());
+                        });
+            }
+
+            @Override
+            public void onCancel() {
+                Toast.makeText(LoginActivity.this, "Cancelado", Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+    }
 
     private void irParaHome(String uiid) {
 
@@ -132,6 +133,29 @@ public class LoginActivity extends AppCompatActivity {
         btnFacebook = findViewById(R.id.button_login_facebook);
         btnGoogle = findViewById(R.id.button_login_google);
         txtRegistrese = findViewById(R.id.text_login_registrar);
+    }
+
+    public void loginEmail() {
+
+        String email = inputEmail.getEditText().getText().toString();
+        String password = inputSenha.getEditText().getText().toString();
+
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Campos não podem ser vazios :(", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // tentamos fazer o login com o email e senha no firebase
+        FirebaseAuth.getInstance()
+                .signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        irParaHome(FirebaseAuth.getInstance().getCurrentUser().getUid());
+                    } else {
+                        Snackbar.make(btnLogin, task.getException().getMessage(), Snackbar.LENGTH_LONG).show();
+                    }
+                });
+
     }
 
     public void validarCampos() {
