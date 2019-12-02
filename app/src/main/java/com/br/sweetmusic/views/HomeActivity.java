@@ -85,6 +85,8 @@ public class HomeActivity extends AppCompatActivity implements Comunicador, Sear
                 return true;
             }
         });
+
+
     }
 
     @Override
@@ -124,6 +126,7 @@ public class HomeActivity extends AppCompatActivity implements Comunicador, Sear
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 
     @Override
     public boolean onQueryTextSubmit(String s) {

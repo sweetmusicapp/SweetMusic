@@ -156,5 +156,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="detalhe_rhcp">Red Hot Chili Peppers é uma banda de rock dos Estados Unidos formada em Los Angeles, Califórnia, em 13 de fevereiro de 1983, considerada uma das maiores bandas da história do rock.</string>
+    <string name="pesquisa_artista">Pesquise um artista \n para iniciar</string>
 
 </resources>
