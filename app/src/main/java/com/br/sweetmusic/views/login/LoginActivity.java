@@ -56,12 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         //CallBack do Facebook
         callbackManager = CallbackManager.Factory.create();
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                validarCampos();
-            }
-        });
+        btnLogin.setOnClickListener(v -> loginEmail());
 
         btnFacebook.setOnClickListener(v -> loginFacebook());
 

@@ -84,7 +84,7 @@
         android:paddingBottom="16dp"
         android:background="@color/colorPrimary"
         android:shadowRadius="@android:integer/config_longAnimTime"
-        android:text="@string/entrar"
+        android:text="@string/login"
         android:textColor="@color/textPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
