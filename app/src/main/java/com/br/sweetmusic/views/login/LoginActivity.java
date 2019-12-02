@@ -1,5 +1,6 @@
 package com.br.sweetmusic.views.login;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -18,6 +19,9 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.google.android.gms.auth.api.Auth;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
@@ -81,6 +85,8 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
+
+        AppUtil.printKeyHash(this);
     }
 
     private void loginFacebook() {
@@ -185,5 +191,26 @@ public class LoginActivity extends AppCompatActivity {
 
     public void esqueciSenha() {
         startActivity(new Intent(LoginActivity.this, ForgotActivity.class));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            if (result.isSuccess()){
+                GoogleSignInAccount account = result.getSignInAccount();
+                autenticacaoGoogle(account);
+            }
+        }
+
+    }
+
+    private void autenticacaoGoogle(GoogleSignInAccount account) {
+        // TODO :: autenticar com o Google e ir para home
     }
 }

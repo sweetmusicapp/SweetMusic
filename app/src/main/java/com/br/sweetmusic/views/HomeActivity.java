@@ -23,6 +23,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.ui.AppBarConfiguration;
 
+import com.facebook.login.LoginManager;
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -79,7 +81,7 @@ public class HomeActivity extends AppCompatActivity implements Comunicador, Sear
                 } else if (id == R.id.nav_sobre) {
                     startActivity(new Intent(HomeActivity.this, SobreActivity.class));
                 } else if (id == R.id.nav_sair) {
-                    startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                    logout();
                 }
 
                 return true;
@@ -137,5 +139,14 @@ public class HomeActivity extends AppCompatActivity implements Comunicador, Sear
 
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
+    }
+
+    private void logout() {
+        AuthUI.getInstance().signOut(this)
+                .addOnCompleteListener(task -> {
+                    startActivity(new Intent(this, LoginActivity.class));
+                    finish();
+                });
+        LoginManager.getInstance().logOut();
     }
 }
