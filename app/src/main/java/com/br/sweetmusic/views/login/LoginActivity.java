@@ -62,9 +62,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: Mudar lógica para integrar com o Facebook
-        btnFacebook.setOnClickListener(v -> loginFacebook());
-
+        //btnFacebook.setOnClickListener(v -> loginFacebook());
 
         //TODO: Mudar lógica para integrar com o Google
         btnGoogle.setOnClickListener(new View.OnClickListener() {
@@ -89,34 +87,34 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    private void loginFacebook() {
-
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
-        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-
-                AuthCredential credential = FacebookAuthProvider
-                        .getCredential(loginResult.getAccessToken().getToken());
-
-                FirebaseAuth.getInstance().signInWithCredential(credential)
-                        .addOnCompleteListener(task -> {
-                            irParaHome(loginResult.getAccessToken().getUserId());
-                        });
-            }
-
-            @Override
-            public void onCancel() {
-                Toast.makeText(LoginActivity.this, "Cancelado", Toast.LENGTH_LONG).show();
-            }
-
-            @Override
-            public void onError(FacebookException error) {
-                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
-
-    }
+//    private void loginFacebook() {
+//
+//        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+//        LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//
+//                AuthCredential credential = FacebookAuthProvider
+//                        .getCredential(loginResult.getAccessToken().getToken());
+//
+//                FirebaseAuth.getInstance().signInWithCredential(credential)
+//                        .addOnCompleteListener(task -> {
+//                            irParaHome(loginResult.getAccessToken().getUserId());
+//                        });
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//                Toast.makeText(LoginActivity.this, "Cancelado", Toast.LENGTH_LONG).show();
+//            }
+//
+//            @Override
+//            public void onError(FacebookException error) {
+//                Toast.makeText(LoginActivity.this, error.getMessage(), Toast.LENGTH_LONG).show();
+//            }
+//        });
+//
+//    }
 
     private void irParaHome(String uiid) {
 
