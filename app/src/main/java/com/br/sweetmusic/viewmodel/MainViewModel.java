@@ -7,6 +7,7 @@ import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
 import com.br.sweetmusic.pojos.Album;
+import com.br.sweetmusic.pojos.Artist;
 
 import java.util.List;
 
@@ -24,6 +25,9 @@ public class MainViewModel extends AndroidViewModel {
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();
 
+    private MutableLiveData<Artist> artistLiveData = new MutableLiveData<>();
+    private MutableLiveData<String> artistLiveDataError = new MutableLiveData<>();
+
     public MainViewModel(@NonNull Application application) {
         super(application);
     }
@@ -34,6 +38,10 @@ public class MainViewModel extends AndroidViewModel {
 
     public MutableLiveData<String> getAlbunsLiveDataError() {
         return albunsLiveDataError;
+    }
+
+    public MutableLiveData<Artist> getArtistLiveData() {
+        return artistLiveData;
     }
 
     public void getAlbuns(String artista) {
@@ -48,8 +56,7 @@ public class MainViewModel extends AndroidViewModel {
                         .doOnTerminate(() -> {
                             isLoading.setValue(false);
                         })
-                        .subscribe(albuns ->
-                                {
+                        .subscribe(albuns -> {
                                     albunsLiveData.setValue(albuns.getAlbum());
                                 }
                                 , throwable -> {
@@ -59,6 +66,20 @@ public class MainViewModel extends AndroidViewModel {
         );
 
 
+    }
+
+    //Método que recebe da API as informações do artista, com base no artistId
+    public void getArtists(String artistId) {
+        disposable.add(
+                getApiService().getArtistById(artistId)
+                        .subscribeOn(Schedulers.newThread())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(artistas -> {
+                            artistLiveData.setValue(artistas.getArtists().get(0));
+                        }, throwable -> {
+                            artistLiveDataError.setValue(throwable.getMessage());
+                        })
+        );
     }
 
     @Override

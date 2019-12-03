@@ -10,6 +10,8 @@ public class Artist {
 
     @PrimaryKey(autoGenerate = true)
     private int internalId;
+    @ColumnInfo(name = "favorito")
+    private int favorito;
     @ColumnInfo(name = "artist_id")
     private String idArtist;
     @ColumnInfo(name = "artist_nascimento")
@@ -71,6 +73,35 @@ public class Artist {
     private String strStyle;
     private String strTwitter;
     private String strWebsite;
+
+    public Artist(int internalId, int favorito, String idArtist, String intBornYear,
+                  String intDiedYear, String intFormedYear, String intMembers, String strArtist,
+                  String strBiographyEN, String strBiographyPT, String strCountry,
+                  String strCountryCode, String strDisbanded, String strGender, String strGenre) {
+        this.internalId = internalId;
+        this.favorito = favorito;
+        this.idArtist = idArtist;
+        this.intBornYear = intBornYear;
+        this.intDiedYear = intDiedYear;
+        this.intFormedYear = intFormedYear;
+        this.intMembers = intMembers;
+        this.strArtist = strArtist;
+        this.strBiographyEN = strBiographyEN;
+        this.strBiographyPT = strBiographyPT;
+        this.strCountry = strCountry;
+        this.strCountryCode = strCountryCode;
+        this.strDisbanded = strDisbanded;
+        this.strGender = strGender;
+        this.strGenre = strGenre;
+    }
+
+    public int getFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(int favorito) {
+        this.favorito = favorito;
+    }
 
     public int getInternalId() {
         return internalId;

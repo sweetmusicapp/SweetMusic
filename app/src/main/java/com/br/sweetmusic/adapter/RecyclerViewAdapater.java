@@ -10,18 +10,20 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
+import com.br.sweetmusic.interfaces.AlbumOnClick;
 import com.br.sweetmusic.pojos.Album;
-import com.br.sweetmusic.pojos.Track;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
 public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapater.ViewHolder> {
 
-    private List<Album> albums;
+    private List<Album> albumList;
+    private AlbumOnClick listener;
 
-    public RecyclerViewAdapater(List<Album> albums) {
-        this.albums = albums;
+    public RecyclerViewAdapater(List<Album> albums, AlbumOnClick listener) {
+        this.albumList = albums;
+        this.listener = listener;
     }
 
     @NonNull
@@ -33,26 +35,30 @@ public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapa
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Album album = this.albums.get(position);
+        final Album album = albumList.get(position);
         holder.bind(album);
+
+        holder.itemView.setOnClickListener(v -> {
+            listener.albumOnClick(album);
+        });
     }
 
     @Override
     public int getItemCount() {
-        return albums.size();
+        return albumList.size();
     }
 
     public void setUpdate(List<Album> albums) {
-        if (this.albums.isEmpty()) {
-            this.albums = albums;
+        if (this.albumList.isEmpty()) {
+            this.albumList = albums;
         } else {
-            this.albums.addAll(albums);
+            this.albumList.addAll(albums);
         }
         notifyDataSetChanged();
     }
 
     public void clear() {
-        this.albums.clear();
+        this.albumList.clear();
         notifyDataSetChanged();
     }
 
@@ -70,7 +76,6 @@ public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapa
 
         public void bind(Album album) {
             titulo.setText(album.getStrAlbum());
-
             Picasso.get().load(album.getStrAlbumThumb()).into(img);
 
         }
