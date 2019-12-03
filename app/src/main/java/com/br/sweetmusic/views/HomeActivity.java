@@ -30,7 +30,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-public class HomeActivity extends AppCompatActivity implements Comunicador, SearchView.OnQueryTextListener {
+public class HomeActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     private DrawerLayout drawer;
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -84,10 +84,6 @@ public class HomeActivity extends AppCompatActivity implements Comunicador, Sear
         });
     }
 
-    @Override
-    public void recebeMensagem() {
-
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
