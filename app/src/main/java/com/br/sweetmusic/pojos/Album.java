@@ -209,6 +209,88 @@ public class Album implements Parcelable {
         }
     };
 
+    public Album() {
+    }
+
+    //    public Album(int internalId, String idAlbum, String idArtist, String idLabel, String intLoved,
+//                 String intSales, String intScore, String intScoreVotes, String intYearReleased,
+//                 String strAlbum, String strAlbum3DCase, String strAlbum3DFace, String strAlbum3DFlat,
+//                 String strAlbum3DThumb, String strAlbumCDart, String strAlbumSpine,
+//                 String strAlbumStripped, String strAlbumThumb, String strAlbumThumbBack,
+//                 String strAlbumThumbHQ, String strAllMusicID, String strAmazonID, String strArtist,
+//                 String strArtistStripped, String strBBCReviewID, String strDescriptionCN,
+//                 String strDescriptionDE, String strDescriptionEN, String strDescriptionES,
+//                 String strDescriptionFR, String strDescriptionHU, String strDescriptionIL,
+//                 String strDescriptionIT, String strDescriptionJP, String strDescriptionNL,
+//                 String strDescriptionNO, String strDescriptionPL, String strDescriptionPT,
+//                 String strDescriptionRU, String strDescriptionSE, String strDiscogsID, String strGeniusID,
+//                 String strGenre, String strItunesID, String strLabel, String strLocation,
+//                 String strLocked, String strLyricWikiID, String strMood, String strMusicBrainzArtistID,
+//                 String strMusicBrainzID, String strMusicMozID, String strRateYourMusicID,
+//                 String strReleaseFormat, String strReview, String strSpeed, String strStyle,
+//                 String strTheme, String strWikidataID, String strWikipediaID) {
+//        this.internalId = internalId;
+//        this.idAlbum = idAlbum;
+//        this.idArtist = idArtist;
+//        this.idLabel = idLabel;
+//        this.intLoved = intLoved;
+//        this.intSales = intSales;
+//        this.intScore = intScore;
+//        this.intScoreVotes = intScoreVotes;
+//        this.intYearReleased = intYearReleased;
+//        this.strAlbum = strAlbum;
+//        this.strAlbum3DCase = strAlbum3DCase;
+//        this.strAlbum3DFace = strAlbum3DFace;
+//        this.strAlbum3DFlat = strAlbum3DFlat;
+//        this.strAlbum3DThumb = strAlbum3DThumb;
+//        this.strAlbumCDart = strAlbumCDart;
+//        this.strAlbumSpine = strAlbumSpine;
+//        this.strAlbumStripped = strAlbumStripped;
+//        this.strAlbumThumb = strAlbumThumb;
+//        this.strAlbumThumbBack = strAlbumThumbBack;
+//        this.strAlbumThumbHQ = strAlbumThumbHQ;
+//        this.strAllMusicID = strAllMusicID;
+//        this.strAmazonID = strAmazonID;
+//        this.strArtist = strArtist;
+//        this.strArtistStripped = strArtistStripped;
+//        this.strBBCReviewID = strBBCReviewID;
+//        this.strDescriptionCN = strDescriptionCN;
+//        this.strDescriptionDE = strDescriptionDE;
+//        this.strDescriptionEN = strDescriptionEN;
+//        this.strDescriptionES = strDescriptionES;
+//        this.strDescriptionFR = strDescriptionFR;
+//        this.strDescriptionHU = strDescriptionHU;
+//        this.strDescriptionIL = strDescriptionIL;
+//        this.strDescriptionIT = strDescriptionIT;
+//        this.strDescriptionJP = strDescriptionJP;
+//        this.strDescriptionNL = strDescriptionNL;
+//        this.strDescriptionNO = strDescriptionNO;
+//        this.strDescriptionPL = strDescriptionPL;
+//        this.strDescriptionPT = strDescriptionPT;
+//        this.strDescriptionRU = strDescriptionRU;
+//        this.strDescriptionSE = strDescriptionSE;
+//        this.strDiscogsID = strDiscogsID;
+//        this.strGeniusID = strGeniusID;
+//        this.strGenre = strGenre;
+//        this.strItunesID = strItunesID;
+//        this.strLabel = strLabel;
+//        this.strLocation = strLocation;
+//        this.strLocked = strLocked;
+//        this.strLyricWikiID = strLyricWikiID;
+//        this.strMood = strMood;
+//        this.strMusicBrainzArtistID = strMusicBrainzArtistID;
+//        this.strMusicBrainzID = strMusicBrainzID;
+//        this.strMusicMozID = strMusicMozID;
+//        this.strRateYourMusicID = strRateYourMusicID;
+//        this.strReleaseFormat = strReleaseFormat;
+//        this.strReview = strReview;
+//        this.strSpeed = strSpeed;
+//        this.strStyle = strStyle;
+//        this.strTheme = strTheme;
+//        this.strWikidataID = strWikidataID;
+//        this.strWikipediaID = strWikipediaID;
+//    }
+
     public int getInternalId() {
         return internalId;
     }

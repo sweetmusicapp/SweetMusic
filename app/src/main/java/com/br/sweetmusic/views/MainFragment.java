@@ -107,7 +107,7 @@ public class MainFragment extends Fragment implements AlbumOnClick {
 
     private void initViews(View view) {
         recyclerView = view.findViewById(R.id.recyclerViewMusicas);
-        adapter = new RecyclerViewAdapater(albumList, listener);
+        adapter = new RecyclerViewAdapater(albumList, this);
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         recyclerView.setAdapter(adapter);
         imgProfile = view.findViewById(R.id.imageView_gridItem_artista);

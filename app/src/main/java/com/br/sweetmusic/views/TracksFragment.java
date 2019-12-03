@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 
 import com.br.sweetmusic.R;
 import com.br.sweetmusic.adapter.TracksRecyclerViewAdapter;
+import com.br.sweetmusic.pojos.Album;
 import com.br.sweetmusic.pojos.Track;
 import com.br.sweetmusic.viewmodel.TracksViewModel;
 import com.google.android.material.snackbar.Snackbar;
@@ -52,8 +53,8 @@ public class TracksFragment extends Fragment {
 
         if (getArguments() != null) {
 
-            Track track = getArguments().getParcelable(ALBUMS_KEY);
-            albumId = track.getIdAlbum();
+            Album album = getArguments().getParcelable(ALBUMS_KEY);
+            albumId = album.getIdAlbum();
 
         }
 
