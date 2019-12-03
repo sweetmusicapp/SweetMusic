@@ -7,9 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.br.sweetmusic.R;
+import com.br.sweetmusic.utils.AppUtil;
+import com.br.sweetmusic.views.HomeActivity;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -21,6 +26,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button btnRegister;
     private ImageView btnGoogle;
     private ImageView btnFacebook;
+    private ProgressBar progressBar;
 
     private static final String EMAIL_PATTERN = "^[a-zA-Z0-9#_~!$&'()*+,;=:.\"(),:;<>@\\[\\]\\\\]+@[a-zA-Z0-9-]+(\\.[a-zA-Z0-9-]+)*$";
     private Pattern pattern = Pattern.compile(EMAIL_PATTERN);
@@ -56,13 +62,35 @@ public class RegisterActivity extends AppCompatActivity {
                     inputEmail.setErrorEnabled(false);
                     inputSenha.setErrorEnabled(false);
 
-                    sendBundleToLogin();
+                    registrarUsuario(email, senha);
                 }
                 
             }
         });
 
         //TODO: Adicionar lógica de botão de cadastro externos (Google e Facebook)
+
+    }
+
+    private void registrarUsuario(String email, String password) {
+//        progressBar.setVisibility(View.VISIBLE);
+
+        // TODO: cadastro co firebase via email e senha
+        //Comando para salvar novo usuário e senha no firebase
+        FirebaseAuth.getInstance()
+                .createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+
+                        AppUtil.salvarIdUsuario(RegisterActivity.this, FirebaseAuth.getInstance().getCurrentUser().getUid());
+                        startActivity(new Intent(RegisterActivity.this, HomeActivity.class));
+                        finish();
+
+                    } else {
+                        Snackbar.make(btnRegister, task.getException().getMessage(), Snackbar.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
     }
 
     public void initViews() {
@@ -70,8 +98,9 @@ public class RegisterActivity extends AppCompatActivity {
         inputNome = findViewById(R.id.textInputLayout_register_nome);
         inputSenha = findViewById(R.id.textInputLayout_register_senha);
         btnRegister = findViewById(R.id.button_registrar);
-        btnGoogle = findViewById(R.id.button_register_google);
-        btnFacebook = findViewById(R.id.button_register_facebook);
+        //Duplicidade não precisa desse botão aqui
+        //btnGoogle = findViewById(R.id.button_register_google);
+        //btnFacebook = findViewById(R.id.button_register_facebook);
     }
 
     public boolean validateEmail(String email) {

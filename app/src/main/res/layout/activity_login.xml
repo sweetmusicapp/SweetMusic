@@ -84,23 +84,22 @@
         android:paddingBottom="16dp"
         android:background="@color/colorPrimary"
         android:shadowRadius="@android:integer/config_longAnimTime"
-        android:text="@string/entrar"
+        android:text="@string/login"
         android:textColor="@color/textPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayout_login_senha" />
 
-    <ImageView
+    <com.google.android.gms.common.SignInButton
         android:id="@+id/button_login_google"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="32dp"
-        android:background="@drawable/google"
         android:contentDescription="@string/alt_loginGoogle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button_login"
-        app:layout_constraintEnd_toStartOf="@id/button_login_facebook"/>
-
+        app:layout_constraintEnd_toStartOf="@id/button_login_facebook"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/button_login_facebook"

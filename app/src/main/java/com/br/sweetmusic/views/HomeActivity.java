@@ -23,9 +23,16 @@ import androidx.navigation.ui.AppBarConfiguration;
 import com.br.sweetmusic.R;
 import com.br.sweetmusic.views.login.LoginActivity;
 import com.br.sweetmusic.views.perfil.PerfilActivity;
+import com.facebook.login.LoginManager;
+import com.firebase.ui.auth.AuthUI;
 import com.google.android.material.navigation.NavigationView;
 
-public class HomeActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+import androidx.drawerlayout.widget.DrawerLayout;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+public class HomeActivity extends AppCompatActivity implements Comunicador, SearchView.OnQueryTextListener {
     private DrawerLayout drawer;
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -66,7 +73,7 @@ public class HomeActivity extends AppCompatActivity implements SearchView.OnQuer
                 if (id == R.id.nav_inicio) {
                     replaceFragment(new MainFragment());
                     drawer.closeDrawer(GravityCompat.START);
-                } else if (id == R.id.nav_favoritos) {
+                }else if (id == R.id.nav_favoritos) {
                     replaceFragment(new FavoritosFragment());
                     drawer.closeDrawer(GravityCompat.START);
                 } else if (id == R.id.nav_perfil) {
@@ -74,13 +81,16 @@ public class HomeActivity extends AppCompatActivity implements SearchView.OnQuer
                 } else if (id == R.id.nav_sobre) {
                     startActivity(new Intent(HomeActivity.this, SobreActivity.class));
                 } else if (id == R.id.nav_sair) {
-                    startActivity(new Intent(HomeActivity.this, LoginActivity.class));
+                    logout();
                 }
 
                 return true;
             }
         });
+    }
 
+    @Override
+    public void recebeMensagem() {
 
     }
 
@@ -103,7 +113,6 @@ public class HomeActivity extends AppCompatActivity implements SearchView.OnQuer
         transaction.commit();
     }
 
-
     @Override
     public boolean onQueryTextSubmit(String s) {
         return false;
@@ -116,5 +125,14 @@ public class HomeActivity extends AppCompatActivity implements SearchView.OnQuer
 
     public void setActionBarTitle(String title) {
         getSupportActionBar().setTitle(title);
+    }
+
+    private void logout() {
+        AuthUI.getInstance().signOut(this)
+                .addOnCompleteListener(task -> {
+                    startActivity(new Intent(this, LoginActivity.class));
+                    finish();
+                });
+        LoginManager.getInstance().logOut();
     }
 }

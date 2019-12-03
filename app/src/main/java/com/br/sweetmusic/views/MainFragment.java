@@ -43,7 +43,6 @@ public class MainFragment extends Fragment implements AlbumOnClick {
     private String artista = "metallica";
     private AlbumOnClick listener;
     private ImageButton buttonFavorito;
-    private SweetDao dao;
     public static final String ALBUMS_KEY = "album";
 
     public MainFragment() {
@@ -77,7 +76,6 @@ public class MainFragment extends Fragment implements AlbumOnClick {
         });
 
 
-
         viewModel.getLoading().observe(this, (Boolean loading) -> {
             if (loading) {
                 progressBar.setVisibility(View.VISIBLE);
@@ -105,6 +103,7 @@ public class MainFragment extends Fragment implements AlbumOnClick {
                 return false;
             }
         });
+
         return view;
 
     }

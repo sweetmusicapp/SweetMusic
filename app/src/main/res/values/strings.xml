@@ -159,4 +159,9 @@
     <string name="pesquisa_artista">Pesquise um artista \n para iniciar</string>
     <string name="teste_track_name">Teste teste teste teste teste teste</string>
 
+    <string name="facebook_application_id" translatable="false">719915518518766</string>
+    <string name="facebook_app_id">719915518518766</string>
+    <string name="fb_login_protocol_scheme">fb719915518518766</string>
+    <string name="login">Login</string>
+
 </resources>
