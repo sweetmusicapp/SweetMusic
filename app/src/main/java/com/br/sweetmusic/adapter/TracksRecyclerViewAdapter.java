@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
 import com.br.sweetmusic.data.SweetDao;
+import com.br.sweetmusic.interfaces.TrackOnClick;
 import com.br.sweetmusic.pojos.Track;
 
 import java.util.List;
@@ -19,9 +20,11 @@ public class TracksRecyclerViewAdapter extends RecyclerView.Adapter<TracksRecycl
 
     private List<Track> trackList;
     private SweetDao sweetDao;
+    private TrackOnClick listener;
 
-    public TracksRecyclerViewAdapter(List<Track> trackList) {
+    public TracksRecyclerViewAdapter(List<Track> trackList, TrackOnClick listener) {
         this.trackList = trackList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -35,7 +38,7 @@ public class TracksRecyclerViewAdapter extends RecyclerView.Adapter<TracksRecycl
     public void onBindViewHolder(@NonNull TracksRecyclerViewAdapter.ViewHolder holder, int position) {
         Track track = this.trackList.get(position);
         holder.bind(track);
-        holder.buttonFavorito.setOnClickListener(v -> sweetDao.insertTrack(track));
+        holder.buttonFavorito.setOnClickListener(v -> listener.trackOnClick(track));
     }
 
     @Override
