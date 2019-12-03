@@ -6,6 +6,8 @@ import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
 
+import com.br.sweetmusic.data.DatabaseSweet;
+import com.br.sweetmusic.data.SweetDao;
 import com.br.sweetmusic.pojos.Track;
 
 import java.util.List;
@@ -18,13 +20,19 @@ import static com.br.sweetmusic.network.RetrofitService.getApiService;
 
 public class TracksViewModel extends AndroidViewModel {
 
-    private MutableLiveData<List<Track>> tracksLiveData = new MutableLiveData<>();
+    private MutableLiveData<List<Track>> tracksMutableLiveData = new MutableLiveData<>();
     private MutableLiveData<String> tracksLiveDataError = new MutableLiveData<>();
     private MutableLiveData<Boolean> isLoading = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();
+    private MutableLiveData<Track> trackMutableLiveData = new MutableLiveData<>();
+    private SweetDao dao = DatabaseSweet.getDatabase(getApplication()).sweetDao();
 
-    public MutableLiveData<List<Track>> getTracksLiveData() {
-        return tracksLiveData;
+    public MutableLiveData<List<Track>> getTracksMutableLiveData() {
+        return tracksMutableLiveData;
+    }
+
+    public MutableLiveData<Track> getTrackMutableLiveData() {
+        return trackMutableLiveData;
     }
 
     public TracksViewModel(@NonNull Application application) {
@@ -41,10 +49,21 @@ public class TracksViewModel extends AndroidViewModel {
                         }).doOnTerminate(() -> {
                     isLoading.setValue(false);
                 }).subscribe(tracks -> {
-                    tracksLiveData.setValue(tracks.getTrack());
+                    tracksMutableLiveData.setValue(tracks.getTrack());
                 }, throwable -> {
                     tracksLiveDataError.setValue(throwable.getMessage());
                 })
+        );
+    }
+
+    public void insertTrack(Track track) {
+        new Thread(() -> {
+            if (track != null) {
+                dao.insertTrack(track);
+            }
+        }).start();
+
+        this.trackMutableLiveData.setValue(track
         );
     }
 

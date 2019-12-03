@@ -39,7 +39,6 @@ public class MainFragment extends Fragment implements AlbumOnClick {
     private String artista = "metallica";
     private AlbumOnClick listener;
     private ImageButton buttonFavorito;
-    private SweetDao dao;
     public static final String ALBUMS_KEY = "album";
 
     public MainFragment() {
@@ -68,38 +67,6 @@ public class MainFragment extends Fragment implements AlbumOnClick {
                 adapter.setUpdate(this.albumList);
             }
         });
-
-
-//        buttonFavorito.setOnClickListener(v -> {
-//            if (albumList == null || albumList.isEmpty()) {
-//                Snackbar.make(buttonFavorito,
-//                        "Por favor, selecione primeiro um artista", Snackbar.LENGTH_SHORT);
-//            } else {
-//                if (dao.getArtistByName(artista) != null) {
-//                    dao.getArtistByName(artista).setFavorito(0);
-//                    Toast.makeText(getContext(), "Você retirou "
-//                            + dao.getArtistByName(artista).getStrArtist()
-//                            + " dos seus favoritos!", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    String artistId = albumList.get(0).getIdArtist();
-//
-//                    viewModel.getArtists(artistId);
-//
-//                    viewModel.getArtistLiveData().observe(this, artist -> {
-//                        if (artist != null) {
-//                            dao.insertArtista(artist);
-//                            dao.getArtistByName(artista).setFavorito(1);
-//                            Toast.makeText(getContext(), "Você adicionou "
-//                                    + dao.getArtistByName(artista).getStrArtist()
-//                                    + " aos seus favoritos!", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Snackbar.make(buttonFavorito,
-//                                    "Houve um erro ao adicionar o favorito", Snackbar.LENGTH_SHORT);
-//                        }
-//                    });
-//                }
-//            }
-//        });
 
         return view;
     }
