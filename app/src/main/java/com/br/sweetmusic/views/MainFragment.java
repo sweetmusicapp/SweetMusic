@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
@@ -36,6 +38,8 @@ public class MainFragment extends Fragment implements AlbumOnClick {
     private RecyclerView recyclerView;
     private ImageView imgProfile;
     private TextView nameProfile;
+    private SearchView searchView;
+    private ProgressBar progressBar;
     private String artista = "metallica";
     private AlbumOnClick listener;
     private ImageButton buttonFavorito;
@@ -56,53 +60,56 @@ public class MainFragment extends Fragment implements AlbumOnClick {
         initViews(view);
 
 
+
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 3));
 
         viewModel.getAlbuns(artista);
+
+
 
         viewModel.getAlbunsLiveData().observe(this, albums -> {
             if (albums != null && !albums.isEmpty()) {
                 adapter.setUpdate(albums);
             } else {
-                Snackbar.make(imgProfile, "Artista ou albuns não encontrados", Snackbar.LENGTH_LONG);
+                Snackbar.make(searchView, "Artista ou albuns não encontrados", Snackbar.LENGTH_LONG);
                 adapter.setUpdate(this.albumList);
             }
         });
 
 
-//        buttonFavorito.setOnClickListener(v -> {
-//            if (albumList == null || albumList.isEmpty()) {
-//                Snackbar.make(buttonFavorito,
-//                        "Por favor, selecione primeiro um artista", Snackbar.LENGTH_SHORT);
-//            } else {
-//                if (dao.getArtistByName(artista) != null) {
-//                    dao.getArtistByName(artista).setFavorito(0);
-//                    Toast.makeText(getContext(), "Você retirou "
-//                            + dao.getArtistByName(artista).getStrArtist()
-//                            + " dos seus favoritos!", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    String artistId = albumList.get(0).getIdArtist();
-//
-//                    viewModel.getArtists(artistId);
-//
-//                    viewModel.getArtistLiveData().observe(this, artist -> {
-//                        if (artist != null) {
-//                            dao.insertArtista(artist);
-//                            dao.getArtistByName(artista).setFavorito(1);
-//                            Toast.makeText(getContext(), "Você adicionou "
-//                                    + dao.getArtistByName(artista).getStrArtist()
-//                                    + " aos seus favoritos!", Toast.LENGTH_SHORT).show();
-//                        } else {
-//                            Snackbar.make(buttonFavorito,
-//                                    "Houve um erro ao adicionar o favorito", Snackbar.LENGTH_SHORT);
-//                        }
-//                    });
-//                }
-//            }
-//        });
 
+        viewModel.getLoading().observe(this, (Boolean loading) -> {
+            if (loading) {
+                progressBar.setVisibility(View.VISIBLE);
+            } else {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String text) {
+                artista = text;
+                adapter.clear();
+                viewModel.getAlbuns(artista);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String text) {
+                if (text.length() > 3) {
+                    artista = text;
+                    adapter.clear();
+                    viewModel.getAlbuns(artista);
+                }
+                return false;
+            }
+        });
         return view;
+
     }
+
+
 
 
     private void initViews(View view) {
@@ -110,9 +117,10 @@ public class MainFragment extends Fragment implements AlbumOnClick {
         adapter = new RecyclerViewAdapater(albumList, this);
         viewModel = ViewModelProviders.of(this).get(MainViewModel.class);
         recyclerView.setAdapter(adapter);
+        searchView = view.findViewById(R.id.searchView);
         imgProfile = view.findViewById(R.id.imageView_gridItem_artista);
         nameProfile = view.findViewById(R.id.textView_gridItem_artista);
-        buttonFavorito = view.findViewById(R.id.buttonFavorito);
+        progressBar = view.findViewById(R.id.progress_bar);
     }
 
 

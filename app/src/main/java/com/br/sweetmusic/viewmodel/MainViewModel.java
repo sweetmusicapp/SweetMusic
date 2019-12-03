@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.br.sweetmusic.pojos.Album;
@@ -42,6 +43,10 @@ public class MainViewModel extends AndroidViewModel {
 
     public MutableLiveData<Artist> getArtistLiveData() {
         return artistLiveData;
+    }
+
+    public LiveData<Boolean> getLoading(){
+        return this.isLoading;
     }
 
     public void getAlbuns(String artista) {
