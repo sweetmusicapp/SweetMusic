@@ -18,11 +18,11 @@ import java.util.List;
 
 public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapater.ViewHolder> {
 
-    private List<Album> albums;
+    private List<Album> albumList;
     private AlbumOnClick listener;
 
     public RecyclerViewAdapater(List<Album> albums, AlbumOnClick listener) {
-        this.albums = albums;
+        this.albumList = albums;
         this.listener = listener;
     }
 
@@ -35,7 +35,7 @@ public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapa
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Album album = this.albums.get(position);
+        final Album album = albumList.get(position);
         holder.bind(album);
 
         holder.itemView.setOnClickListener(v -> {
@@ -45,20 +45,20 @@ public class RecyclerViewAdapater extends RecyclerView.Adapter<RecyclerViewAdapa
 
     @Override
     public int getItemCount() {
-        return albums.size();
+        return albumList.size();
     }
 
     public void setUpdate(List<Album> albums) {
-        if (this.albums.isEmpty()) {
-            this.albums = albums;
+        if (this.albumList.isEmpty()) {
+            this.albumList = albums;
         } else {
-            this.albums.addAll(albums);
+            this.albumList.addAll(albums);
         }
         notifyDataSetChanged();
     }
 
     public void clear() {
-        this.albums.clear();
+        this.albumList.clear();
         notifyDataSetChanged();
     }
 

@@ -1,6 +1,9 @@
 
 package com.br.sweetmusic.pojos;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
@@ -8,7 +11,7 @@ import androidx.room.PrimaryKey;
 import com.google.gson.annotations.Expose;
 
 @Entity(tableName = "album")
-public class Album {
+public class Album implements Parcelable {
 
     @PrimaryKey(autoGenerate = true)
     private int internalId;
@@ -130,6 +133,81 @@ public class Album {
     private String strWikidataID;
     @Expose
     private String strWikipediaID;
+
+    protected Album(Parcel in) {
+        internalId = in.readInt();
+        idAlbum = in.readString();
+        idArtist = in.readString();
+        idLabel = in.readString();
+        intLoved = in.readString();
+        intSales = in.readString();
+        intScore = in.readString();
+        intScoreVotes = in.readString();
+        intYearReleased = in.readString();
+        strAlbum = in.readString();
+        strAlbum3DCase = in.readString();
+        strAlbum3DFace = in.readString();
+        strAlbum3DFlat = in.readString();
+        strAlbum3DThumb = in.readString();
+        strAlbumCDart = in.readString();
+        strAlbumSpine = in.readString();
+        strAlbumStripped = in.readString();
+        strAlbumThumb = in.readString();
+        strAlbumThumbBack = in.readString();
+        strAlbumThumbHQ = in.readString();
+        strAllMusicID = in.readString();
+        strAmazonID = in.readString();
+        strArtist = in.readString();
+        strArtistStripped = in.readString();
+        strBBCReviewID = in.readString();
+        strDescriptionCN = in.readString();
+        strDescriptionDE = in.readString();
+        strDescriptionEN = in.readString();
+        strDescriptionES = in.readString();
+        strDescriptionFR = in.readString();
+        strDescriptionHU = in.readString();
+        strDescriptionIL = in.readString();
+        strDescriptionIT = in.readString();
+        strDescriptionJP = in.readString();
+        strDescriptionNL = in.readString();
+        strDescriptionNO = in.readString();
+        strDescriptionPL = in.readString();
+        strDescriptionPT = in.readString();
+        strDescriptionRU = in.readString();
+        strDescriptionSE = in.readString();
+        strDiscogsID = in.readString();
+        strGeniusID = in.readString();
+        strGenre = in.readString();
+        strItunesID = in.readString();
+        strLabel = in.readString();
+        strLocation = in.readString();
+        strLocked = in.readString();
+        strLyricWikiID = in.readString();
+        strMood = in.readString();
+        strMusicBrainzArtistID = in.readString();
+        strMusicBrainzID = in.readString();
+        strMusicMozID = in.readString();
+        strRateYourMusicID = in.readString();
+        strReleaseFormat = in.readString();
+        strReview = in.readString();
+        strSpeed = in.readString();
+        strStyle = in.readString();
+        strTheme = in.readString();
+        strWikidataID = in.readString();
+        strWikipediaID = in.readString();
+    }
+
+    public static final Creator<Album> CREATOR = new Creator<Album>() {
+        @Override
+        public Album createFromParcel(Parcel in) {
+            return new Album(in);
+        }
+
+        @Override
+        public Album[] newArray(int size) {
+            return new Album[size];
+        }
+    };
 
     public int getInternalId() {
         return internalId;
@@ -609,5 +687,74 @@ public class Album {
 
     public void setStrWikipediaID(String strWikipediaID) {
         this.strWikipediaID = strWikipediaID;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeInt(internalId);
+        dest.writeString(idAlbum);
+        dest.writeString(idArtist);
+        dest.writeString(idLabel);
+        dest.writeString(intLoved);
+        dest.writeString(intSales);
+        dest.writeString(intScore);
+        dest.writeString(intScoreVotes);
+        dest.writeString(intYearReleased);
+        dest.writeString(strAlbum);
+        dest.writeString(strAlbum3DCase);
+        dest.writeString(strAlbum3DFace);
+        dest.writeString(strAlbum3DFlat);
+        dest.writeString(strAlbum3DThumb);
+        dest.writeString(strAlbumCDart);
+        dest.writeString(strAlbumSpine);
+        dest.writeString(strAlbumStripped);
+        dest.writeString(strAlbumThumb);
+        dest.writeString(strAlbumThumbBack);
+        dest.writeString(strAlbumThumbHQ);
+        dest.writeString(strAllMusicID);
+        dest.writeString(strAmazonID);
+        dest.writeString(strArtist);
+        dest.writeString(strArtistStripped);
+        dest.writeString(strBBCReviewID);
+        dest.writeString(strDescriptionCN);
+        dest.writeString(strDescriptionDE);
+        dest.writeString(strDescriptionEN);
+        dest.writeString(strDescriptionES);
+        dest.writeString(strDescriptionFR);
+        dest.writeString(strDescriptionHU);
+        dest.writeString(strDescriptionIL);
+        dest.writeString(strDescriptionIT);
+        dest.writeString(strDescriptionJP);
+        dest.writeString(strDescriptionNL);
+        dest.writeString(strDescriptionNO);
+        dest.writeString(strDescriptionPL);
+        dest.writeString(strDescriptionPT);
+        dest.writeString(strDescriptionRU);
+        dest.writeString(strDescriptionSE);
+        dest.writeString(strDiscogsID);
+        dest.writeString(strGeniusID);
+        dest.writeString(strGenre);
+        dest.writeString(strItunesID);
+        dest.writeString(strLabel);
+        dest.writeString(strLocation);
+        dest.writeString(strLocked);
+        dest.writeString(strLyricWikiID);
+        dest.writeString(strMood);
+        dest.writeString(strMusicBrainzArtistID);
+        dest.writeString(strMusicBrainzID);
+        dest.writeString(strMusicMozID);
+        dest.writeString(strRateYourMusicID);
+        dest.writeString(strReleaseFormat);
+        dest.writeString(strReview);
+        dest.writeString(strSpeed);
+        dest.writeString(strStyle);
+        dest.writeString(strTheme);
+        dest.writeString(strWikidataID);
+        dest.writeString(strWikipediaID);
     }
 }
