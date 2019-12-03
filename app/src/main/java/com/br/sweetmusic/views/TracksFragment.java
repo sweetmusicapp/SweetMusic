@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
 import com.br.sweetmusic.adapter.TracksRecyclerViewAdapter;
+import com.br.sweetmusic.interfaces.TrackOnClick;
 import com.br.sweetmusic.pojos.Album;
 import com.br.sweetmusic.pojos.Track;
 import com.br.sweetmusic.viewmodel.TracksViewModel;
@@ -25,7 +26,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TracksFragment extends Fragment {
+public class TracksFragment extends Fragment implements TrackOnClick {
 
     private List<Track> trackList = new ArrayList<>();
     private TracksViewModel viewModel;
@@ -72,9 +73,15 @@ public class TracksFragment extends Fragment {
     private void initViews(View view) {
         buttonFavorito = view.findViewById(R.id.favorito);
         recyclerView = view.findViewById(R.id.recyclerViewTracks);
-        adapter = new TracksRecyclerViewAdapter(trackList);
+        adapter = new TracksRecyclerViewAdapter(trackList, this);
         viewModel = ViewModelProviders.of(this).get(TracksViewModel.class);
         recyclerView.setAdapter(adapter);
     }
 
+    @Override
+    public void trackOnClick(Track track) {
+        buttonFavorito.setOnClickListener(v -> {
+            viewModel.insertTrack(track);
+        });
+    }
 }
