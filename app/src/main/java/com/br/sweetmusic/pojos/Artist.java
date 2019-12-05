@@ -5,107 +5,103 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-import com.google.gson.annotations.Expose;
-
 @Entity(tableName = "artist")
 public class Artist {
 
     @PrimaryKey(autoGenerate = true)
     private int internalId;
-    @ColumnInfo
+    @ColumnInfo(name = "favorito")
+    private int favorito;
+    @ColumnInfo(name = "artist_id")
     private String idArtist;
-    @ColumnInfo
-    private String idLabel;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_nascimento")
     private String intBornYear;
-    @ColumnInfo
-    private String intCharted;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_morte")
     private String intDiedYear;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_formacao")
     private String intFormedYear;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_membros")
     private String intMembers;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_nome")
     private String strArtist;
-    @ColumnInfo
-    private String strArtistAlternate;
-    @ColumnInfo
-    private String strArtistBanner;
-    @ColumnInfo
-    private String strArtistClearart;
-    @ColumnInfo
-    private String strArtistFanart;
-    @Expose
-    private String strArtistFanart2;
-    @Expose
-    private String strArtistFanart3;
-    @ColumnInfo
-    private String strArtistLogo;
-    @ColumnInfo
-    private String strArtistStripped;
-    @ColumnInfo
-    private String strArtistThumb;
-    @ColumnInfo
-    private String strArtistWideThumb;
-    @Expose
-    private String strBiographyCN;
-    @Expose
-    private String strBiographyDE;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_biografia_en")
     private String strBiographyEN;
-    @Expose
-    private String strBiographyES;
-    @Expose
-    private String strBiographyFR;
-    @Expose
-    private String strBiographyHU;
-    @Expose
-    private String strBiographyIL;
-    @Expose
-    private String strBiographyIT;
-    @Expose
-    private String strBiographyJP;
-    @Expose
-    private String strBiographyNL;
-    @Expose
-    private String strBiographyNO;
-    @Expose
-    private String strBiographyPL;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_biografia_pt")
     private String strBiographyPT;
-    @Expose
-    private String strBiographyRU;
-    @Expose
-    private String strBiographySE;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_pais")
     private String strCountry;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_pais_code")
     private String strCountryCode;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_separacao")
     private String strDisbanded;
-    @ColumnInfo
-    private String strFacebook;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_sexo")
     private String strGender;
-    @ColumnInfo
+    @ColumnInfo(name = "artist_genero")
     private String strGenre;
-    @ColumnInfo
+
+    private String idLabel;
+    private String strArtistAlternate;
+    private String strArtistBanner;
+    private String strArtistClearart;
+    private String strArtistFanart;
+    private String strArtistFanart2;
+    private String strArtistFanart3;
+    private String strArtistLogo;
+    private String strArtistStripped;
+    private String strArtistThumb;
+    private String strArtistWideThumb;
+    private String strBiographyCN;
+    private String strBiographyDE;
+    private String intCharted;
+    private String strBiographyES;
+    private String strBiographyFR;
+    private String strBiographyHU;
+    private String strBiographyIL;
+    private String strBiographyIT;
+    private String strBiographyJP;
+    private String strBiographyNL;
+    private String strBiographyNO;
+    private String strBiographyPL;
+    private String strBiographyRU;
+    private String strBiographySE;
+    private String strFacebook;
     private String strLabel;
-    @Expose
     private String strLastFMChart;
-    @Expose
     private String strLocked;
-    @Expose
     private String strMood;
-    @ColumnInfo
     private String strMusicBrainzID;
-    @ColumnInfo
     private String strStyle;
-    @ColumnInfo
     private String strTwitter;
-    @ColumnInfo
     private String strWebsite;
+
+    public Artist(int internalId, int favorito, String idArtist, String intBornYear,
+                  String intDiedYear, String intFormedYear, String intMembers, String strArtist,
+                  String strBiographyEN, String strBiographyPT, String strCountry,
+                  String strCountryCode, String strDisbanded, String strGender, String strGenre) {
+        this.internalId = internalId;
+        this.favorito = favorito;
+        this.idArtist = idArtist;
+        this.intBornYear = intBornYear;
+        this.intDiedYear = intDiedYear;
+        this.intFormedYear = intFormedYear;
+        this.intMembers = intMembers;
+        this.strArtist = strArtist;
+        this.strBiographyEN = strBiographyEN;
+        this.strBiographyPT = strBiographyPT;
+        this.strCountry = strCountry;
+        this.strCountryCode = strCountryCode;
+        this.strDisbanded = strDisbanded;
+        this.strGender = strGender;
+        this.strGenre = strGenre;
+    }
+
+    public int getFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(int favorito) {
+        this.favorito = favorito;
+    }
 
     public int getInternalId() {
         return internalId;

@@ -15,7 +15,7 @@ public class Track {
     @ColumnInfo
     private String idAlbum;
     @ColumnInfo
-    private Boolean favorito;
+    private int favorito;
     @ColumnInfo
     private String idArtist;
     @ColumnInfo
@@ -111,11 +111,11 @@ public class Track {
         this.idAlbum = idAlbum;
     }
 
-    public Boolean getFavorito() {
+    public int getFavorito() {
         return favorito;
     }
 
-    public void setFavorito(Boolean favorito) {
+    public void setFavorito(int favorito) {
         this.favorito = favorito;
     }
 

@@ -35,7 +35,7 @@ public class SplashActivity extends AppCompatActivity {
             public void run() {
                 nextScreen();
             }
-        }, 3000);
+        }, 2500);
     }
 
     public void nextScreen() {

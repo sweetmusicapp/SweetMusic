@@ -5,7 +5,7 @@ android {
     buildToolsVersion "29.0.2"
     defaultConfig {
         applicationId "com.br.sweetmusic"
-        minSdkVersion 17
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -48,10 +48,9 @@ dependencies {
     annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
     implementation "android.arch.persistence.room:rxjava2:1.1.1"
 
-    /////// ViewModel and LiveData///////
-    def lifecycle_version = "1.1.1"
-    implementation "android.arch.lifecycle:extensions:$lifecycle_version"
-    annotationProcessor "android.arch.lifecycle:compiler:$lifecycle_version"
+    // ViewModel and LiveData
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0'
 
     ///////Retrofit///////
     implementation "com.squareup.retrofit2:adapter-rxjava2:2.3.0"
@@ -76,6 +75,32 @@ dependencies {
     ///////Card View///////
     implementation 'androidx.cardview:cardview:1.0.0'
 
+    // Firebase Analytics
+    implementation 'com.google.firebase:firebase-core:17.2.1'
+
+    // Firebase login
+    implementation 'com.google.firebase:firebase-auth:19.1.0'
+    implementation 'com.firebaseui:firebase-ui-auth:4.3.1'
+
+    // Firebase Storage
+    implementation 'com.google.firebase:firebase-storage:19.1.0'
+
+    // Firebase Client
+    implementation 'com.google.firebase:firebase-messaging:20.0.1'
+
+    // Firebase Database
+    implementation 'com.google.firebase:firebase-database:19.2.0'
+
+    // Facebook SDK
+    implementation 'com.facebook.android:facebook-android-sdk:5.9.0'
+
+    // Google login
+    implementation 'com.google.android.gms:play-services-auth:17.0.0'
+
+    // ViewModel and LiveData
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.1.0'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'com.google.android.material:material:1.0.0'
@@ -86,7 +111,7 @@ dependencies {
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'com.github.medyo:android-about-page:1.2.5'
 
 }
