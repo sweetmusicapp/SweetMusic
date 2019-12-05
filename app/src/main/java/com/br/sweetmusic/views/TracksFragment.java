@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 
+import android.widget.ImageView;
+
+
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,6 +22,9 @@ import com.br.sweetmusic.pojos.Album;
 import com.br.sweetmusic.pojos.Track;
 import com.br.sweetmusic.viewmodel.TracksViewModel;
 import com.google.android.material.snackbar.Snackbar;
+
+import com.squareup.picasso.Picasso;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,6 +39,9 @@ public class TracksFragment extends Fragment implements TrackOnClick {
     private RecyclerView recyclerView;
     private TracksRecyclerViewAdapter adapter;
     private String albumId = "";
+
+    private ImageView artistImageView;
+
     private ImageButton buttonFavorito;
     public static final String ALBUMS_KEY = "album";
 
@@ -49,6 +58,9 @@ public class TracksFragment extends Fragment implements TrackOnClick {
         if (getArguments() != null) {
 
             final Album album = getArguments().getParcelable(ALBUMS_KEY);
+
+            Picasso.get().load(album.getStrAlbumThumb()).into(artistImageView);
+
             albumId = album.getIdAlbum();
 
         }
@@ -73,6 +85,9 @@ public class TracksFragment extends Fragment implements TrackOnClick {
     private void initViews(View view) {
         buttonFavorito = view.findViewById(R.id.favorito);
         recyclerView = view.findViewById(R.id.recyclerViewTracks);
+
+        artistImageView = view.findViewById(R.id.artistImageView);
+
         adapter = new TracksRecyclerViewAdapter(trackList, this);
         viewModel = ViewModelProviders.of(this).get(TracksViewModel.class);
         recyclerView.setAdapter(adapter);
@@ -84,4 +99,8 @@ public class TracksFragment extends Fragment implements TrackOnClick {
             viewModel.insertTrack(track);
         });
     }
+
 }
+
+}
+
