@@ -9,6 +9,10 @@ import androidx.room.Update;
 import com.br.sweetmusic.pojos.Artist;
 import com.br.sweetmusic.pojos.Track;
 
+import java.util.List;
+
+import io.reactivex.Observable;
+
 @Dao
 public interface SweetDao {
 
@@ -31,6 +35,6 @@ public interface SweetDao {
     Artist getFavoritos();
 
     @Query("SELECT * FROM track WHERE favorito = 1")
-    Track getFavoritesTracks();
+    Observable<List<Track>> getFavoritesTracks();
 }
 

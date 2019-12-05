@@ -10,59 +10,53 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
-import com.br.sweetmusic.data.SweetDao;
-import com.br.sweetmusic.interfaces.TrackOnClick;
 import com.br.sweetmusic.pojos.Track;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class TracksRecyclerViewAdapter extends RecyclerView.Adapter<TracksRecyclerViewAdapter.ViewHolder> {
+public class FavoritosRecyclerViewAdapter extends RecyclerView.Adapter<FavoritosRecyclerViewAdapter.ViewHolder> {
 
-    private List<Track> trackList;
-    private SweetDao sweetDao;
-    private TrackOnClick listener;
+    private List<Track> favoriteTrackList = new ArrayList<>();
 
-    public TracksRecyclerViewAdapter(List<Track> trackList, TrackOnClick listener) {
-        this.trackList = trackList;
-        this.listener = listener;
+    public FavoritosRecyclerViewAdapter(List<Track> favoriteTrackList) {
+        this.favoriteTrackList = favoriteTrackList;
     }
 
     @NonNull
     @Override
-    public TracksRecyclerViewAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_musica_favoritos, parent, false);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TracksRecyclerViewAdapter.ViewHolder holder, int position) {
-        Track track = this.trackList.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        Track track = this.favoriteTrackList.get(position);
         holder.bind(track);
-        holder.buttonFavorito.setOnClickListener(v -> listener.trackOnClick(track));
     }
 
     @Override
     public int getItemCount() {
-        return trackList.size();
+        return favoriteTrackList.size();
     }
 
     public void setUpdate(List<Track> tracks) {
-        if (this.trackList.isEmpty()) {
-            this.trackList = tracks;
+        if (this.favoriteTrackList.isEmpty()) {
+            this.favoriteTrackList = tracks;
         } else {
-            this.trackList.addAll(tracks);
+            this.favoriteTrackList.addAll(tracks);
         }
         notifyDataSetChanged();
     }
 
     public void clear() {
-        this.trackList.clear();
+        this.favoriteTrackList.clear();
         notifyDataSetChanged();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-
         private TextView textViewMusica;
         private TextView textViewBanda;
         private ToggleButton buttonFavorito;
