@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ToggleButton;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -85,8 +86,6 @@ public class TracksFragment extends Fragment implements TrackOnClick {
 
     @Override
     public void trackOnClick(Track track) {
-        buttonFavorito.setOnClickListener(v -> {
-            viewModel.insertTrack(track);
-        });
+       viewModel.insertTrack(track);
     }
 }

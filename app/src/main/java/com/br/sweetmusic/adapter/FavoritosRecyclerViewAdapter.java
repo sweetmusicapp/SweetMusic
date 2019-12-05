@@ -3,6 +3,7 @@ package com.br.sweetmusic.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -59,7 +60,7 @@ public class FavoritosRecyclerViewAdapter extends RecyclerView.Adapter<Favoritos
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView textViewMusica;
         private TextView textViewBanda;
-        private ToggleButton buttonFavorito;
+        private ImageView buttonFavorito;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
