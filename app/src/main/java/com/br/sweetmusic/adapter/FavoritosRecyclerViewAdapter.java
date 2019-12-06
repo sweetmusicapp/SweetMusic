@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
+import com.br.sweetmusic.interfaces.TrackOnClick;
 import com.br.sweetmusic.pojos.Track;
 
 import java.util.ArrayList;
@@ -18,10 +19,12 @@ import java.util.List;
 
 public class FavoritosRecyclerViewAdapter extends RecyclerView.Adapter<FavoritosRecyclerViewAdapter.ViewHolder> {
 
-    private List<Track> favoriteTrackList = new ArrayList<>();
+    private List<Track> favoriteTrackList;
+    private TrackOnClick listener;
 
-    public FavoritosRecyclerViewAdapter(List<Track> favoriteTrackList) {
+    public FavoritosRecyclerViewAdapter(List<Track> favoriteTrackList, TrackOnClick listener) {
         this.favoriteTrackList = favoriteTrackList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -36,6 +39,7 @@ public class FavoritosRecyclerViewAdapter extends RecyclerView.Adapter<Favoritos
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         Track track = this.favoriteTrackList.get(position);
         holder.bind(track);
+        holder.buttonFavorito.setOnClickListener(v -> listener.trackOnClick(track));
     }
 
     @Override

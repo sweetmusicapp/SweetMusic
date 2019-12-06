@@ -24,6 +24,8 @@ public class FavoritosViewModel extends AndroidViewModel {
     private MutableLiveData<String> tracksLiveDataError = new MutableLiveData<>();
     private CompositeDisposable disposable = new CompositeDisposable();
     private SweetDao dao = DatabaseSweet.getDatabase(getApplication()).sweetDao();
+    private MutableLiveData<Track> trackMutableLiveData = new MutableLiveData<>();
+
 
     public LiveData<List<Track>> retornaTracks() {
         return this.tracksMutableLiveData;
@@ -44,5 +46,20 @@ public class FavoritosViewModel extends AndroidViewModel {
                             Log.i("LOG", "erro: " + throwable.getMessage());
                         })
         );
+    }
+
+    public void deleteTrack(Track track) {
+        new Thread(() -> {
+            if (track != null) {
+                dao.deleteTrack(track);
+            }
+        }).start();
+
+        this.trackMutableLiveData.setValue(track);
+    }
+
+    @Override
+    protected void onCleared() {
+        super.onCleared();
     }
 }
