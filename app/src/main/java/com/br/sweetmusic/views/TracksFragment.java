@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import androidx.fragment.app.Fragment;
@@ -87,5 +88,6 @@ public class TracksFragment extends Fragment implements TrackOnClick {
     @Override
     public void trackOnClick(Track track) {
        viewModel.insertTrack(track);
+        Toast.makeText(getContext(), "Música adicionada com sucesso", Toast.LENGTH_SHORT).show();
     }
 }

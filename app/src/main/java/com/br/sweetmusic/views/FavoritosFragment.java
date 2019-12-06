@@ -64,9 +64,6 @@ public class FavoritosFragment extends Fragment implements TrackOnClick {
     public void trackOnClick(Track track) {
         viewModel.deleteTrack(track);
         adapter.clear();
-        viewModel.retornaTracks().observe(this, tracks -> {
-            adapter.setUpdate(tracks);
-        });
         Toast.makeText(getContext(), "Música removida com sucesso", Toast.LENGTH_SHORT).show();
 
     }
