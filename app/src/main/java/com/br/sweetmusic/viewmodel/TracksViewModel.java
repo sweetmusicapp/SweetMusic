@@ -1,6 +1,7 @@
 package com.br.sweetmusic.viewmodel;
 
 import android.app.Application;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -9,6 +10,7 @@ import androidx.lifecycle.MutableLiveData;
 import com.br.sweetmusic.data.DatabaseSweet;
 import com.br.sweetmusic.data.SweetDao;
 import com.br.sweetmusic.pojos.Track;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 
@@ -63,8 +65,7 @@ public class TracksViewModel extends AndroidViewModel {
             }
         }).start();
 
-        this.trackMutableLiveData.setValue(track
-        );
+        this.trackMutableLiveData.setValue(track);
     }
 
     @Override

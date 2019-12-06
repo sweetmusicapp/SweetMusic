@@ -34,7 +34,7 @@ public interface SweetDao {
     @Query("SELECT * FROM artist WHERE favorito = 1")
     Artist getFavoritos();
 
-    @Query("SELECT * FROM track WHERE favorito = 1")
+    @Query("SELECT * FROM track")
     Observable<List<Track>> getFavoritesTracks();
 }
 

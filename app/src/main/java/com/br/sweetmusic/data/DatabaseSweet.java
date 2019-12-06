@@ -10,7 +10,7 @@ import com.br.sweetmusic.pojos.Album;
 import com.br.sweetmusic.pojos.Artist;
 import com.br.sweetmusic.pojos.Track;
 
-@Database(entities = {Artist.class, Album.class, Track.class}, version = 1, exportSchema = false)
+@Database(entities = {Artist.class, Album.class, Track.class}, version = 2, exportSchema = false)
 public abstract class DatabaseSweet extends RoomDatabase {
     private static volatile DatabaseSweet INSTANCE;
 

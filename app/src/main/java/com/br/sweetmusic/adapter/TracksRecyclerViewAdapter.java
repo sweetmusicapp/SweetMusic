@@ -3,6 +3,7 @@ package com.br.sweetmusic.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
@@ -13,13 +14,13 @@ import com.br.sweetmusic.R;
 import com.br.sweetmusic.data.SweetDao;
 import com.br.sweetmusic.interfaces.TrackOnClick;
 import com.br.sweetmusic.pojos.Track;
+import com.br.sweetmusic.viewmodel.TracksViewModel;
 
 import java.util.List;
 
 public class TracksRecyclerViewAdapter extends RecyclerView.Adapter<TracksRecyclerViewAdapter.ViewHolder> {
 
     private List<Track> trackList;
-    private SweetDao sweetDao;
     private TrackOnClick listener;
 
     public TracksRecyclerViewAdapter(List<Track> trackList, TrackOnClick listener) {
@@ -65,7 +66,7 @@ public class TracksRecyclerViewAdapter extends RecyclerView.Adapter<TracksRecycl
 
         private TextView textViewMusica;
         private TextView textViewBanda;
-        private ToggleButton buttonFavorito;
+        private ImageButton buttonFavorito;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

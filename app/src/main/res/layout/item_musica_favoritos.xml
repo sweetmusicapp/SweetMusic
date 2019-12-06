@@ -28,11 +28,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            tools:text="Give It Away"
             android:textColor="@color/textPrimary"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/playMusic"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Give It Away" />
 
         <TextView
             android:id="@+id/nomeDaBanda"
@@ -40,18 +40,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            tools:text="Red Hot Chili Peppers"
             android:textColor="@color/textPrimary"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/playMusic"
-            app:layout_constraintTop_toBottomOf="@+id/nomeDaMusica" />
+            app:layout_constraintTop_toBottomOf="@+id/nomeDaMusica"
+            tools:text="Red Hot Chili Peppers" />
 
-        <ToggleButton
-            android:background="@drawable/coracaofav"
+        <ImageButton
             android:id="@+id/favorito"
             android:layout_width="32dp"
             android:layout_height="32dp"
+            android:background="@drawable/coracaofav"
             android:contentDescription="@string/alt_desfavoritar"
             android:textOff=""
             android:textOn=""
