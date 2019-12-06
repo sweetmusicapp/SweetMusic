@@ -23,7 +23,7 @@ public interface SweetDao {
     void insertTrack(Track track);
 
     @Delete
-    void deleteArtista(Artist artista);
+    void deleteTrack(Track track);
 
     @Update
     void updateArtista(Artist artista);

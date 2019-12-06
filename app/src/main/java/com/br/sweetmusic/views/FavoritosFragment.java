@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.br.sweetmusic.R;
 import com.br.sweetmusic.adapter.FavoritosRecyclerViewAdapter;
+import com.br.sweetmusic.interfaces.TrackOnClick;
 import com.br.sweetmusic.pojos.Track;
 import com.br.sweetmusic.viewmodel.FavoritosViewModel;
 
@@ -24,7 +25,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavoritosFragment extends Fragment {
+public class FavoritosFragment extends Fragment implements TrackOnClick {
 
     private RecyclerView recyclerView;
     private FavoritosRecyclerViewAdapter adapter;
@@ -53,9 +54,20 @@ public class FavoritosFragment extends Fragment {
         return view;
     }
 
-    public void initViews(View view){
+    public void initViews(View view) {
         recyclerView = view.findViewById(R.id.recyclerViewTracks);
-        adapter = new FavoritosRecyclerViewAdapter(trackList);
+        adapter = new FavoritosRecyclerViewAdapter(trackList, this);
         viewModel = ViewModelProviders.of(this).get(FavoritosViewModel.class);
+    }
+
+    @Override
+    public void trackOnClick(Track track) {
+        viewModel.deleteTrack(track);
+        adapter.clear();
+        viewModel.retornaTracks().observe(this, tracks -> {
+            adapter.setUpdate(tracks);
+        });
+        Toast.makeText(getContext(), "Música removida com sucesso", Toast.LENGTH_SHORT).show();
+
     }
 }
