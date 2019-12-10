@@ -1,8 +1,5 @@
 package com.br.sweetmusic.views.login;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,9 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.br.sweetmusic.R;
 import com.br.sweetmusic.utils.AppUtil;
 import com.br.sweetmusic.views.HomeActivity;
-import com.br.sweetmusic.R;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -29,16 +29,20 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import io.reactivex.disposables.CompositeDisposable;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -50,6 +54,7 @@ public class LoginActivity extends AppCompatActivity {
     private ImageView btnFacebook;
     private TextView txtRegistrese;
     private CallbackManager callbackManager;
+    private CompositeDisposable disposable = new CompositeDisposable();
 
     private SignInButton googleSignInButton;
     private GoogleSignInClient googleSignInClient;
@@ -73,19 +78,7 @@ public class LoginActivity extends AppCompatActivity {
         btnFacebook.setOnClickListener(v -> loginFacebook());
 
         //TODO: Mudar lógica para integrar com o Google
-        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestEmail()
-                .build();
-
-        googleSignInClient = GoogleSignIn.getClient(this, gso);
-
-        googleSignInButton.setOnClickListener(v -> {
-
-            Intent signInIntent = googleSignInClient.getSignInIntent();
-
-            startActivityForResult(signInIntent, 101);
-
-        });
+        googleSignInButton.setOnClickListener(v -> loginGoogle());
 
         textEsqueciSenha.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +99,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginFacebook() {
 
-        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("public_profile"));
+        LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email","public_profile"));
         LoginManager.getInstance().registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
@@ -200,8 +193,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void autenticacaoGoogle(GoogleSignInAccount account) {
+
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        FirebaseAuth.getInstance().signInWithCredential(credential).addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                irParaHome(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            } else {
+                Toast.makeText(getApplicationContext(), "Erro login google", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void concluirLogin(GoogleSignInAccount conta) {
         Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra(GOOGLE_ACCOUNT, account);
+        intent.putExtra(GOOGLE_ACCOUNT, conta);
         startActivity(intent);
         finish();
     }
@@ -209,32 +214,44 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
         GoogleSignInAccount alreadyLoggedAccount = GoogleSignIn.getLastSignedInAccount(this);
 
         if (alreadyLoggedAccount != null) {
-
             Toast.makeText(this, "Você está logado.", Toast.LENGTH_LONG).show();
-            autenticacaoGoogle(alreadyLoggedAccount);
-
+            concluirLogin(alreadyLoggedAccount);
         } else {
-
             Toast.makeText(this, "Entre com uma conta valida.", Toast.LENGTH_LONG).show();
-
         }
-
     }
 
     private void irParaHome(String uiid) {
-
         AppUtil.salvarIdUsuario(getApplication().getApplicationContext(), uiid);
         startActivity(new Intent(getApplicationContext(), HomeActivity.class));
         finish();
-
     }
 
     public void esqueciSenha() {
         startActivity(new Intent(LoginActivity.this, ForgotActivity.class));
+    }
+
+
+    public void loginGoogle(){
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        GoogleApiClient googleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(LoginActivity.this, connectionResult -> {
+                    Toast.makeText(getApplicationContext(), "Falha na conexão", Toast.LENGTH_SHORT).show();
+                })
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .build();
+
+        Intent signIntent = Auth.GoogleSignInApi.getSignInIntent(googleApiClient);
+        startActivityForResult(signIntent, RC_SIGN_IN);
+
+
     }
 
 }

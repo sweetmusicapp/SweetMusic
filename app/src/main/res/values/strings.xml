@@ -50,7 +50,7 @@
     <string name="texto_confirmacao_nova_senha">Uma nova senha foi gerada e enviada para seu e-mail!</string>
     <string name="texto_confirmacao_inbox">Confira na sua caixa de entrada ou spam e faça o login novamente.</string>
     <string name="recuperar_senha">Recuperar Senha</string>
-    <string name="emailDefault">email@exemplo.com.br</string>
+    <string name="emailDefault">honorioproduction@gmail.com</string>
     <string name="alt_fotoPerfil">Foto do seu perfil</string>
     <string name="menu_inicio">Início</string>
     <string name="menu_favoritos">Favoritos</string>
@@ -64,7 +64,7 @@
     <string name="alt_desfavoritar">Desfavoritar</string>
 
     <string name="hintNomeTextInput">Nome</string>
-    <string name="nomeUsuarioDefault">Nome do Usuário</string>
+    <string name="nomeUsuarioDefault">Diego Honorio</string>
     <string name="title_activity_detalhe">DetalheActivity</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
